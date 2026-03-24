@@ -1,0 +1,50 @@
+# Hugo configuration for henriquebastos.net
+title: Henrique Bastos
+baseURL: https://henriquebastos.net/
+
+# import hextra as module
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+menu:
+  main:
+    - name: Writing
+      pageRef: /writing
+      weight: 1
+    - name: About
+      pageRef: /about
+      weight: 2
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: GitHub
+      weight: 5
+      url: "https://github.com/henriquebastos"
+      params:
+        icon: github
+    - name: X
+      weight: 6
+      url: "https://x.com/henriquebastos"
+      params:
+        icon: x-twitter
+
+params:
+  navbar:
+    displayTitle: true
+    displayLogo: false
+
+  footer:
+    displayCopyright: false
+    displayPoweredBy: false
+
+  editURL:
+    enable: false
