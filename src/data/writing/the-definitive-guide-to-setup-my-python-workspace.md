@@ -1,6 +1,7 @@
 ---
 title: "The definitive guide to setup my Python workspace"
 pubDatetime: 2017-01-06T00:00:00Z
+featured: true
 description: "An opinionated setup for a Python workspace on Unix using pyenv and virtualenvwrapper — one Jupyter, one iPython per major version, and clean isolation for everything else."
 ---
 
