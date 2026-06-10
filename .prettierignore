@@ -1,0 +1,16 @@
+# Ignore everything
+/*
+
+# Except these files & folders
+!/src
+/src/data/writing/
+!/public
+/public/pagefind/
+!/.github
+!tsconfig.json
+!astro.config.ts
+!.prettierrc.mjs
+!package.json
+!.prettierrc
+!eslint.config.js
+!README.md

@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://henriquebastos.net/",
+  author: "Henrique Bastos",
+  profile: "https://henriquebastos.net/",
+  desc: "25 years of Python. Then AI bit me. Now I'm drinking from the firehose.",
+  title: "Henrique Bastos",
+  ogImage: "astropaper-og.jpg",
+  lightAndDarkMode: true,
+  postPerIndex: 6,
+  postPerPage: 10,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: false,
+  showBackButton: true,
+  editPost: {
+    enabled: false,
+    text: "Edit page",
+    url: "",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "en",
+  timezone: "America/Sao_Paulo",
+} as const;

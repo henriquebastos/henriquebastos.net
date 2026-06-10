@@ -1,20 +1,21 @@
 # henriquebastos.net
 
-Personal site built with [Hugo](https://gohugo.io/) and [Hextra](https://github.com/imfing/hextra).
+Personal site built with [Astro](https://astro.build/).
 
 ## Local development
 
 ```bash
-hugo server
+npm install
+npm run dev
 ```
 
 ## Build
 
 ```bash
-hugo
+npm run build
 ```
 
-Output goes to `public/`.
+Output goes to `dist/`.
 
 ## Deploy
 
