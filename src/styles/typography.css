@@ -3,14 +3,14 @@
 @layer base {
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
-    @apply prose;
+    @apply prose prose-lg;
 
     h1,
     h2,
     h3,
     h4,
     th {
-      @apply mb-3 text-foreground;
+      @apply mb-3 font-sans font-extrabold text-foreground;
     }
 
     h3 {
@@ -44,11 +44,11 @@
     }
 
     img {
-      @apply mx-auto border border-border;
+      @apply mx-auto rounded-lg border border-border;
     }
 
     figcaption {
-      @apply opacity-75;
+      @apply text-center text-sm opacity-75;
     }
 
     table {
@@ -67,7 +67,7 @@
     }
 
     code {
-      @apply rounded bg-muted/75 p-1 wrap-break-word text-foreground before:content-none after:content-none;
+      @apply rounded bg-muted/75 p-1 font-mono wrap-break-word text-foreground before:content-none after:content-none;
     }
 
     .astro-code code {
@@ -93,7 +93,7 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
-    @apply flex border bg-(--shiki-light-bg) text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
+    @apply flex border bg-(--shiki-light-bg) font-mono text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
   }
 
   html[data-theme="dark"] .astro-code {
