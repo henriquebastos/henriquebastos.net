@@ -38,22 +38,22 @@ const markup = (props: {
 	tagsLine: string;
 	host: string;
 }) =>
-	html`<div tw="flex flex-col w-full h-full px-20 py-16" style="background-color: #1a1715; font-family: Newsreader;">
-		<p tw="text-2xl mb-10 tracking-widest uppercase" style="font-family: JetBrains Mono; color: #c89761;">
+	html`<div tw="flex flex-col w-full h-full px-20 py-16" style="background-color: #10161a; font-family: Newsreader;">
+		<p tw="text-2xl mb-10 tracking-widest uppercase" style="font-family: JetBrains Mono; color: #0099bc;">
 			${props.eyebrow}
 		</p>
-		<h1 tw="${titleClass(props.title)}" style="color: #fbf6ec; font-weight: 600;">
+		<h1 tw="${titleClass(props.title)}" style="color: #e9eff2; font-weight: 600;">
 			${props.title}
 		</h1>
-		<p tw="text-2xl mb-4" style="font-family: JetBrains Mono; color: #a89c8a;">
+		<p tw="text-2xl mb-4" style="font-family: JetBrains Mono; color: #8da0ac;">
 			${props.byline}
 		</p>
-		<p tw="text-xl tracking-wider uppercase" style="font-family: JetBrains Mono; color: #c89761;">
+		<p tw="text-xl tracking-wider uppercase" style="font-family: JetBrains Mono; color: #ff9400;">
 			${props.tagsLine}
 		</p>
 		<div tw="flex flex-1"></div>
 		<div tw="flex justify-end w-full">
-			<p tw="text-lg tracking-wide" style="font-family: JetBrains Mono; color: #6b5e4f;">
+			<p tw="text-lg tracking-wide" style="font-family: JetBrains Mono; color: #546470;">
 				${props.host}
 			</p>
 		</div>

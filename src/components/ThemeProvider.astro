@@ -3,8 +3,9 @@
 	(() => {
 		try {
 			const s = localStorage.getItem("theme");
-			const d = window.matchMedia("(prefers-color-scheme: dark)").matches;
-			document.documentElement.dataset.theme = s || (d ? "dark" : "light");
+			const l = window.matchMedia("(prefers-color-scheme: light)").matches;
+			// Dark by default; system light preference respected, user choice wins.
+			document.documentElement.dataset.theme = s || (l ? "light" : "dark");
 		} catch {}
 	})();
 
