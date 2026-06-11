@@ -23,5 +23,3 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
-# Migration artifacts (Hugo source kept locally for reference)
-.astropaper-trash/

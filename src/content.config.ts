@@ -1,26 +1,45 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
-import { SITE } from "@/config";
 
-export const BLOG_PATH = "src/data/writing";
+function removeDupsAndLowerCase(array: string[]) {
+	if (!array.length) return array;
+	const lowercaseItems = array.map((str) => str.toLowerCase());
+	const distinctItems = new Set(lowercaseItems);
+	return Array.from(distinctItems);
+}
 
-const blog = defineCollection({
-  loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
-  schema: ({ image }) =>
-    z.object({
-      author: z.string().default(SITE.author),
-      pubDatetime: z.date(),
-      modDatetime: z.date().optional().nullable(),
-      title: z.string(),
-      featured: z.boolean().optional(),
-      draft: z.boolean().optional(),
-      tags: z.array(z.string()).default([]),
-      ogImage: image().or(z.string()).optional(),
-      description: z.string(),
-      canonicalURL: z.string().optional(),
-      hideEditPost: z.boolean().optional(),
-      timezone: z.string().optional(),
-    }),
+const post = defineCollection({
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/post" }),
+	schema: ({ image }) =>
+		z.object({
+			coverImage: z
+				.object({
+					alt: z.string(),
+					src: image(),
+				})
+				.optional(),
+			description: z.string().min(10).max(160),
+			draft: z.boolean().default(false),
+			ogImage: z.string().optional(),
+			publishDate: z
+				.string()
+				.or(z.date())
+				.transform((val) => new Date(val)),
+			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+			title: z.string().max(120),
+			updatedDate: z
+				.string()
+				.optional()
+				.transform((str) => (str ? new Date(str) : undefined)),
+		}),
 });
 
-export const collections = { blog };
+const page = defineCollection({
+	loader: glob({ pattern: "**/*.md", base: "./src/content/page" }),
+	schema: z.object({
+		title: z.string().max(120),
+		description: z.string().max(160).optional(),
+	}),
+});
+
+export const collections = { post, page };
