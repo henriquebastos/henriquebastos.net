@@ -55,7 +55,6 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 						class="post featured"
 						data-astro-prefetch
 						href={withBase(`/writing/${featured.id}/`)}
-						style="--i: 0"
 					>
 						<div class="post-rail">
 							<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
@@ -83,12 +82,11 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 			}
 
 			{
-				rest.map((p, idx) => (
+				rest.map((p) => (
 					<a
 						class="post"
 						data-astro-prefetch
 						href={withBase(`/writing/${p.id}/`)}
-						style={`--i: ${idx + 1}`}
 					>
 						<div class="post-rail">
 							<time class="post-date" datetime={getPostSortDate(p).toISOString()}>
@@ -104,7 +102,7 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 				))
 			}
 
-			<div class="archive-link" style={`--i: ${rest.length + 1}`}>
+			<div class="archive-link">
 				<a data-astro-prefetch href={withBase("/writing/")}
 					>View all {archiveCount} posts →</a
 				>
@@ -116,8 +114,8 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		<section class="work" aria-labelledby="work-label">
 			<div class="section-label" id="work-label">Showcase</div>
 			<ul class="work-list">
-				{showcase.map((item, idx) => (
-					<li style={`--i: ${idx + 1}`}>
+				{showcase.map((item) => (
+					<li>
 						<a href={item.href} rel="noreferrer" target="_blank">
 							<div class="head">
 								<span class="name">{item.name}</span>

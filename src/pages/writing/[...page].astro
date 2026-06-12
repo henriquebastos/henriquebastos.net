@@ -47,12 +47,11 @@ const totalCount = page.total;
 		<div class="section-label" id="writing-label">Writing · {totalCount} posts</div>
 		<div class="timeline">
 			{
-				page.data.map((p, idx) => (
+				page.data.map((p) => (
 					<a
 						class="post"
 						data-astro-prefetch
 						href={withBase(`/writing/${p.id}/`)}
-						style={`--i: ${idx}`}
 					>
 						<div class="post-rail">
 							<time class="post-date" datetime={getPostSortDate(p).toISOString()}>
