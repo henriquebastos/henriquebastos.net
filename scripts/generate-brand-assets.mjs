@@ -13,9 +13,8 @@ import { Resvg } from "@resvg/resvg-js";
 
 const AZUL = "#0099BC"; // brand color (Canva logomarca spec)
 const ORANGE = "#FF9400"; // accent (profile picture background)
-const INK_DARK = "#10161A"; // site dark background
-const TEXT_LIGHT = "#E9EFF2";
-const TEXT_MUTED = "#8DA0AC";
+const INK_DARK = "#1E1B18"; // site dark background (warm charcoal)
+const TEXT_LIGHT = "#F3EEE3";
 
 /** Monogram glyph paths in a 500x400 viewBox (u = 100). */
 const GLYPH = `
@@ -26,10 +25,8 @@ const GLYPH = `
 	<path d="M400,250 h50 a50,50 0 0 1 0,100 h-50 z"/>
 `;
 
-const monogram = (fill, x, y, width) => {
-	const height = (width * 400) / 500;
-	return `<g transform="translate(${x},${y}) scale(${width / 500})" fill="${fill}">${GLYPH}</g>`;
-};
+const monogram = (fill, x, y, width) =>
+	`<g transform="translate(${x},${y}) scale(${width / 500})" fill="${fill}">${GLYPH}</g>`;
 
 const render = (svg, file) => {
 	const png = new Resvg(svg).render().asPng();
@@ -57,21 +54,19 @@ const render = (svg, file) => {
 {
 	const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
 		<rect width="1200" height="630" fill="${INK_DARK}"/>
-		${monogram(AZUL, 80, 88, 150)}
-		<rect x="80" y="270" width="56" height="6" fill="${ORANGE}"/>
-		<text x="78" y="382" font-family="Newsreader 16pt" font-weight="600" font-size="92" fill="${TEXT_LIGHT}">Henrique Bastos</text>
-		<text x="80" y="452" font-family="JetBrains Mono" font-size="30" fill="${TEXT_MUTED}">25 years of Python. Then AI bit me.</text>
-		<text x="80" y="500" font-family="JetBrains Mono" font-size="30" fill="${TEXT_MUTED}">Now I'm drinking from the firehose.</text>
-		<text x="1120" y="562" text-anchor="end" font-family="JetBrains Mono" font-size="24" fill="${AZUL}">henriquebastos.net</text>
+		${monogram("#2FB3D4", 80, 150, 200)}
+		<rect x="80" y="388" width="64" height="6" fill="${ORANGE}"/>
+		<text x="80" y="482" font-family="Inter" font-weight="700" font-size="64" letter-spacing="8" fill="${TEXT_LIGHT}">HENRIQUE BASTOS</text>
+		<text x="1120" y="562" text-anchor="end" font-family="JetBrains Mono" font-size="24" fill="#2FB3D4">henriquebastos.net</text>
 	</svg>`;
 	const png = new Resvg(svg, {
 		font: {
 			fontFiles: [
-				"src/assets/fonts/newsreader-semibold.ttf",
+				"src/assets/fonts/inter-bold.woff",
 				"src/assets/fonts/jetbrainsmono-regular.ttf",
 			],
 			loadSystemFonts: false,
-			defaultFontFamily: "Newsreader 16pt",
+			defaultFontFamily: "Inter",
 		},
 	})
 		.render()

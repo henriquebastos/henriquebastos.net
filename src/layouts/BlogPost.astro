@@ -6,7 +6,7 @@ import ShareButtons from "@/components/blog/ShareButtons.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
 import { getAllPosts, getPostSortDate, sortMDByDate } from "@/data/post";
 import { siteConfig } from "@/site-config";
-import { formatBylineDate, formatEyebrowDate } from "@/utils/date";
+import { formatBylineDate } from "@/utils/date";
 import { absoluteUrl, withBase } from "@/utils/path";
 
 import BaseLayout from "./Base.astro";
@@ -36,7 +36,6 @@ const postUrl = absoluteUrl(`/writing/${slug}/`, Astro.site);
 const socialImageAbsolute = absoluteUrl(socialImage, Astro.site);
 
 // "Posts · Month YYYY"
-const eyebrowDate = formatEyebrowDate(publishDate);
 
 // "2 May 2026"
 const bylineDate = formatBylineDate(publishDate);
@@ -76,9 +75,6 @@ const giscusThemes = import.meta.env.PROD
 	<div class="post-shell">
 		<div class="post-main" data-pagefind-body>
 			<div id="blog-hero" class="post-header">
-				<div class="post-eyebrow">
-					Posts <span class="sep">·</span> {eyebrowDate}
-				</div>
 				{draft && <span class="draft-flag">(Draft)</span>}
 				<h1 class="post-title">{title}</h1>
 				<p class="byline">
@@ -203,22 +199,6 @@ const giscusThemes = import.meta.env.PROD
 		background: var(--paper);
 	}
 
-	.post-eyebrow {
-		font-family: var(--font-mono);
-		font-size: 11.5px;
-		font-weight: 500;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: hsl(var(--theme-text) / 0.55);
-		margin-bottom: 22px;
-		font-variant-numeric: tabular-nums;
-		font-feature-settings: "tnum";
-	}
-	.post-eyebrow .sep {
-		color: var(--faint);
-		margin: 0 8px;
-	}
-
 	.draft-flag {
 		display: inline-block;
 		font-family: var(--font-mono);
@@ -231,7 +211,7 @@ const giscusThemes = import.meta.env.PROD
 	.post-title {
 		font-family: var(--font-serif);
 		font-weight: 500;
-		font-size: clamp(28px, 5.5vw, 46px);
+		font-size: clamp(32px, 5.5vw, 50px);
 		letter-spacing: -0.022em;
 		line-height: 1.1;
 		color: hsl(var(--theme-text));
@@ -248,7 +228,7 @@ const giscusThemes = import.meta.env.PROD
 	.byline {
 		font-family: var(--font-serif);
 		font-style: italic;
-		font-size: 16.5px;
+		font-size: 18px;
 		color: hsl(var(--theme-text-muted));
 		margin: 0 0 14px;
 		line-height: 1.5;
@@ -334,7 +314,7 @@ const giscusThemes = import.meta.env.PROD
 	.pager-title {
 		display: block;
 		font-family: var(--font-serif);
-		font-size: 17.5px;
+		font-size: 19px;
 		line-height: 1.3;
 		font-weight: 500;
 		letter-spacing: -0.01em;
@@ -408,15 +388,13 @@ const giscusThemes = import.meta.env.PROD
 	}
 
 	@media (max-width: 720px) {
-		.post-title { font-size: 30px; line-height: 1.15; }
-		.byline { font-size: 15.5px; }
+		.post-title { font-size: 32px; line-height: 1.15; }
+		.byline { font-size: 17px; }
 		.rule { margin-bottom: 32px; }
 	}
 	@media (max-width: 420px) {
-		.post-eyebrow { font-size: 11px; margin-bottom: 18px; }
-		.post-eyebrow .sep { margin: 0 6px; }
-		.post-title { font-size: 26px; }
-		.byline { font-size: 14.5px; margin-bottom: 24px; }
+		.post-title { font-size: 28px; }
+		.byline { font-size: 16px; margin-bottom: 24px; }
 		.rule { margin-bottom: 26px; }
 		.post-end { font-size: 14px; }
 	}
@@ -432,12 +410,13 @@ const giscusThemes = import.meta.env.PROD
 <style is:global>
 	.post-article {
 		font-family: var(--font-serif);
+		font-weight: 450; /* Newsreader hairlines read thin, especially on dark */
 		color: hsl(var(--theme-text));
 	}
 
 	.post-article > p {
-		font-size: 17.5px;
-		line-height: 1.75;
+		font-size: 20px;
+		line-height: 1.72;
 		color: hsl(var(--theme-text));
 		margin: 0 0 24px;
 		max-width: var(--reading-width);
@@ -461,14 +440,14 @@ const giscusThemes = import.meta.env.PROD
 	}
 	.post-article p strong,
 	.post-article strong {
-		font-weight: 500;
+		font-weight: 600;
 		color: hsl(var(--theme-text));
 	}
 
 	.post-article h2 {
 		font-family: var(--font-serif);
 		font-weight: 500;
-		font-size: 27px;
+		font-size: 30px;
 		line-height: 1.22;
 		letter-spacing: -0.014em;
 		color: hsl(var(--theme-text));
@@ -480,7 +459,7 @@ const giscusThemes = import.meta.env.PROD
 		font-family: var(--font-serif);
 		font-weight: 500;
 		font-style: italic;
-		font-size: 20px;
+		font-size: 23px;
 		line-height: 1.3;
 		letter-spacing: -0.005em;
 		color: hsl(var(--theme-text));
@@ -491,7 +470,7 @@ const giscusThemes = import.meta.env.PROD
 	.post-article h4 {
 		font-family: var(--font-serif);
 		font-weight: 500;
-		font-size: 17.5px;
+		font-size: 20px;
 		line-height: 1.35;
 		color: hsl(var(--theme-text));
 		margin: 30px 0 12px;
@@ -514,7 +493,7 @@ const giscusThemes = import.meta.env.PROD
 
 	.post-article :not(pre) > code {
 		font-family: var(--font-mono);
-		font-size: 14.5px;
+		font-size: 16px;
 		background: var(--paper);
 		border: 1px solid var(--hairline);
 		padding: 1px 6px;
@@ -533,7 +512,7 @@ const giscusThemes = import.meta.env.PROD
 		margin: 28px 0;
 		overflow-x: auto;
 		max-width: 100%;
-		font-size: 14px;
+		font-size: 15.5px;
 		line-height: 1.7;
 		transition: background-color 0.35s ease, border-color 0.35s ease;
 	}
@@ -558,7 +537,7 @@ const giscusThemes = import.meta.env.PROD
 	.post-article ul li {
 		position: relative;
 		padding-left: 22px;
-		font-size: 17.5px;
+		font-size: 20px;
 		line-height: 1.7;
 		color: hsl(var(--theme-text));
 		margin-bottom: 10px;
@@ -579,7 +558,7 @@ const giscusThemes = import.meta.env.PROD
 		margin: 10px 0 4px;
 	}
 	.post-article ul ul li {
-		font-size: 17px;
+		font-size: 19px;
 		color: hsl(var(--theme-text-muted));
 		margin-bottom: 6px;
 	}
@@ -596,7 +575,7 @@ const giscusThemes = import.meta.env.PROD
 		max-width: var(--reading-width);
 	}
 	.post-article ol li {
-		font-size: 17.5px;
+		font-size: 20px;
 		line-height: 1.7;
 		color: hsl(var(--theme-text));
 		margin-bottom: 10px;
@@ -619,7 +598,7 @@ const giscusThemes = import.meta.env.PROD
 		border-left: 2px solid hsl(var(--theme-accent));
 		font-style: italic;
 		color: hsl(var(--theme-text-muted));
-		font-size: 18px;
+		font-size: 20px;
 		line-height: 1.65;
 		max-width: var(--reading-width);
 	}
@@ -715,7 +694,7 @@ const giscusThemes = import.meta.env.PROD
 	.post-article figcaption {
 		font-family: var(--font-serif);
 		font-style: italic;
-		font-size: 14.5px;
+		font-size: 15.5px;
 		color: hsl(var(--theme-text) / 0.72);
 		margin-top: 12px;
 		line-height: 1.5;
@@ -735,7 +714,7 @@ const giscusThemes = import.meta.env.PROD
 		max-width: 100%;
 		border-collapse: collapse;
 		margin: 28px 0;
-		font-size: 15.5px;
+		font-size: 16.5px;
 		font-family: var(--font-sans);
 	}
 	.post-article th,
@@ -760,27 +739,27 @@ const giscusThemes = import.meta.env.PROD
 		.post-article > p,
 		.post-article ul li,
 		.post-article ol li {
-			font-size: 17px;
+			font-size: 18.5px;
 			line-height: 1.72;
 		}
-		.post-article h2 { font-size: 23px; margin: 44px 0 16px; }
-		.post-article h3 { font-size: 18.5px; margin: 30px 0 12px; }
-		.post-article :not(pre) > code { font-size: 13.5px; }
+		.post-article h2 { font-size: 26px; margin: 44px 0 16px; }
+		.post-article h3 { font-size: 21px; margin: 30px 0 12px; }
+		.post-article :not(pre) > code { font-size: 15px; }
 		.post-article figure { margin: 28px 0; }
 	}
 	@media (max-width: 420px) {
 		.post-article > p,
 		.post-article ul li,
 		.post-article ol li {
-			font-size: 16px;
+			font-size: 17.5px;
 			line-height: 1.7;
 		}
-		.post-article h2 { font-size: 20px; margin: 36px 0 14px; }
-		.post-article h3 { font-size: 17px; margin: 26px 0 10px; }
+		.post-article h2 { font-size: 22px; margin: 36px 0 14px; }
+		.post-article h3 { font-size: 19px; margin: 26px 0 10px; }
 		.post-article ul { padding-left: 0; }
 		.post-article ul li { padding-left: 18px; }
-		.post-article blockquote { padding-left: 16px; font-size: 16.5px; }
-		.post-article figcaption { font-size: 13.5px; }
+		.post-article blockquote { padding-left: 16px; font-size: 18px; }
+		.post-article figcaption { font-size: 14.5px; }
 	}
 
 	.post-article a:focus-visible {

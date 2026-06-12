@@ -3,7 +3,7 @@ import { getAllPosts, getPostSortDate, sortMDByDate } from "@/data/post";
 import { showcase } from "@/data/showcase";
 import PageLayout from "@/layouts/Base.astro";
 import { siteConfig } from "@/site-config";
-import { formatRailDate, formatStampDate } from "@/utils/date";
+import { formatRailDate } from "@/utils/date";
 import { absoluteUrl, withBase } from "@/utils/path";
 import { Schema } from "astro-seo-schema";
 
@@ -15,7 +15,6 @@ const featured = timelinePosts[0];
 const rest = timelinePosts.slice(1);
 const archiveCount = allPosts.length;
 
-const profile = siteConfig.profile;
 const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 ---
 
@@ -47,31 +46,6 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 />
 
 <PageLayout meta={{ title: "Home", description: siteConfig.description }}>
-	<section class="hero">
-		<p>{siteConfig.description}</p>
-		<div class="socials">
-			{profile?.github && (
-				<>
-					<a href={profile.github} rel="noreferrer" target="_blank">GitHub</a>
-					<span class="sep">·</span>
-				</>
-			)}
-			{profile?.linkedin && (
-				<>
-					<a href={profile.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
-					<span class="sep">·</span>
-				</>
-			)}
-			{profile?.email && (
-				<>
-					<a href={`mailto:${profile.email}`}>Email</a>
-					<span class="sep">·</span>
-				</>
-			)}
-			<a href={withBase("/rss.xml")}>RSS</a>
-		</div>
-	</section>
-
 	<section class="writing" aria-labelledby="writing-label">
 		<div class="section-label" id="writing-label">Writing</div>
 		<div class="timeline">
@@ -90,7 +64,7 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 							<span class="post-dot" aria-hidden="true" />
 						</div>
 						<div class="post-body">
-							<div class="post-stamp">Latest · {formatStampDate(getPostSortDate(featured))}</div>
+							<div class="post-stamp">Latest</div>
 							<h2 class="post-title">{featured.data.title}</h2>
 							<p class="post-excerpt">{featured.data.description}</p>
 							{!!featured.data.tags?.length && (
@@ -160,42 +134,6 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 </PageLayout>
 
 <style>
-	/* ---------- Hero ---------- */
-	.hero {
-		margin-bottom: 88px;
-	}
-	.hero p {
-		font-size: 19.5px;
-		line-height: 1.65;
-		color: hsl(var(--theme-text));
-		margin: 0 0 22px;
-		max-width: 60ch;
-		text-wrap: pretty;
-		white-space: pre-line;
-	}
-	.socials {
-		font-family: var(--font-sans);
-		font-size: 13.5px;
-		color: hsl(var(--theme-text) / 0.72);
-		margin-top: 18px;
-	}
-	.socials a {
-		color: hsl(var(--theme-text-muted));
-		text-decoration: underline;
-		text-decoration-color: hsl(var(--theme-text) / 0.35);
-		text-decoration-thickness: 1px;
-		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
-	}
-	.socials a:hover {
-		color: hsl(var(--theme-accent));
-		text-decoration-color: hsl(var(--theme-accent));
-	}
-	.socials .sep {
-		color: var(--faint);
-		margin: 0 9px;
-	}
-
 	/* ---------- Writing timeline ---------- */
 	.writing {
 		margin-bottom: 96px;
@@ -203,6 +141,10 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 	/* ---------- Featured post ---------- */
 	.post.featured .post-body {
 		padding-bottom: 56px;
+	}
+	/* Center the rail date/dot on the title line (stamp line + its margin + half the title line). */
+	.post.featured .post-rail {
+		--rail-pad-top: 40.5px;
 	}
 	.post.featured .post-stamp {
 		font-family: var(--font-mono);
@@ -213,13 +155,13 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		margin-bottom: 12px;
 	}
 	.post.featured .post-title {
-		font-size: 30px;
+		font-size: 33px;
 		line-height: 1.14;
 		margin-bottom: 14px;
 		letter-spacing: -0.02em;
 	}
 	.post.featured .post-excerpt {
-		font-size: 18px;
+		font-size: 19.5px;
 		line-height: 1.62;
 		color: hsl(var(--theme-text-muted));
 		margin: 0 0 16px;
@@ -251,7 +193,7 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		grid-column: 2;
 		margin-top: 8px;
 		font-family: var(--font-sans);
-		font-size: 13.5px;
+		font-size: 14.5px;
 		color: hsl(var(--theme-text) / 0.72);
 	}
 	.archive-link a {
@@ -273,7 +215,6 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		margin-bottom: 88px;
 	}
 
-	.socials a:focus-visible,
 	.archive-link a:focus-visible {
 		outline: 2px solid hsl(var(--theme-accent));
 		outline-offset: 3px;
@@ -281,12 +222,6 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 	}
 
 	@media (max-width: 720px) {
-		.hero {
-			margin-bottom: 64px;
-		}
-		.hero p {
-			font-size: 18px;
-		}
 		.post.featured .post-rail {
 			display: none;
 		}
@@ -296,13 +231,13 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 			margin-bottom: 4px;
 		}
 		.post.featured .post-title {
-			font-size: 22px;
+			font-size: 24px;
 			line-height: 1.2;
 			letter-spacing: -0.015em;
 			margin-bottom: 10px;
 		}
 		.post.featured .post-excerpt {
-			font-size: 15.5px;
+			font-size: 17px;
 			line-height: 1.55;
 			margin: 0 0 10px;
 		}
@@ -315,26 +250,14 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 	}
 
 	@media (max-width: 420px) {
-		.hero {
-			margin-bottom: 48px;
-		}
-		.hero p {
-			font-size: 17px;
-		}
-		.socials {
-			font-size: 12.5px;
-		}
-		.socials .sep {
-			margin: 0 6px;
-		}
 		.writing {
 			margin-bottom: 64px;
 		}
 		.post.featured .post-title {
-			font-size: 17px;
+			font-size: 19px;
 		}
 		.post.featured .post-excerpt {
-			font-size: 15px;
+			font-size: 16px;
 		}
 		.work {
 			margin-bottom: 56px;

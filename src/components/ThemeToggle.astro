@@ -1,25 +1,27 @@
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-	<span class="icon" aria-hidden="true"></span>
-	<span class="label"></span>
+	<svg class="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+		<circle cx="8" cy="8" r="3.25"></circle>
+		<path d="M8 1.5v1.5M8 13v1.5M14.5 8H13M3 8H1.5M12.6 3.4l-1.06 1.06M4.46 11.54 3.4 12.6M12.6 12.6l-1.06-1.06M4.46 4.46 3.4 3.4"></path>
+	</svg>
+	<svg class="icon-moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+		<path d="M13.54 9.93A6.25 6.25 0 0 1 6.07 2.46a6.25 6.25 0 1 0 7.47 7.47Z"></path>
+	</svg>
 </button>
 
 <style is:global>
 	.theme-toggle {
-		display: inline-block;
-		padding: 6px 12px;
-		border-radius: 999px;
-		background: var(--accent-soft);
-		color: hsl(var(--theme-text-muted));
-		border: 1px solid transparent;
-		font-family: var(--font-sans);
-		font-size: 12px;
-		font-weight: 500;
-		line-height: 1.4;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		background: transparent;
+		color: hsl(var(--theme-text) / 0.62);
+		border: 0;
 		cursor: pointer;
-		transition: background 0.2s ease, color 0.2s ease;
+		transition: color 0.2s ease;
 	}
 	.theme-toggle:hover {
-		background: var(--accent-soft-strong);
 		color: hsl(var(--theme-accent));
 	}
 	.theme-toggle:focus-visible {
@@ -27,24 +29,14 @@
 		outline-offset: 3px;
 	}
 
-	.theme-toggle .icon {
-		display: inline-block;
-		width: 1em;
-		font-size: 13px;
-		margin-right: 6px;
-		text-align: center;
-		transform: translateY(-1px);
+	.theme-toggle svg {
+		width: 16px;
+		height: 16px;
 	}
-	.theme-toggle .icon::before { content: "☾"; }
-	[data-theme="dark"] .theme-toggle .icon::before { content: "☀"; }
-
-	.theme-toggle .label {
-		display: inline-block;
-		min-width: 2.6em;
-		text-align: left;
-	}
-	.theme-toggle .label::before { content: "Dark"; }
-	[data-theme="dark"] .theme-toggle .label::before { content: "Light"; }
+	/* Show the mode you'd switch to: moon in light, sun in dark. */
+	.theme-toggle .icon-sun { display: none; }
+	[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+	[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 </style>
 
 <script>

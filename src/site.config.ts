@@ -59,18 +59,18 @@ export const menuLinks: { path: string; title: string }[] = [
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	styleOverrides: {
 		borderRadius: "4px",
-		codeBackground: ({ theme }) => (theme.type === "light" ? "#eef2f5" : "#161d22"),
+		codeBackground: ({ theme }) => (theme.type === "light" ? "#f3eee2" : "#272320"),
 		codeFontFamily:
 			'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;',
-		codeFontSize: "0.875rem",
-		codeLineHeight: "1.7142857rem",
+		codeFontSize: "1rem",
+		codeLineHeight: "1.75rem",
 		codePaddingInline: "1rem",
 		frames: {
-			editorActiveTabBackground: ({ theme }) => (theme.type === "light" ? "#eef2f5" : "#161d22"),
-			editorTabBarBackground: ({ theme }) => (theme.type === "light" ? "#e4ebef" : "#10161a"),
+			editorActiveTabBackground: ({ theme }) => (theme.type === "light" ? "#f3eee2" : "#272320"),
+			editorTabBarBackground: ({ theme }) => (theme.type === "light" ? "#ece5d5" : "#1e1b18"),
 			frameBoxShadowCssValue: "none",
-			terminalBackground: ({ theme }) => (theme.type === "light" ? "#eef2f5" : "#161d22"),
-			terminalTitlebarBackground: ({ theme }) => (theme.type === "light" ? "#e4ebef" : "#10161a"),
+			terminalBackground: ({ theme }) => (theme.type === "light" ? "#f3eee2" : "#272320"),
+			terminalTitlebarBackground: ({ theme }) => (theme.type === "light" ? "#ece5d5" : "#1e1b18"),
 		},
 		uiLineHeight: "inherit",
 	},
