@@ -7,7 +7,7 @@ tags:
   - management
 coverImage:
   src: ./bad-management-amplified-by-ai.png
-  alt: "Dark AI adoption danger illustration with managers pulling puppet strings over a city."
+  alt: "Shadowy boardroom with managers under red puppet strings, suggesting AI-amplified management control."
 ---
 
 There may be nothing more dangerous for a company in 2026 than adopting AI with a bunch of bad managers in charge.
