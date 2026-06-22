@@ -2,6 +2,9 @@
 title: "Making Sense of Harness Engineering"
 publishDate: 2026-04-09
 description: "Harness engineering was invented in 1999 — we just didn't call it that. The XP practices Kent Beck wrote about are being demanded again, now by AI agents."
+coverImage:
+  src: ./making-sense-of-harness-engineering.png
+  alt: "A black horse wearing a glowing technological harness, running at high speed."
 ---
 
 A harness is what channels a horse's strength so the force serves a purpose, repeatedly. You don't create the horse's strength. You channel it so the force serves a purpose, repeatedly, without having to tame the horse again each time.
