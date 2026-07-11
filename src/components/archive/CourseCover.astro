@@ -1,0 +1,98 @@
+---
+interface Props {
+	index: number;
+	title: string;
+}
+
+const { index, title } = Astro.props;
+const accents = ["#0099bc", "#7656d6", "#d94c67", "#2e6fe8", "#c04b9b"];
+const accent = accents[index % accents.length];
+const titleSize = title.length > 31 ? "long" : title.length > 22 ? "medium" : "short";
+---
+
+<div class="course-cover" style={`--cover-accent: ${accent};`} aria-hidden="true">
+	<div class="rail"></div>
+	<strong class:list={["title", titleSize]}>{title}</strong>
+	<svg class="watermark" viewBox="0 0 500 400">
+		<rect x="0" y="50" width="100" height="300"></rect>
+		<rect x="0" y="150" width="200" height="100"></rect>
+		<rect x="200" y="0" width="100" height="400"></rect>
+		<path d="M400,50 h50 a50,50 0 0 1 0,100 h-50 z"></path>
+		<path d="M400,250 h50 a50,50 0 0 1 0,100 h-50 z"></path>
+	</svg>
+</div>
+
+<style>
+	.course-cover {
+		position: relative;
+		width: 190px;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		border-radius: 4px;
+		border: 1px solid hsl(var(--theme-text) / 0.14);
+		background: #f4eddf;
+		color: #211c17;
+		isolation: isolate;
+	}
+	.rail {
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 12px;
+		background: var(--cover-accent);
+	}
+	.title {
+		position: absolute;
+		z-index: 1;
+		left: 27px;
+		right: 28px;
+		top: 50%;
+		transform: translateY(-50%);
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+		font-family: var(--font-serif);
+		font-weight: 670;
+		line-height: 0.94;
+		letter-spacing: -0.035em;
+		text-wrap: balance;
+	}
+	.title.short {
+		font-size: 22px;
+	}
+	.title.medium {
+		font-size: 19px;
+	}
+	.title.long {
+		font-size: 17px;
+	}
+	.watermark {
+		position: absolute;
+		right: 7px;
+		bottom: 6px;
+		width: 52px;
+		height: 42px;
+		fill: var(--cover-accent);
+		opacity: 0.1;
+	}
+
+	@media (max-width: 720px) {
+		.course-cover {
+			width: 100%;
+		}
+		.rail {
+			width: clamp(12px, 3.2vw, 20px);
+		}
+		.title {
+			left: 10%;
+			right: 20%;
+			font-size: clamp(25px, 7vw, 43px);
+		}
+		.watermark {
+			right: 4%;
+			bottom: 6%;
+			width: 24%;
+			height: auto;
+		}
+	}
+</style>

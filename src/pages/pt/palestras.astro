@@ -1,0 +1,211 @@
+---
+import { portugueseArchive } from "@/data/portugueseArchive";
+import PageLayout from "@/layouts/Base.astro";
+import { withBase } from "@/utils/path";
+
+type Talk = (typeof portugueseArchive.talks)[number];
+
+const groupOrder = ["Palestras", "Aulas abertas"];
+const talksByGroup = portugueseArchive.talks.reduce(
+	(groups, talk) => {
+		groups[talk.group] = groups[talk.group] ?? [];
+		groups[talk.group].push(talk);
+		return groups;
+	},
+	{} as Record<string, Talk[]>,
+);
+const groups = Object.entries(talksByGroup).sort(
+	([a], [b]) => groupOrder.indexOf(a) - groupOrder.indexOf(b),
+);
+
+const meta = {
+	description:
+		"Palestras e aulas abertas em português de Henrique Bastos sobre Python, Django, carreira, autonomia e desenvolvimento de software.",
+	title: "Palestras em Português",
+};
+---
+
+<PageLayout lang="pt-BR" meta={meta}>
+	<section class="archive-hero" aria-labelledby="talks-title">
+		<div class="section-label">Acervo em Português</div>
+		<p class="breadcrumb"><a data-astro-prefetch href={withBase("/pt/")}>← Acervo em Português</a></p>
+		<h1 id="talks-title">Palestras e aulas abertas</h1>
+		<p>
+			Uma curadoria mais enxuta dos vídeos longos: talks, aulas abertas e registros
+			que ainda carregam ideias úteis sobre programação, carreira e autonomia.
+		</p>
+		<p>
+			Vídeos curtos, cortes e dicas ficam agrupados em playlists do YouTube no fim
+			da página, sem poluir este catálogo.
+		</p>
+	</section>
+
+	{groups.map(([group, talks]) => (
+		<section class="talk-group" aria-labelledby={`group-${group.toLowerCase().replaceAll(" ", "-")}`}>
+			<div class="section-label" id={`group-${group.toLowerCase().replaceAll(" ", "-")}`}>{group}</div>
+			<ul class="media-list">
+				{talks.map((talk) => (
+					<li>
+						<a class="media-card" href={talk.url} rel="noreferrer" target="_blank">
+							<img src={talk.thumbnail} alt="" loading="lazy" />
+							<div class="media-body">
+								<div class="meta-line">{talk.kind} · {talk.duration} · {talk.views.toLocaleString("pt-BR")} views</div>
+								<h2>{talk.title}</h2>
+								<span class="action">Assistir no YouTube →</span>
+							</div>
+						</a>
+					</li>
+				))}
+			</ul>
+		</section>
+	))}
+
+	<section class="playlist-section" aria-labelledby="playlists-title">
+		<div class="section-label" id="playlists-title">Vídeos curtos e temas</div>
+		<p class="section-note">
+			Para dicas, cortes e vídeos menores, faz mais sentido navegar pelas playlists
+			originais no YouTube.
+		</p>
+		<ul class="playlist-links">
+			{portugueseArchive.directPlaylists.map((playlist) => (
+				<li>
+					<a href={playlist.url} rel="noreferrer" target="_blank">
+						<strong>{playlist.title}</strong>
+						<span>{playlist.videoCount} vídeos</span>
+						<p>{playlist.description}</p>
+					</a>
+				</li>
+			))}
+		</ul>
+	</section>
+</PageLayout>
+
+<style>
+	.archive-hero {
+		margin-bottom: 64px;
+	}
+	.breadcrumb {
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		margin: -18px 0 24px;
+		color: hsl(var(--theme-text) / 0.72);
+	}
+	.breadcrumb a {
+		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-text) / 0.35);
+		text-underline-offset: 3px;
+	}
+	.breadcrumb a:hover {
+		color: hsl(var(--theme-accent));
+		text-decoration-color: hsl(var(--theme-accent));
+	}
+	.archive-hero h1 {
+		font-family: var(--font-serif);
+		font-size: 38px;
+		font-weight: 550;
+		line-height: 1.1;
+		letter-spacing: -0.025em;
+		margin: 0 0 18px;
+	}
+	.archive-hero p:not(.breadcrumb),
+	.section-note {
+		font-size: 20px;
+		line-height: 1.62;
+		color: hsl(var(--theme-text-muted));
+		max-width: var(--reading-width);
+		margin: 0 0 18px;
+	}
+	.talk-group,
+	.playlist-section {
+		margin-bottom: 76px;
+	}
+	.media-list,
+	.playlist-links {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 22px;
+	}
+	.media-card {
+		display: grid;
+		grid-template-columns: 220px 1fr;
+		gap: 22px;
+		align-items: start;
+		padding: 18px 0;
+		border-top: 1px solid var(--hairline);
+	}
+	.media-list li:last-child .media-card {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.media-card img {
+		width: 220px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-radius: 4px;
+		background: var(--paper);
+		border: 1px solid var(--hairline);
+	}
+	.media-body h2 {
+		font-family: var(--font-serif);
+		font-size: 24px;
+		font-weight: 560;
+		line-height: 1.18;
+		letter-spacing: -0.016em;
+		margin: 6px 0 12px;
+		text-wrap: balance;
+	}
+	.media-card:hover h2,
+	.playlist-links a:hover strong {
+		color: hsl(var(--theme-accent));
+	}
+	.meta-line,
+	.action,
+	.playlist-links span {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: hsl(var(--theme-text) / 0.66);
+	}
+	.action {
+		color: hsl(var(--theme-accent));
+	}
+	.playlist-links li {
+		border-top: 1px solid var(--hairline);
+		padding: 16px 0;
+	}
+	.playlist-links li:last-child {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.playlist-links a {
+		display: grid;
+		gap: 4px;
+	}
+	.playlist-links strong {
+		font-family: var(--font-serif);
+		font-size: 21px;
+		font-weight: 550;
+		line-height: 1.25;
+	}
+	.playlist-links p {
+		margin: 4px 0 0;
+		font-size: 16.5px;
+		line-height: 1.5;
+		color: hsl(var(--theme-text-muted));
+	}
+	@media (max-width: 720px) {
+		.archive-hero h1 {
+			font-size: 30px;
+		}
+		.archive-hero p:not(.breadcrumb),
+		.section-note {
+			font-size: 18px;
+		}
+		.media-card {
+			grid-template-columns: 1fr;
+			gap: 14px;
+		}
+		.media-card img {
+			width: 100%;
+		}
+	}
+</style>

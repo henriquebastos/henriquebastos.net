@@ -1,0 +1,151 @@
+---
+import { portugueseArchive } from "@/data/portugueseArchive";
+import PageLayout from "@/layouts/Base.astro";
+import { withBase } from "@/utils/path";
+
+const meta = {
+	description:
+		"Acervo em português de Henrique Bastos: cursos, palestras e aulas abertas sobre Python, Django, design de software, carreira e autonomia.",
+	title: "Acervo em Português",
+};
+---
+
+<PageLayout lang="pt-BR" meta={meta}>
+	<section class="archive-hero" aria-labelledby="pt-title">
+		<div class="section-label">Acervo em Português</div>
+		<h1 id="pt-title">Cursos, palestras e outros materiais.</h1>
+		<p>
+			Durante muitos anos eu ensinei Python, Django, design de software, carreira e
+			autonomia para desenvolvedores.
+		</p>
+		<p>
+			Este material está disponível gratuitamente na internet para ajudar quem está
+			trilhando esse caminho.
+		</p>
+	</section>
+
+	<section class="archive-section" aria-labelledby="paths-title">
+		<div class="section-label" id="paths-title">Explorar</div>
+		<ul class="work-list archive-links">
+			<li>
+				<a data-astro-prefetch href={withBase("/pt/cursos/")}>
+					<div class="head">
+						<span class="name">Cursos e séries</span>
+						<span class="stack">{portugueseArchive.courses.length} coleções</span>
+						<span class="badge">Python · Django · Design</span>
+					</div>
+					<p>
+						Percursos completos e séries de aulas sobre programação, software e prática
+						profissional.
+					</p>
+				</a>
+			</li>
+			<li>
+				<a data-astro-prefetch href={withBase("/pt/palestras/")}>
+					<div class="head">
+						<span class="name">Palestras e aulas abertas</span>
+						<span class="stack">{portugueseArchive.talks.length} vídeos</span>
+						<span class="badge">Acervo público</span>
+					</div>
+					<p>
+						Conversas, talks e aulas abertas sobre autonomia, carreira, Python, Django
+						e desenvolvimento de software.
+					</p>
+				</a>
+			</li>
+		</ul>
+	</section>
+
+	<section class="archive-section" aria-labelledby="courses-title">
+		<div class="section-label" id="courses-title">Cursos em destaque</div>
+		<ul class="compact-list">
+			{portugueseArchive.featuredCourses.map((course) => (
+				<li>
+					<a href={course.url} rel="noreferrer" target="_blank">
+						<strong>{course.title}</strong>
+						<span>{course.videoCount} vídeos · {course.topic}</span>
+					</a>
+				</li>
+			))}
+		</ul>
+		<p class="more-link"><a data-astro-prefetch href={withBase("/pt/cursos/")}>Ver cursos e séries →</a></p>
+	</section>
+</PageLayout>
+
+<style>
+	.archive-hero {
+		margin-bottom: 72px;
+	}
+	.archive-hero h1 {
+		font-family: var(--font-serif);
+		font-size: 34px;
+		font-weight: 550;
+		line-height: 1.12;
+		letter-spacing: -0.025em;
+		margin: 0 0 20px;
+		max-width: 13ch;
+		text-wrap: balance;
+	}
+	.archive-hero p {
+		font-size: 20px;
+		line-height: 1.62;
+		color: hsl(var(--theme-text-muted));
+		max-width: var(--reading-width);
+		margin: 0 0 18px;
+	}
+	.archive-section {
+		margin-bottom: 72px;
+	}
+	.archive-links .badge {
+		margin-left: 0;
+	}
+	.compact-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.compact-list li {
+		border-top: 1px solid var(--hairline);
+		padding: 16px 0;
+	}
+	.compact-list li:last-child {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.compact-list a {
+		display: grid;
+		gap: 4px;
+	}
+	.compact-list strong {
+		font-family: var(--font-serif);
+		font-size: 21px;
+		font-weight: 550;
+		line-height: 1.25;
+	}
+	.compact-list a:hover strong {
+		color: hsl(var(--theme-accent));
+	}
+	.compact-list span,
+	.more-link {
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		color: hsl(var(--theme-text) / 0.72);
+	}
+	.more-link a {
+		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-text) / 0.35);
+		text-underline-offset: 3px;
+	}
+	.more-link a:hover {
+		color: hsl(var(--theme-accent));
+		text-decoration-color: hsl(var(--theme-accent));
+	}
+	@media (max-width: 720px) {
+		.archive-hero h1 {
+			font-size: 28px;
+			max-width: none;
+		}
+		.archive-hero p {
+			font-size: 18px;
+		}
+	}
+</style>

@@ -1,0 +1,153 @@
+---
+import CourseCover from "@/components/archive/CourseCover.astro";
+import { portugueseArchive } from "@/data/portugueseArchive";
+import PageLayout from "@/layouts/Base.astro";
+import { withBase } from "@/utils/path";
+
+const courses = portugueseArchive.courses;
+
+const meta = {
+	description:
+		"Cursos e séries em português de Henrique Bastos sobre Python, Django, refatoração, orientação a objetos, APIs e prática profissional.",
+	title: "Cursos em Português",
+};
+---
+
+<PageLayout lang="pt-BR" meta={meta}>
+	<section class="archive-hero" aria-labelledby="courses-title">
+		<div class="section-label">Acervo em Português</div>
+		<p class="breadcrumb"><a data-astro-prefetch href={withBase("/pt/")}>← Acervo em Português</a></p>
+		<h1 id="courses-title">Cursos e séries</h1>
+		<p>
+			Percursos públicos do meu acervo antigo de ensino: Python, Django,
+			refatoração, orientação a objetos, APIs e prática profissional.
+		</p>
+		<p>
+			Alguns materiais refletem uma fase anterior do meu trabalho. Ainda assim,
+			preservam explicações, práticas e caminhos que ajudaram muita gente.
+		</p>
+	</section>
+
+	<section aria-labelledby="course-list-title">
+		<div class="section-label" id="course-list-title">Coleções públicas</div>
+		<ul class="media-list">
+			{courses.map((course, index) => (
+				<li>
+					<a class="media-card" href={course.url} rel="noreferrer" target="_blank">
+						<CourseCover index={index} title={course.coverTitle} />
+						<div class="media-body">
+							<div class="meta-line">{course.kind} · {course.videoCount} vídeos · {course.topic}</div>
+							<h2>{course.title}</h2>
+							<p>{course.description}</p>
+							<span class="action">Abrir playlist no YouTube →</span>
+						</div>
+					</a>
+				</li>
+			))}
+		</ul>
+	</section>
+</PageLayout>
+
+<style>
+	.archive-hero {
+		margin-bottom: 64px;
+	}
+	.breadcrumb {
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		margin: -18px 0 24px;
+		color: hsl(var(--theme-text) / 0.72);
+	}
+	.breadcrumb a {
+		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-text) / 0.35);
+		text-underline-offset: 3px;
+	}
+	.breadcrumb a:hover {
+		color: hsl(var(--theme-accent));
+		text-decoration-color: hsl(var(--theme-accent));
+	}
+	.archive-hero h1 {
+		font-family: var(--font-serif);
+		font-size: 38px;
+		font-weight: 550;
+		line-height: 1.1;
+		letter-spacing: -0.025em;
+		margin: 0 0 18px;
+	}
+	.archive-hero p:not(.breadcrumb) {
+		font-size: 20px;
+		line-height: 1.62;
+		color: hsl(var(--theme-text-muted));
+		max-width: var(--reading-width);
+		margin: 0 0 18px;
+	}
+	.media-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 22px;
+	}
+	.media-card {
+		display: grid;
+		grid-template-columns: 190px 1fr;
+		gap: 22px;
+		align-items: start;
+		padding: 18px 0;
+		border-top: 1px solid var(--hairline);
+	}
+	.media-list li:last-child .media-card {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.media-card img {
+		width: 190px;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-radius: 4px;
+		background: var(--paper);
+		border: 1px solid var(--hairline);
+	}
+	.media-body h2 {
+		font-family: var(--font-serif);
+		font-size: 24px;
+		font-weight: 560;
+		line-height: 1.18;
+		letter-spacing: -0.016em;
+		margin: 5px 0 8px;
+		text-wrap: balance;
+	}
+	.media-card:hover h2 {
+		color: hsl(var(--theme-accent));
+	}
+	.media-body p {
+		margin: 0 0 12px;
+		font-size: 17px;
+		line-height: 1.5;
+		color: hsl(var(--theme-text-muted));
+	}
+	.meta-line,
+	.action {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: hsl(var(--theme-text) / 0.66);
+	}
+	.action {
+		color: hsl(var(--theme-accent));
+	}
+	@media (max-width: 720px) {
+		.archive-hero h1 {
+			font-size: 30px;
+		}
+		.archive-hero p:not(.breadcrumb) {
+			font-size: 18px;
+		}
+		.media-card {
+			grid-template-columns: 1fr;
+			gap: 14px;
+		}
+		.media-card img {
+			width: 100%;
+		}
+	}
+</style>
