@@ -1,0 +1,6 @@
+services:
+  blog:
+    command: pnpm dev --host 0.0.0.0 --port "$PORT"
+    portal:
+      title: henriquebastos.net
+      description: Astro blog development server

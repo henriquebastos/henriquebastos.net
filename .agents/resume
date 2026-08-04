@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# This project has no backing services or tunnels to restore after an orb wakes.
-echo "No orb services need to be resumed."
+echo "Ensuring declared orb services are running..."
+amp orb services ensure

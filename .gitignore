@@ -23,3 +23,5 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
+# Amp's generated, orb-specific portal manifests
+.amp/portals/

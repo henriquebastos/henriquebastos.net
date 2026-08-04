@@ -33,6 +33,9 @@ export default defineConfig({
 		domains: ["webmention.io"],
 	},
 	output: "static",
+	server: {
+		allowedHosts: process.env.AMP_ORB ? true : undefined,
+	},
 	build: {
 		inlineStylesheets: "always",
 	},
