@@ -120,6 +120,9 @@ export default defineConfig({
 		optimizeDeps: {
 			exclude: ["@resvg/resvg-js"],
 		},
+		server: {
+			allowedHosts: [".e2b.app", ".onamp.dev"],
+		},
 		plugins: [rawFonts([".ttf", ".woff"])],
 	},
 });

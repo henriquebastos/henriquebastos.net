@@ -1,0 +1,127 @@
+<!--
+	Temporary bridge for Amp's portal review widget. Remove this component when the
+	widget can turn a browser text selection into a quoted comment natively.
+-->
+<script is:inline>
+	(() => {
+		if (
+			!location.hostname.endsWith(".onamp.dev") &&
+			!location.hostname.endsWith(".e2b.app")
+		)
+			return;
+
+		const reviewControlPattern = /comment|feedback|inspect|review/i;
+		const blockSelector = "p, li, blockquote, pre, figcaption";
+		const roots = new Set();
+		let selectionSnapshot;
+		let pendingComment;
+
+		const selectedBlock = (range) => {
+			const element = (node) =>
+				node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+			const start = element(range.startContainer)?.closest(blockSelector);
+			const end = element(range.endContainer)?.closest(blockSelector);
+			return start && start === end && start.closest(".post-article") ? start : undefined;
+		};
+
+		const quote = (text) =>
+			`${text
+				.trim()
+				.split(/\r?\n/)
+				.map((line) => `> ${line}`)
+				.join("\n")}\n\n`;
+
+		const rememberSelection = () => {
+			const selection = getSelection();
+			if (!selection || selection.isCollapsed || !selection.rangeCount) return;
+			const text = selection.toString().trim();
+			const range = selection.getRangeAt(0).cloneRange();
+			const block = text && selectedBlock(range);
+			if (block) selectionSnapshot = { block, text };
+		};
+
+		const visibleEditor = () => {
+			for (const root of roots) {
+				for (const editor of root.querySelectorAll('textarea, [contenteditable="true"]')) {
+					if (editor.getClientRects().length && !editor.disabled) return editor;
+				}
+			}
+		};
+
+		const fillEditor = () => {
+			if (!pendingComment) return;
+			const editor = visibleEditor();
+			if (!editor) return;
+
+			if (editor instanceof HTMLTextAreaElement) {
+				const setter = Object.getOwnPropertyDescriptor(
+					HTMLTextAreaElement.prototype,
+					"value",
+				)?.set;
+				setter?.call(editor, pendingComment);
+			} else {
+				editor.textContent = pendingComment;
+			}
+			editor.dispatchEvent(new InputEvent("input", { bubbles: true, inputType: "insertText" }));
+			editor.focus();
+			pendingComment = undefined;
+			selectionSnapshot = undefined;
+		};
+
+		const chooseBlock = (block) => {
+			const bounds = block.getBoundingClientRect();
+			block.dispatchEvent(
+				new MouseEvent("click", {
+					bubbles: true,
+					cancelable: true,
+					clientX: bounds.left + Math.min(bounds.width / 2, 24),
+					clientY: bounds.top + Math.min(bounds.height / 2, 24),
+					composed: true,
+				}),
+			);
+		};
+
+		const onReviewControl = (event, root) => {
+			rememberSelection();
+			if (!selectionSnapshot || root.host?.tagName === "ASTRO-DEV-TOOLBAR") return;
+			const control = event
+				.composedPath()
+				.find((node) => node instanceof Element && node.matches("button, [role='button']"));
+			if (!control) return;
+			const label = `${control.getAttribute("aria-label") ?? ""} ${control.getAttribute("title") ?? ""} ${control.textContent ?? ""}`;
+			if (!reviewControlPattern.test(label)) return;
+
+			pendingComment = quote(selectionSnapshot.text);
+			const block = selectionSnapshot.block;
+			setTimeout(() => {
+				chooseBlock(block);
+				setTimeout(fillEditor, 0);
+			}, 50);
+		};
+
+		const watchRoot = (root) => {
+			if (roots.has(root)) return;
+			roots.add(root);
+			root.addEventListener("pointerdown", (event) => onReviewControl(event, root), true);
+			new MutationObserver(fillEditor).observe(root, {
+				attributes: true,
+				childList: true,
+				subtree: true,
+			});
+		};
+
+		const attachShadow = Element.prototype.attachShadow;
+		Element.prototype.attachShadow = function (options) {
+			const root = attachShadow.call(this, options);
+			watchRoot(root);
+			return root;
+		};
+
+		document.addEventListener("selectionchange", rememberSelection);
+		document.addEventListener("DOMContentLoaded", () => {
+			for (const element of document.querySelectorAll("*")) {
+				if (element.shadowRoot) watchRoot(element.shadowRoot);
+			}
+		});
+	})();
+</script>

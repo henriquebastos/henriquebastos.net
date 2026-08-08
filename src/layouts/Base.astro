@@ -22,6 +22,7 @@ const {
 	<head>
 		<ThemeProvider />
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
+		<slot name="head" />
 	</head>
 	<body>
 		<SkipLink />
