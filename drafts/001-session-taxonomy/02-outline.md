@@ -31,7 +31,7 @@ it as a benefit. Only 6a4 mentions it, to explain why zero-padding was skipped.
 ## 2. This is a naming problem, and naming is hard for a reason older than software: the name has to be chosen before anyone knows what the thing will become.
 
 **2a. My culture names at birth, and other cultures wait until there is something to name.**
-- 2a1. In my culture a baby is named at birth, by people who as yet know nothing about the person who will carry it.
+- 2a1. I named my daughters before they were born, for people nobody had met, and they carry those names for life.
 - 2a2. Other cultures wait, and the name is earned in adolescence from something the person did or something they carry, conferred by the group that watched it happen.
 - 2a3. A name given at the start is an intention, and a name earned later is a description.
 
@@ -80,14 +80,13 @@ it as a benefit. Only 6a4 mentions it, to explain why zero-padding was skipped.
 - 6a3. Digit-to-letter boundaries self-delimit, so any tool can reconstruct the whole tree with one regex.
 - 6a4. I skipped zero-padding on purpose, because the ID is for identity and lineage rather than sort order.
 
-**6b. A session title is the ID followed by prose, with no fields to fill in.**
-- 6b1. The title is the ID, one space, then free prose, with no colon and no fixed fields.
-- 6b2. I leave out filler verbs, since "build" and "publish" describe the default activity and never earn their bytes.
+**6b. A session title is the ID followed by prose.**
+- 6b1. The title is the ID, one space, then free prose.
 
-**6c. A worktree directory is derived from the title rather than named separately, and I keep the two aligned.**
-- 6c1. The directory is the ID plus the description kebab-cased and truncated, so it is a derivation of the title rather than a second name to invent.
-- 6c2. I move the directory whenever the title changes, because a directory that no longer matches its session reintroduces the original problem one layer down.
-- 6c3. Tools parse only the ID prefix, so a stale directory still resolves during the window between a rename and its cleanup, which is fault tolerance rather than permission to skip the move.
+**6c. A worktree directory carries the same ID, and the ID is the only part that has to match.**
+- 6c1. The directory is the ID plus a kebab-cased description: `~/.worktrees/repo/21a-retry-logic`.
+- 6c2. It gets renamed exactly once, because a worktree is created before its session exists and arrives with a generated random name.
+- 6c3. The description trailing the ID may drift out of sync with the session title, which is fine, because the ID is what says which thread the worktree belongs to.
 
 **6d. The ID lives only in namespaces I fully own, and it is never recycled.**
 - 6d1. Branches never carry the ID and keep the company Jira convention instead, because reviewers see them and adopting this should never touch an open PR.

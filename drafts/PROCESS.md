@@ -15,6 +15,37 @@ altitudes and is the same loop at each one, only the unit changes:
 - **Paragraphs.** Expand into full prose, collapse arguments into clauses.
 - **Sentences.** Expand to be precise, collapse to remove what precision cost.
 
+## The two directions
+
+Expand and collapse govern how much material exists. These govern where the
+meaning comes from. Both run at once, for the whole length of a post, which is
+why it feels like a spiral rather than two phases.
+
+**Top down.** A conceptual frame produces arguments, arguments produce
+paragraphs, paragraphs produce sentences. The brief says what the post is for,
+the outline derives what must be said, the prose derives how. This direction is
+what keeps a post coherent. Left to run alone it produces something abstract,
+orderly, and tiring.
+
+**Bottom up.** A concrete example produces the concept. Naming a baby produced
+the distinction between an intention and a description, which became the spine
+of the whole post. A sidebar that suddenly made sense produced the closing.
+Reading a draft and feeling tired produced over-proving as a named failure
+mode. This direction is what makes a post true rather than merely consistent.
+Left to run alone it produces a pile of good anecdotes that argue nothing.
+
+**Explanation comes from example, never before it.** When both are present, cut
+the explanation and let the example teach. Node 4 lost two sentences defining
+where and when because node 5 was about to show a numbered index card. Node 5
+shows `21a1` before node 6 states the grammar it obeys, and the grammar is
+easier to state afterwards because the reader already has an instance to
+generalise from.
+
+The test for whether an example is load-bearing: does it **produce** the
+concept, or merely illustrate a concept already stated? Producing earns any
+length. Illustrating is decoration, and decoration is what the Weigh pass
+removes.
+
 ## The finding that matters most
 
 The three largest structural improvements all arrived after prose existed, not
@@ -74,6 +105,17 @@ cut is the most expensive mistake available.
 - **Over-proving.** Four consecutive arguments for one verdict. The reader wins
   the point at the third and keeps paying. Felt as tiredness, not as length,
   which is why word count is the wrong instrument for diagnosing it.
+- **Tidying.** A sentence that closes the frame instead of moving the reader.
+  A paragraph explains why branches never carry the ID, and then doubles back
+  to restate a boundary established two paragraphs earlier. Completeness is the
+  writer's concern. The chain of thought is the reader's, and tidying
+  interrupts it to reassure the writer that nothing was left open. The test:
+  does this sentence advance the chain, or does it make the section feel
+  covered?
+- **Inventing process.** Describing a deliberation that does not actually
+  happen. Design notes record intent, including rules never exercised in
+  practice, and carrying those into prose puts decisions in the reader's head
+  that the writer never makes. Only write the judgments you actually perform.
 - **Announcing.** "Underneath both of those sits a mismatch I could not fix"
   tells the reader more proving is coming. Start on the fact instead.
 - **Explaining the explanation.** Two consecutive sentences where the second
@@ -94,9 +136,31 @@ Folgezettel grammar: `3c2` is node 3, group c, item 2. Groups let items cluster
 without adding a level, so a group is a move in the argument, gets its own
 sentence, and every item under it must serve that sentence or move elsewhere.
 
+Nodes belong to the outline. The draft is prose, and it carries `<!-- node N -->`
+comments only while the outline is still live, as scaffolding tying paragraphs
+back to the moment they came from. They never render, and they come out before
+publication.
+
+Addresses extend to the draft as a way of pointing, not as a structure it has to
+carry. Paragraphs and sentences are counted within their node: `4b` is the
+second paragraph of node 4, `5b3` the third sentence of the second paragraph of
+node 5. Nothing is numbered in the text and no tooling is involved. When the
+draft is shown for review, the node boundaries are marked so the counting starts
+from something visible.
+
+Words are not addressed. Numbering every word would make the draft unreadable,
+and a word can simply be quoted.
+
 Nodes are units of argument, not headings. Headings are a side effect of the
 prose and get added afterwards to organise what is already written, never
 beforehand to plan it. A heading written first becomes a promise the paragraph
 underneath has to keep.
 
 No em-dashes.
+
+No disclaimers. This is a personal blog, so a post is a perspective offered,
+not a claim defended. The reader is expected to come and visit the experience.
+Hedges like "that is a short track record and I am not claiming durability from
+it" protect the writer from being wrong about something nobody was going to
+grade. State it and move on. Approximations of real quantities ("roughly ninety
+thousand cards") are not hedges, they are accurate.
