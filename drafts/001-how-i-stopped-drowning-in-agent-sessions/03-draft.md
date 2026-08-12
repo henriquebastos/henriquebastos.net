@@ -1,4 +1,4 @@
-# Draft: session taxonomy
+# How I Stopped Drowning in Agent Sessions
 
 <!-- node 1 -->
 
