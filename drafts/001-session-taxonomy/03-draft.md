@@ -49,6 +49,8 @@ name I could write would have changed that. The coordinates do.
 
 <!-- node 5 -->
 
+## The knowledge graph built with pen and paper
+
 Thankfully, this is a solved problem. The solution is Niklas Luhmann's
 Zettelkasten. Luhmann was a German sociologist who published around seventy
 books and four hundred articles. He credited the output not to himself but to a
@@ -65,6 +67,8 @@ Nothing else recorded that 21a came from 21. The number already said so. There
 was no index to maintain and nothing to keep in sync.
 
 <!-- node 6 -->
+
+## One rule to organize them all
 
 On my machine, a session called `21 inbox rewrite` spawns one called `21a retry
 logic`, which spawns `21a1 backoff jitter`. The next unrelated thing I start is
@@ -97,11 +101,13 @@ Claude Code, Pi and Amp.
 The payoff is visual. `21`, `21a` and `21a1` share their first characters, so
 they read as a family in a list that has no idea they are related.
 
-<!-- node 8 -->
-
 You can do all of this by hand. Put the number in front of whatever the app
 already called the session, rename the worktree once, and that is the system.
 It is what I still do in the tools I have not automated, and it costs nothing.
+
+<!-- node 8 -->
+
+## Coding agents are vibe coded too
 
 Automating it is a different matter, and it came out the same in every tool I
 tried. A session is not a first-class object in any of them.
@@ -143,6 +149,8 @@ at the same namespace. It is not a product, I am not running it as one, and it
 works for me. Fork it and do whatever you want with it.
 
 <!-- node 11 -->
+
+## One small ID, a whole lot of meaning
 
 What still surprises me is how small the cause is. A few characters in front of
 a title, nothing else, and the sidebar became a different thing to look at.

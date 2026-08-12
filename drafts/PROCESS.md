@@ -39,7 +39,7 @@ the explanation and let the example teach. Node 4 lost two sentences defining
 where and when because node 5 was about to show a numbered index card. Node 5
 shows `21a1` before node 6 states the grammar it obeys, and the grammar is
 easier to state afterwards because the reader already has an instance to
-generalise from.
+generalize from.
 
 The test for whether an example is load-bearing: does it **produce** the
 concept, or merely illustrate a concept already stated? Producing earns any
@@ -84,11 +84,11 @@ is scaffolding, built well enough to start, then corrected by the prose.
    compress. This is the only pass that catches over-proving, and no
    sentence-level check can find it.
 8. **Scrub.** Per sentence: no filler, self-contained, connected to its
-   neighbours, actually supported.
+   neighbors, actually supported.
 9. **Collapse.** Fold paragraphs into clauses, merge sentences that explain
    each other.
 
-Less certain that these generalise, but both earned their keep once:
+Less certain that these generalize, but both earned their keep once:
 
 10. **Turn.** Find the point where the section should stop arguing and start
     delivering, then move material so the release lands there.
@@ -152,15 +152,24 @@ Words are not addressed. Numbering every word would make the draft unreadable,
 and a word can simply be quoted.
 
 Nodes are units of argument, not headings. Headings are a side effect of the
-prose and get added afterwards to organise what is already written, never
+prose and get added afterwards to organize what is already written, never
 beforehand to plan it. A heading written first becomes a promise the paragraph
 underneath has to keep.
 
-No em-dashes.
+A heading is a hook, not a label. It separates sections, but its real job is to
+catch attention and open a question the section then answers.
 
-No disclaimers. This is a personal blog, so a post is a perspective offered,
-not a claim defended. The reader is expected to come and visit the experience.
-Hedges like "that is a short track record and I am not claiming durability from
-it" protect the writer from being wrong about something nobody was going to
-grade. State it and move on. Approximations of real quantities ("roughly ninety
-thousand cards") are not hedges, they are accurate.
+The technique that works is an image plus an incongruity, not withholding. "The
+knowledge graph built with pen and paper" collides a modern term with an
+anachronistic medium, so the reader gets something to picture and something
+that does not fit, and goes in to resolve it. "The answer is seventy years old"
+only withholds: it makes the reader curious and hands them nothing. "What I
+actually type" is a plain label and does neither.
+
+Never spend the section's best concrete detail in its own heading. A heading
+that says "ninety thousand index cards" leaves the paragraph poorer than it
+found it.
+
+Voice rules, including no em-dashes and no disclaimers, live in
+[AGENTS.md](../AGENTS.md) because they govern everything written here, not just
+drafts.
