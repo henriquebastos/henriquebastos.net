@@ -23,8 +23,9 @@ I named my daughters before they were born. The names were chosen for people
 nobody had met yet, by people who knew nothing about who they would turn out to
 be, and they will carry them for the rest of their lives. It is an act of hope.
 
-Other cultures wait. The name is earned later, in adolescence, taken from something the person did or something they carry, and
-conferred by the group that watched it happen. A name given at the start is an
+Other cultures wait. The name is earned later, in adolescence, taken from
+something the person did or something they carry, and conferred by the group
+that watched it happen. A name given at the start is an
 intention. A name earned later is a description.
 
 <!-- node 3 -->
@@ -143,8 +144,10 @@ this would be a few lines of configuration.
 
 <!-- node 9 -->
 
-The code is public. There is a Worker you can deploy yourself and plugins for
-Amp, Claude Code, Codex and Pi, which share one hierarchy when you point them
+The code is public, at
+[github.com/henriquebastos/zettelkasten](https://github.com/henriquebastos/zettelkasten).
+There is a Worker you can deploy yourself and plugins for Amp, Claude Code,
+Codex and Pi, which share one hierarchy when you point them
 at the same namespace. It is not a product, I am not running it as one, and it
 works for me. Fork it and do whatever you want with it.
 

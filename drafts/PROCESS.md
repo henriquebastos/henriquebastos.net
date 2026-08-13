@@ -94,6 +94,14 @@ Less certain that these generalize, but both earned their keep once:
     delivering, then move material so the release lands there.
 11. **Reversal.** Check that the close answers the open. An ending only lands
     as a reversal if the opening set up the thing being reversed.
+12. **Reverse outline.** After the draft is finished, rebuild the outline from
+    it, one sentence per paragraph, and keep the original beside it. The
+    comparison is the only honest measure of how much the plan was worth. On
+    the first post it showed that twelve nodes became five sections, that every
+    node written from design notes rather than practice was cut, that the three
+    strongest paragraphs were never planned, and that the one section which
+    survived intact was the only one describing mechanics. Arguments resist
+    outlining; mechanics do not.
 
 ## The one rule stated as law
 

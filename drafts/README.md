@@ -13,6 +13,7 @@ end up being called. Inside, one file per stage:
 | `01-brief.md` | Topic, audience, why, the promise, the voice. Settled before any outlining. |
 | `02-outline.md` | Every node a complete sentence, never a section title. |
 | `03-draft.md` | Prose, converted from the outline one top-level group at a time. |
+| `04-outline-as-written.md` | The outline reverse-engineered from the finished draft, plus what it shows when compared against `02-outline.md`. |
 
 The shape of a post follows the same arc: why someone should read this, the
 problem that why connects to, the idea that solves it, then how it was actually
