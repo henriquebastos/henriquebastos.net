@@ -122,15 +122,6 @@ After acceptance, review the map without forcing a change:
 
 Map changes remain proposals until the Navigator reviews them.
 
-## Durable related records
-
-These predate the current process and are kept for their content, not their
-procedure:
-
-- Decision: `docs/project/decisions/records/2026-08-08T0223Z-article-map-is-provisional.md`
-- Open choices: `docs/project/decisions/records/2026-08-08T0223Z-first-article-editorial-choices.md`
-- Acceptance and handoff: `docs/project/roadmap/the-agent-is-not-the-loop-acceptance-handoff.md`
-
 ## Evidence provenance
 
 The bird's-eye map was informed by read-only repository research in:

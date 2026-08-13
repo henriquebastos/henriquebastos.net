@@ -72,6 +72,12 @@ the source repo in sync with the post. The first post was written against
 describing a superseded version of the same system was explicitly abandoned
 rather than reconciled.
 
+**Park adjacent ideas rather than absorbing them.** An attractive neighbouring
+topic included only because it is nearby is how an article loses its boundary.
+Name what a piece deliberately excludes, so the exclusion is a decision on the
+record rather than an oversight, and so the parked idea stays visible as
+possible future work.
+
 **For a series, take one article all the way through before planning the
 rest.** Settle the through-line and the reader's journey, then complete a
 single piece end to end and feed what it taught back into the series
@@ -219,3 +225,23 @@ found it.
 Voice rules, including no em-dashes and no disclaimers, live in
 [AGENTS.md](../AGENTS.md) because they govern everything written here, not just
 drafts.
+
+## Publishing
+
+Only after the prose is settled.
+
+1. Strip the `<!-- node N -->` comments. They are outline scaffolding and never
+   ship.
+2. Create `src/content/post/<slug>.md` with frontmatter matching the existing
+   posts: `title`, `publishDate`, `description`, and `coverImage` with `src`
+   and `alt`.
+3. Co-locate the cover image as `src/content/post/<slug>.png`.
+4. Run `pnpm check`, then `pnpm build`.
+5. Open the rendered page and read it, rather than trusting a passing build.
+   Check the title, description, cover and alt text against the accepted text,
+   at desktop and mobile widths, with no overflow and no console errors, and
+   confirm every link resolves.
+
+Never invent a publication date, a cover image, a link, or a claim about
+something being available. A passing build is not an accepted article, and a
+finished draft is not a published one.
