@@ -1,8 +1,12 @@
 # Editorial State Record: "The Agent Is Not the Loop"
 
-Durable record of the editorial session. The article draft lives in
-`drafts/the-agent-is-not-the-loop.md`. This file holds everything else a
-successor needs to resume without the conversation.
+PRIOR WORK. Durable record of an earlier editorial session that stalled. The
+draft it produced is `00-prior-draft.md`.
+
+The rewrite does not inherit this file's process rules, roles, or handoff
+procedures. What is worth mining: the settled rulings, the source guardrails,
+and the verified external sources. Those cost real work to establish and should
+survive into `01-brief.md`.
 
 ## Identity
 

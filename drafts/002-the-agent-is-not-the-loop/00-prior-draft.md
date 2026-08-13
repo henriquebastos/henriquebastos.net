@@ -1,9 +1,9 @@
 # The Agent Is Not the Loop
 
-> STATUS: Working draft under active editorial sculpting. NOT accepted, NOT for publication.
-> Studio thread: https://ampcode.com/threads/T-019fcf1d-6d30-75b0-9533-7e90f7052774
-> Source/prior thread: https://ampcode.com/threads/T-019fccfa-221e-70c2-85c0-e4dbd85d4917
-> Map/parent thread (handoff target after acceptance): https://ampcode.com/threads/T-019fcc36-f2df-77b9-b301-dd4968c4665c
+> PRIOR WORK, not the current draft. Written under an earlier editorial system
+> that stalled. Kept as source material for the rewrite: mine it for arguments,
+> lines, and evidence, then write `03-draft.md` fresh. The settled rulings and
+> guardrails behind it are in `00-prior-editorial-state.md`.
 
 ---
 
@@ -87,5 +87,4 @@ So the next time you design one, ask the questions before you name the roles. Wh
 
 ---
 
-EDITORIAL STATE: see `drafts/the-agent-is-not-the-loop.editorial-state.md`
-(settled rulings, unresolved choices, procedures, guardrails, resumption steps).
+EDITORIAL STATE: see `00-prior-editorial-state.md`.

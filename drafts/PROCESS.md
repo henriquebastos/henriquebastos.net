@@ -124,6 +124,17 @@ cut is the most expensive mistake available.
   happen. Design notes record intent, including rules never exercised in
   practice, and carrying those into prose puts decisions in the reader's head
   that the writer never makes. Only write the judgments you actually perform.
+- **Future capability in present tense.** Writing what will be true as though
+  it already is. The draft said "the code is public" before there was a link,
+  and an earlier brief promised gists that did not exist. Distinct from
+  over-claiming: the statement is not false, it is just not true yet. Anything
+  that depends on work not yet done gets flagged, not smoothed over.
+- **Jargon before definition.** A term doing load-bearing work before the
+  reader has been given it. Usually invisible to the writer, who defined it
+  months ago in their own head.
+- **Repeated slogans.** A metaphor, phrase, or conclusion that returns without
+  being asked to. Purposeful repetition is a deliberate device and has to be
+  chosen; accidental repetition just flattens the line each time it recurs.
 - **Announcing.** "Underneath both of those sits a mismatch I could not fix"
   tells the reader more proving is coming. Start on the fact instead.
 - **Explaining the explanation.** Two consecutive sentences where the second
@@ -158,6 +169,17 @@ from something visible.
 
 Words are not addressed. Numbering every word would make the draft unreadable,
 and a word can simply be quoted.
+
+`snapshot` returns only the settled content, in reading order, and nothing
+else. No commentary, no rationale, no rejected alternatives, no new proposals,
+no account of how it got that way. Unresolved areas appear as honest
+placeholders rather than being smoothed over. It is the clean reading surface,
+not a freeze.
+
+When a pass produces several findings, separate the ones that must change from
+the ones that could, and batch the mechanical corrections instead of presenting
+them as equals. Nine findings of equal weight, two of which are real, is a
+report that makes the reader do the triage.
 
 Nodes are units of argument, not headings. Headings are a side effect of the
 prose and get added afterwards to organize what is already written, never
