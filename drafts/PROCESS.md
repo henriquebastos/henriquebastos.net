@@ -62,6 +62,22 @@ None were visible in the outline. Two came from reading the draft aloud and
 noticing fatigue. So the outline is not something to perfect before writing. It
 is scaffolding, built well enough to start, then corrected by the prose.
 
+## Two rules about subject matter
+
+**The publication repo owns the draft; source repositories own technical
+truth.** When a post describes something that lives in code, read that code
+before writing about it and keep the post honest to it, but do not try to keep
+the source repo in sync with the post. The first post was written against
+`github.com/henriquebastos/zettelkasten` this way, and an older reference file
+describing a superseded version of the same system was explicitly abandoned
+rather than reconciled.
+
+**For a series, take one article all the way through before planning the
+rest.** Settle the through-line and the reader's journey, then complete a
+single piece end to end and feed what it taught back into the series
+conventions. Deeply outlining several unwritten articles produces plans that
+the first finished one invalidates.
+
 ## The passes
 
 1. **Brief.** Why, audience, promise, voice. It is a hypothesis, not a

@@ -1,5 +1,9 @@
 # Petrus Editorial Map
 
+> Travels with whichever article is currently being worked on. When the next
+> one starts, move this file into its directory. It is a map of possible essays
+> about the Petrus family, not a backlog and not a commitment to write them.
+
 ## Purpose
 
 This is a low-resolution map of possible standalone essays about Petrus,
@@ -95,19 +99,15 @@ These areas are hypotheses about where essays may exist, not article promises.
 
 ## Current focus
 
-The first chosen article is **“The Agent Is Not the Loop.”** Its canonical
-working draft and editorial state are preserved on `main`:
+The first chosen article is **“The Agent Is Not the Loop,”** now being redone
+under the process in `drafts/PROCESS.md`. Its prior material sits beside this
+file:
 
-- `drafts/the-agent-is-not-the-loop.md`
-- `drafts/the-agent-is-not-the-loop.editorial-state.md`
+- `00-prior-draft.md`
+- `00-prior-editorial-state.md`
 
-The draft is not accepted and is not for publication. Pending choices are
-owned by the linked decision record. Acceptance and handoff follow the linked
-roadmap maintenance record. The preservation branch
-`draft/the-agent-is-not-the-loop` at
-`e83212e3ee2284de7f299201025f6f96bd19e0b9` is provenance only; its earlier
-draft revision and unrelated ancestry are superseded and were not imported as
-parallel artifacts.
+Neither is accepted or for publication. Both are source material to mine into
+a new `01-brief.md`, not drafts to resume.
 
 ## Map review after each accepted article
 
@@ -124,14 +124,12 @@ Map changes remain proposals until the Navigator reviews them.
 
 ## Durable related records
 
+These predate the current process and are kept for their content, not their
+procedure:
+
 - Decision: `docs/project/decisions/records/2026-08-08T0223Z-article-map-is-provisional.md`
 - Open choices: `docs/project/decisions/records/2026-08-08T0223Z-first-article-editorial-choices.md`
 - Acceptance and handoff: `docs/project/roadmap/the-agent-is-not-the-loop-acceptance-handoff.md`
-- Content-sculpting method: `.agents/skills/sculpting-content/SKILL.md`
-
-The content-sculpting method was imported from preservation branch
-`chore/sculpting-content-skill` at
-`fd0e5c6f1793cce9cd87c25ee334117e7a6149dc`.
 
 ## Evidence provenance
 
