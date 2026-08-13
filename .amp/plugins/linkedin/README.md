@@ -1,8 +1,8 @@
 # LinkedIn publishing
 
 This project-local Amp plugin publishes an organic image post to the authenticated member's LinkedIn
-feed and can immediately add a first comment. It uses LinkedIn's supported Posts, Images, and
-Comments APIs.
+feed and can add a first comment when the token has LinkedIn's required comment permission. It uses
+LinkedIn's supported Posts, Images, and Comments APIs.
 
 Every post and standalone comment requires an interactive confirmation that displays the exact
 text and target. Successful posts are fingerprinted in Amp's global plugin configuration to avoid
@@ -26,6 +26,11 @@ Optional environment variables:
 - `LINKEDIN_API_VERSION`: LinkedIn Marketing API version in `YYYYMM` form. Defaults to `202607`.
 
 Use `linkedin_connection_status` to validate the connection without posting.
+
+As of August 2026, this project's self-service app can create member feed posts with
+`w_member_social`, but LinkedIn's current Comments API requires `w_member_social_feed`, which is not
+available to this app through self-service. Add the first comment manually unless that permission
+becomes available. A failed comment does not roll back a post that was already published.
 
 ## Publication boundary
 

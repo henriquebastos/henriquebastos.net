@@ -245,3 +245,63 @@ Only after the prose is settled.
 Never invent a publication date, a cover image, a link, or a claim about
 something being available. A passing build is not an accepted article, and a
 finished draft is not a published one.
+
+## Promotion
+
+Promotion starts from the published article, but it is not a summary of it. A
+feed post should give away enough to establish the problem and the surprise,
+then preserve the explanation for the article. The first post worked when it
+named the knowledge graph made with pen and paper and the discovery that coding
+agents are vibe coded. Explaining the coordinate system there would have spent
+the article's reveal in the advertisement.
+
+`05-promotion.md` is the record for this stage. Keep the article URL, cover and
+exact alt text at the top. For each channel, keep the format, exact post and
+comment or reply, approval status, and canonical URLs after publication. Record
+manual recovery steps too. Approval applies to the complete exact bundle: text,
+paragraph breaks, image, alt text, and first comment or reply. A changed part
+needs approval again.
+
+Publication calls are non-idempotent. Resolve the authenticated account before
+the first mutation, upload the image and alt text before creating the post, and
+save the returned post ID before creating its reply. Never blindly repeat a
+create call whose outcome is uncertain. Use a read-only lookup to establish
+whether the exact content exists first.
+
+### LinkedIn
+
+The project-local workflow and connection setup live in
+[the plugin README](../.amp/plugins/linkedin/README.md). The current
+self-service permission can publish a member feed post, but not its first
+comment. Publish the comment manually unless LinkedIn makes the required
+permission available to the app. Record that manual step in `05-promotion.md`.
+
+### X
+
+The orb setup installs the official `xurl` release at a pinned version and
+checksum. This single-account publisher uses OAuth 1.0a because xurl 1.3.1's
+built-in OAuth 2 authorization asks for unrelated permissions. Keep these four
+values in Amp project secrets, never in the repository:
+
+- `X_CONSUMER_KEY`
+- `X_CONSUMER_SECRET`
+- `X_ACCESS_TOKEN`
+- `X_ACCESS_TOKEN_SECRET`
+
+The consumer pair and access-token pair must come from the same X app. Set the
+app to Read and write before generating the access-token pair. Start a fresh orb
+after adding or replacing project secrets, then require `/2/users/me` to resolve
+to `@henriquebastos`, user ID `14227855`, before publishing.
+
+xurl 1.3.1 has three output contracts that matter for safe automation:
+
+- `xurl media upload` prints a JSON response followed by `Media uploaded
+  successfully! Media ID: <id>`. Its whole output is not one JSON document.
+  Extract and validate the numeric ID from the labeled final line.
+- Add image alt text before posting with `POST /2/media/metadata` and the body
+  `{"id":"<id>","metadata":{"alt_text":{"text":"<alt>"}}}`.
+- Successful `xurl post` and `xurl reply` calls each print one JSON object. The
+  created post ID is `.data.id`.
+
+Do not use verbose xurl output in automation. It mixes diagnostics into stdout
+and can expose the OAuth Authorization header.

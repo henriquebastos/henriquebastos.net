@@ -17,7 +17,14 @@ reveals.
 Format: cover image with a feed post, then the article URL in the first
 comment.
 
-Status: approved, awaiting publication.
+Status: published.
+
+Post:
+<https://www.linkedin.com/feed/update/urn:li:share:7493496318498226176/>
+
+The first comment was added manually because LinkedIn's self-service API
+permission can create posts but its current Comments API requires a separate
+permission.
 
 ### Post
 
@@ -42,6 +49,35 @@ exposed about the tools themselves.
 Link in the first comment.
 
 ### First comment
+
+The knowledge graph, the rule, and the vibe coding underneath it:
+
+<https://henriquebastos.net/writing/how-i-stopped-drowning-in-agent-sessions/>
+
+## X
+
+Format: cover image with a post, then the article URL in the first reply.
+
+Status: published.
+
+Post:
+<https://x.com/henriquebastos/status/2087750317362610202>
+
+First reply:
+<https://x.com/henriquebastos/status/2087750319157756253>
+
+### Post
+
+I run enough coding-agent sessions in parallel to forget what one is for on the
+same afternoon I started it.
+
+I thought I needed better names. I was wrong.
+
+The solution came from a knowledge graph built with pen and paper.
+
+Then I learned coding agents are vibe coded too.
+
+### First reply
 
 The knowledge graph, the rule, and the vibe coding underneath it:
 
