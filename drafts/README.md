@@ -6,22 +6,33 @@ published. It exists to keep the working process visible and resumable.
 One directory per post, named `NNN-<working-slug>`, a three-digit ordinal in
 creation order, then the working slug (renamed if the final slug differs). The
 ordinal keeps the directory listing chronological regardless of what the posts
-end up being called. Inside, one file per stage:
+end up being called. Inside, one file owns the current state of each stage:
 
-| File | Holds |
-|---|---|
-| `00-*.md` | Prior or source material carried in from elsewhere. Mined for the brief, never edited into the new draft directly. |
-| `01-brief.md` | Topic, audience, why, the promise, the voice. Settled before any outlining. |
-| `02-outline.md` | Every node a complete sentence, never a section title. |
-| `03-draft.md` | Prose, converted from the outline one top-level group at a time. |
-| `04-outline-as-written.md` | The outline reverse-engineered from the finished draft, plus what it shows when compared against `02-outline.md`. |
-| `05-promotion.md` | Social promotion copy, links, assets, and publication status for each channel. |
+| File                  | Holds                                                                                              |
+| --------------------- | -------------------------------------------------------------------------------------------------- |
+| `00-notes.md`         | First-hand source material and durable decisions carried into the brief.                           |
+| `00-*-transcript.md`  | A large independent source worth preserving verbatim.                                              |
+| `01-brief.md`         | Topic, audience, why, promise, voice, and deliberate boundaries.                                   |
+| `02-outline.md`       | The compact argument plan.                                                                         |
+| `02-graph.md`         | An optional canonical claim graph when dependencies are genuinely non-linear.                      |
+| `02-reading-order.md` | The compact rhetorical projection selected from a graph. Omit it when the outline already does it. |
+| `03-draft.md`         | The complete working draft before it moves into `src/content`.                                     |
+| `04-retrospective.md` | Evidence about what the process cost, what worked, and what changes next time.                     |
+| `05-promotion.md`     | Promotion copy, links, assets, approval, and publication status.                                   |
 
-The shape of a post follows the same arc: why someone should read this, the
-problem that why connects to, the idea that solves it, then how it was actually
-done.
+The shape of a post usually follows the same arc: why someone should read it,
+the problem or tension that why connects to, the idea or possibility it opens,
+then its mechanics, consequences, or what it makes imaginable.
 
-The passes that get it there, and the conventions the outline follows, live in
-[PROCESS.md](PROCESS.md).
+The process and its optional graph boundary live in [PROCESS.md](PROCESS.md).
 
-Refinement happens in place. Git history carries the versions.
+Knowledge is cumulative; files are not. Refine each stage in place and let Git
+carry its versions. Create two files at one stage only when Henrique explicitly
+wants to compare alternatives side by side. Once he chooses, keep the winner as
+the active file and leave the rejected route in Git history.
+
+Generated graphs, rendered diagrams, audits, diffs, and review reports are
+temporary views. Put reviewable generated media in `.amp/in/artifacts`, not in
+the draft directory. A decision that changes the reusable process belongs in
+`PROCESS.md`; a prose edit belongs in the draft's Git diff, not in another
+Markdown record.

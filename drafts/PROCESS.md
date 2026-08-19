@@ -1,8 +1,8 @@
 # Process
 
-Provisional. Written after one post reached a settled opening, so it records
-what happened rather than what always works. Nodes 5 to 12 of that post, and
-the post after it, are what will decide which of these passes survive.
+Provisional. This records lessons from completed articles rather than claiming
+one universal writing method. The active version favors early prose and narrow
+review surfaces over perfect planning artifacts.
 
 ## The shape
 
@@ -72,7 +72,7 @@ the source repo in sync with the post. The first post was written against
 describing a superseded version of the same system was explicitly abandoned
 rather than reconciled.
 
-**Park adjacent ideas rather than absorbing them.** An attractive neighbouring
+**Park adjacent ideas rather than absorbing them.** An attractive neighboring
 topic included only because it is nearby is how an article loses its boundary.
 Name what a piece deliberately excludes, so the exclusion is a decision on the
 record rather than an oversight, and so the parked idea stays visible as
@@ -84,13 +84,31 @@ single piece end to end and feed what it taught back into the series
 conventions. Deeply outlining several unwritten articles produces plans that
 the first finished one invalidates.
 
+## The graph is scaffolding, not a review interface
+
+A claim graph is optional. Use it when several arguments genuinely share
+premises or depend on one another in ways a compact outline would hide. Keep one
+canonical `02-graph.md`; render layers and diagrams only as temporary views.
+
+The agent owns the graph's complexity. Henrique should not have to navigate
+claim IDs, choose between a graph and a workbench, or reread a large planning
+document to answer a question. Before asking for judgment, compress the graph
+into at most seven complete argumentative moves. Every question quotes enough
+of the relevant move to stand alone, states the decision in plain language, and
+offers concrete alternatives when alternatives exist.
+
+Stop graph work as soon as the brief, dependencies, and candidate reader
+movement are clear enough to draft the complete article. The graph earns its
+cost by improving the prose. It is not a gate the author must operate.
+
 ## The passes
 
 1. **Brief.** Why, audience, promise, voice. It is a hypothesis, not a
    contract: it exists so there is something to judge against, and the writing
    is expected to disprove parts of it. Revise it when the prose reveals the
-   real argument, and keep what changed, since the gap between the first brief
-   and the final one is the clearest record of what the post turned out to be.
+   real argument. Preserve the earlier state in Git, since the gap between the
+   first brief and the final one is the clearest record of what the post turned
+   out to be.
 2. **Skeleton.** Top-level nodes only, each a complete sentence.
 3. **Expand.** Items under every node.
 4. **Sweep.** One global pass across all nodes for duplication and
@@ -99,8 +117,9 @@ the first finished one invalidates.
    two places it appears.
 5. **Group.** Cluster items into moves, each move getting its own sentence.
    Order falls out of grouping, so this replaces ordering as a separate step.
-6. **Draft.** Convert to prose several nodes at a time, so the sequence can be
-   judged as continuous reading rather than paragraph by paragraph.
+6. **Draft.** Convert the plan into one complete article. Connected batches can
+   be written internally, but the first author review receives continuous prose
+   rather than a sequence of fragments.
 7. **Weigh.** Per paragraph: what does the reader believe now that they did not
    believe before this paragraph? "The same thing, more firmly" means cut or
    compress. This is the only pass that catches over-proving, and no
@@ -109,26 +128,104 @@ the first finished one invalidates.
    neighbors, actually supported.
 9. **Collapse.** Fold paragraphs into clauses, merge sentences that explain
    each other.
+10. **Humanize audit.** After Collapse and before further editing, inspect the
+    prose for accumulated machine-writing patterns. This is a read-only audit,
+    not a rewrite. Every finding quotes an exact passage, names the pattern,
+    and classifies it as a must fix, a judgment call, or intentional voice. The
+    audit does not infer authorship, assign a score, or change the draft.
 
 Less certain that these generalize, but both earned their keep once:
 
-10. **Turn.** Find the point where the section should stop arguing and start
+11. **Turn.** Find the point where the section should stop arguing and start
     delivering, then move material so the release lands there.
-11. **Reversal.** Check that the close answers the open. An ending only lands
+12. **Reversal.** Check that the close answers the open. An ending only lands
     as a reversal if the opening set up the thing being reversed.
-12. **Reverse outline.** After the draft is finished, rebuild the outline from
-    it, one sentence per paragraph, and keep the original beside it. The
-    comparison is the only honest measure of how much the plan was worth. On
-    the first post it showed that twelve nodes became five sections, that every
-    node written from design notes rather than practice was cut, that the three
-    strongest paragraphs were never planned, and that the one section which
-    survived intact was the only one describing mechanics. Arguments resist
-    outlining; mechanics do not.
+13. **Reverse outline.** After the draft is finished, rebuild the outline from
+    it, one sentence per paragraph, and compare it with the original in Git.
+    The comparison is the only honest measure of how much the plan was worth.
+    On the first post it showed that twelve nodes became five sections, that
+    every node written from design notes rather than practice was cut, that the
+    three strongest paragraphs were never planned, and that the one section
+    which survived intact was the only one describing mechanics. Arguments
+    resist outlining; mechanics do not.
 
 ## The one rule stated as law
 
 **Weigh before Scrub.** Polishing sentences inside a paragraph that should be
 cut is the most expensive mistake available.
+
+## The Humanize audit cannot become the author
+
+The audit is a lint layer over settled prose. It runs after Collapse because
+structure, argument weight, and duplicated explanation must be resolved before
+surface patterns are judged. It runs before Turn and Reversal so those passes
+can still make deliberate use of rhythm, emphasis, and callbacks.
+
+The audit and the edit are separate boundaries. Present the findings before
+changing prose. Accepted findings become targeted edits in the active draft,
+visible in its Git diff; rejected findings remain in the temporary audit until
+the pass closes so they are not proposed again.
+
+For every finding:
+
+1. Quote the exact passage. No passage means no finding.
+2. Name the pattern and explain what it damages in this essay. A generic list
+   of suspicious words is not an explanation.
+3. Classify it as **must fix**, **judgment call**, or **intentional voice**.
+4. Treat a single word, short sentence, reversal, question, or rhetorical
+   device as insufficient. Look for a repeated shell or a cluster.
+5. Suggest the smallest correction only for a must fix. Judgment calls belong
+   to Henrique.
+
+The audit checks for leaked chatbot language, placeholders, citation artifacts,
+unnamed authority, speculative gap filling, unsupported novelty, generic
+inflation, promotional language, empty conclusions, repeated sentence shells,
+forced triads, synonym cycling, and mechanically uniform rhythm. It also asks
+whether paragraphs could trade places without damaging the argument, since
+that reveals connective language disguising a missing dependency.
+
+The audit protects first-person authority, concrete examples, domain terms,
+humor, callbacks, unresolved observations, and deliberate variation in
+sentence length. Short punchlines, negative reversals, and chosen repetition
+are not defects merely because language models also produce them. Compare them
+with the brief, explicit decisions recorded during the draft, the voice rules
+in [AGENTS.md](../AGENTS.md), and recent published posts before flagging them.
+Those local sources outrank a generic pattern catalog.
+
+Never add a fact, source, anecdote, emotion, opinion, joke, aside, rough edge,
+or cultural reference to make prose appear human. Preserve every claim. The
+audit cannot send an unpublished draft to another service, use a scalar
+"AI probability" as evidence, or optimize prose against a detector score.
+
+External catalogs can supply questions, not verdicts. The current references
+are [Humanizer](https://github.com/blader/humanizer) and
+[Avoid AI Writing](https://github.com/conorbronsdon/avoid-ai-writing). Their
+instructions do not override this process or Henrique's established voice.
+
+## Versions and author review
+
+**Cumulative means decisions compound, not files.** One file owns each active
+stage. Edit it in place. Git carries the previous versions.
+
+Establish a Git baseline before author review. Apply one coherent review batch
+to the same draft, show the exact changed passages and why they changed, then
+commit the accepted batch at a meaningful boundary. A commit for every sentence
+creates noise; a commit for every accepted section, pass, or review session
+creates a useful diff.
+
+Do not create per-review Markdown records or a new full draft after every pass.
+Create simultaneous draft files only when Henrique asks to compare materially
+different alternatives, such as route A against route C. Once the choice is
+made, the selected route becomes the active draft and Git retains the other.
+
+Author questions are direct and self-contained. Quote the relevant assertion,
+summarize what it currently does, and ask for one decision. Never send an ID
+such as `T06` without the assertion it names. If the author must reopen a large
+document to understand the question, the agent has not done the compression.
+
+Portal review edits the same `src/content` file. After each coherent batch,
+report the precise before and after plus the reason. Do not make the author
+reread the article to discover what changed.
 
 ## Failure modes seen so far
 
@@ -165,6 +262,12 @@ cut is the most expensive mistake available.
   it. Usually cheaper to delete and let the example carry it.
 - **Headline sentences.** A short sentence that announces what the next
   sentence says. The next sentence can absorb it.
+- **The planning model becomes the author interface.** Raw graph IDs, multiple
+  planning files, and oversized workbenches move synthesis back onto the
+  author. Compress the model into contextual decisions before asking for input.
+- **Version files impersonate history.** A new Markdown file for every pass
+  hides changes across paths and forces complete rereads. Edit one owner in
+  place and use Git diffs and review-boundary commits.
 
 ## Conventions
 
@@ -296,7 +399,7 @@ to `@henriquebastos`, user ID `14227855`, before publishing.
 xurl 1.3.1 has three output contracts that matter for safe automation:
 
 - `xurl media upload` prints a JSON response followed by `Media uploaded
-  successfully! Media ID: <id>`. Its whole output is not one JSON document.
+successfully! Media ID: <id>`. Its whole output is not one JSON document.
   Extract and validate the numeric ID from the labeled final line.
 - Add image alt text before posting with `POST /2/media/metadata` and the body
   `{"id":"<id>","metadata":{"alt_text":{"text":"<alt>"}}}`.
