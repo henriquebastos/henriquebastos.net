@@ -1,8 +1,7 @@
 ---
 title: "The 10x Era Is Here. Ten Times More What?"
-publishDate: 2026-08-18
-description: "Coding agents make code cheaper. The real opportunity is to improve how software creates value, not accumulate code inventory faster."
-draft: true
+publishDate: 2026-08-19
+description: "Ten times more code is the shallowest ambition for coding agents. The real leverage lies deeper."
 coverImage:
   src: ./the-10x-era-is-here.png
   alt: "Aerial view of sports cars gridlocked on one interchange while traffic streaks past around them."
@@ -29,11 +28,14 @@ not why we do it. The value is not in the code. The investment pays off only
 when someone uses the running system to solve a problem. That relationship
 between running software and a happy user is where value lives.
 
+Ten times more code is the shallow end of what coding agents make possible. The
+real leverage lies deeper.
+
 ## The Economic Magic of Software
 
 Empires were built on software because the same implementation can serve
 thousands of people for years. A useful behavior scales across all of them. A
-defect does too. The leverage works both ways.
+defect does too. That scale works both ways.
 
 I heard [Joran Greef explain the economics of software very
 clearly](https://www.youtube.com/watch?v=8br5QcmYq84&t=3240s). Building the
@@ -73,11 +75,6 @@ take two years, perhaps agents can finish it this quarter. But a roadmap remains
 a list of investments the company hopes will become valuable. Completing it
 faster does not improve the hope. It can make the company look like it is
 shipping faster while its software degrades faster.
-
-To realize what coding agents make possible, software development has to change
-around them. Their potential is not merely to accelerate coding while every
-other boundary remains in place. It is to move the whole investment-to-value
-loop to a higher level.
 
 ## A dev and an agent walk into a PR at 100 mph
 
@@ -179,7 +176,7 @@ This is what the industry gets backward about coding agents: adding more agents
 while every output still waits for downstream human reconstruction does not
 create leverage. It feeds the same traffic jam at machine speed.
 
-## One target, deep engineering
+## One Target: Deep Engineering™
 
 A technology this powerful gives me reason to rethink software development from
 first principles instead of feeding more work into the old machinery.
@@ -229,12 +226,6 @@ I used plenty of parallel work, but I was not context-switching. I was doing one
 thing the whole time. Research, measurements, and experiments continued without
 me; their results waited in a queue until they needed my judgment. Instead of
 juggling six unrelated features, I could keep following one vision deeper.
-
-This is why [Aaron Francis's
-account](https://www.youtube.com/watch?v=iPUn1Fnfn0k&t=919s) resonated with me.
-Agent capacity first made him imagine forty products. Then he narrowed that to
-one or two and raised his vertical ambition. He changed the direction of his
-ambition, not its size.
 
 That depth cannot stop at merge because a merged feature is still inventory
 until the running system reaches a user. A narrow change can integrate behind a

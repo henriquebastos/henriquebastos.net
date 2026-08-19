@@ -3,11 +3,8 @@
 Article:
 <https://henriquebastos.net/writing/the-10x-era-is-here/>
 
-Article status: draft. Nothing in this file is approved for publication yet.
-
-Publication handoff: replace the provisional `publishDate` with the actual
-publication date and set `draft: false` only after explicit publication
-approval.
+Article status: published August 19, 2026. The LinkedIn and X promotions remain
+unapproved and unpublished.
 
 Cover: `src/content/post/the-10x-era-is-here.png`
 
