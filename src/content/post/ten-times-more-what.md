@@ -3,6 +3,9 @@ title: "The 10x Era Is Here. Ten Times More What?"
 publishDate: 2026-08-18
 description: "Coding agents make code cheaper. The real opportunity is to improve how software creates value, not accumulate code inventory faster."
 draft: true
+coverImage:
+  src: ./ten-times-more-what.png
+  alt: "Aerial view of sports cars gridlocked across every lane of a multilayer interchange."
 ---
 
 You are a software engineering leader walking out of a meeting where everyone
