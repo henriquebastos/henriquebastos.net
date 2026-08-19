@@ -5,7 +5,7 @@ description: "Coding agents make code cheaper. The real opportunity is to improv
 draft: true
 coverImage:
   src: ./ten-times-more-what.png
-  alt: "Aerial view of sports cars gridlocked across every lane of a multilayer interchange."
+  alt: "Aerial view of sports cars gridlocked on one interchange while traffic streaks past around them."
 ---
 
 You are a software engineering leader walking out of a meeting where everyone
