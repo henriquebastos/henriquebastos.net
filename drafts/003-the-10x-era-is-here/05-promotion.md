@@ -28,9 +28,26 @@ The measured link clicks equal 4.3% of impressions on the main post, or 27.8%
 of impressions on the reply. The two denominators answer different questions,
 and neither tells us how many people read the article after clicking.
 
-The previous LinkedIn promotion record contains no analytics snapshot. The
-public page exposes comments and reactions but not the author's impression or
-article-view data. There is no comparable LinkedIn number in the repository.
+The author analytics screenshot for the previous LinkedIn feed post, supplied
+on August 19, 2026, shows:
+
+| Metric                           | Value |
+| -------------------------------- | ----: |
+| Impressions                      | 1,763 |
+| Members reached                  | 1,112 |
+| Impressions from the network     |   70% |
+| Impressions outside the network  |   30% |
+| Profile views from the post      |    15 |
+| Followers gained from the post   |     1 |
+| Reactions                        |    22 |
+| Comments                         |     3 |
+| Reposts                          |     0 |
+| Saves                            |     2 |
+| Total listed engagement actions  |    27 |
+
+The 27 listed engagement actions equal 1.5% of impressions or 2.4% of members
+reached. The screenshot does not show outbound-link clicks or article reads,
+so it cannot tell us how many people continued from LinkedIn to the blog.
 
 One post is not an A/B test. It is enough evidence to try removing the outbound
 click from the reading path and measure the result.
@@ -44,10 +61,15 @@ Body: the exact accepted article body from
 versions keep its headings and external links. The title, site byline, and
 draft marker are not duplicated inside the body.
 
-End note:
+End note text:
 
-> This article also lives on my site:
-> <https://henriquebastos.net/writing/the-10x-era-is-here/>
+> This article also lives on my site.
+
+LinkedIn end-note link:
+<https://henriquebastos.net/writing/the-10x-era-is-here/?utm_source=linkedin&utm_medium=social&utm_campaign=the_10x_era&utm_content=native_article_footer>
+
+X end-note link:
+<https://henriquebastos.net/writing/the-10x-era-is-here/?utm_source=x&utm_medium=social&utm_campaign=the_10x_era&utm_content=native_article_footer>
 
 Approval status: not approved.
 
@@ -96,7 +118,7 @@ Status: draft.
 
 The article also lives on my site:
 
-<https://henriquebastos.net/writing/the-10x-era-is-here/>
+<https://henriquebastos.net/writing/the-10x-era-is-here/?utm_source=x&utm_medium=social&utm_campaign=the_10x_era&utm_content=native_article_reply>
 
 ## Measurement
 

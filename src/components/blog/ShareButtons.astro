@@ -8,11 +8,19 @@ interface Props {
 const { title, url, description } = Astro.props;
 
 const tweetText = description ? `${title} — ${description}` : title;
+const readerShareUrl = (source: "linkedin" | "x") => {
+	const sharedUrl = new URL(url);
+	sharedUrl.searchParams.set("utm_source", source);
+	sharedUrl.searchParams.set("utm_medium", "social");
+	sharedUrl.searchParams.set("utm_campaign", "reader_share");
+	sharedUrl.searchParams.set("utm_content", "share_button");
+	return sharedUrl.toString();
+};
 const twitterHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
 	tweetText,
-)}&url=${encodeURIComponent(url)}`;
+)}&url=${encodeURIComponent(readerShareUrl("x"))}`;
 const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-	url,
+	readerShareUrl("linkedin"),
 )}`;
 ---
 
