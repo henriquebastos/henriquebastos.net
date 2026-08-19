@@ -5,6 +5,10 @@ Article:
 
 Article status: draft. Nothing in this file is approved for publication yet.
 
+Publication handoff: replace the provisional `publishDate` with the actual
+publication date and set `draft: false` only after explicit publication
+approval.
+
 Cover: `src/content/post/the-10x-era-is-here.png`
 
 Cover alt: Aerial view of sports cars gridlocked on one interchange while

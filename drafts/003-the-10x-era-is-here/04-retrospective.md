@@ -1,6 +1,8 @@
 # Retrospective: Agentic Value Throughput
 
-Completed August 18, 2026 after the final author review.
+Written August 18, 2026 after the final prose review. Updated at thread closure
+on August 19 after the cover, rendered QA, promotion planning, analytics setup,
+and standalone export work.
 
 ## Outcome
 
@@ -16,12 +18,14 @@ required reading another complete document.
 
 ## Elapsed time and interaction
 
-The measurements come from the Amp thread export. They count 120 user text
-messages and exclude tool traffic. Timestamps use the thread's
+The measurements come from an Amp thread export captured when the prose review
+ended. They count 120 user text messages through August 18 at 21:32 and exclude
+tool traffic. They do not include the later cover, QA, promotion, analytics,
+environment, and export work. Timestamps use the thread's
 `America/Sao_Paulo` timezone.
 
-The thread ran from Friday, August 14 at 14:52 through Tuesday, August 18 at
-21:32: 4 days, 6 hours, and 40 minutes of wall-clock time.
+The measured writing interval ran from Friday, August 14 at 14:52 through
+Tuesday, August 18 at 21:32: 4 days, 6 hours, and 40 minutes of wall-clock time.
 
 A writing session ends after one hour without another user message. By that
 definition, the work occupied 19 sessions spanning at least 14 hours, 17
@@ -66,6 +70,10 @@ Sixty-two and a half percent of all author messages happened on the final day.
    Toyota turn, and personal example.
 5. Portal review made comments local and visual. Exact change reports prevented
    another complete reread.
+6. Revisiting the title and headings after the prose settled gave each section
+   a hook and exposed where the article needed another boundary.
+7. The cover converged after the article's visual ideas were extracted and one
+   concept was selected before further style refinement.
 
 ## What cost too much
 
@@ -81,6 +89,8 @@ Sixty-two and a half percent of all author messages happened on the final day.
    reviewed as normal Git diffs.
 5. The Monday-night review degraded into one-word merge and option decisions.
    That was evidence that the agent had transferred synthesis back to me.
+6. Cover generation began before a visual concept was selected, so many early
+   candidates changed concept, composition, and style at the same time.
 
 ## Changes for the next article
 
@@ -99,11 +109,14 @@ Sixty-two and a half percent of all author messages happened on the final day.
    another document.
 7. Keep Portal review. It was the clearest and fastest interface for me in the
    process.
+8. Run title and heading work after the prose settles, then extract and choose a
+   cover concept before generating stylistic variations.
 
 ## Cleanup
 
-The retrospective reduces this draft directory from 81 files to nine durable
+The retrospective reduces this draft directory from 81 files to ten durable
 artifacts. Raw independent transcripts, the consolidated source notes, brief,
 canonical graph, selected reading order, pre-review draft, and this
-retrospective remain. Generated graph views, superseded planning projections,
-pass reports, review records, and prose snapshots are removed.
+retrospective remain, along with the promotion record created after prose
+review. Generated graph views, superseded planning projections, pass reports,
+review records, and prose snapshots are removed.

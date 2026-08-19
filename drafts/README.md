@@ -20,6 +20,12 @@ end up being called. Inside, one file owns the current state of each stage:
 | `04-retrospective.md` | Evidence about what the process cost, what worked, and what changes next time.                     |
 | `05-promotion.md`     | Promotion copy, links, assets, approval, and publication status.                                   |
 
+After a complete draft moves into `src/content`, that source post owns all
+further prose edits and `03-draft.md` remains the pre-review baseline. The
+retrospective can close the writing process while the source post is still a
+draft. Promotion can be prepared at that point too, but each file must state
+clearly what remains unapproved or unpublished.
+
 The shape of a post usually follows the same arc: why someone should read it,
 the problem or tension that why connects to, the idea or possibility it opens,
 then its mechanics, consequences, or what it makes imaginable.

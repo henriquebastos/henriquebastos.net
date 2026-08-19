@@ -311,6 +311,11 @@ prose and get added afterwards to organize what is already written, never
 beforehand to plan it. A heading written first becomes a promise the paragraph
 underneath has to keep.
 
+A title compresses the article's central tension rather than merely naming its
+topic. Run the title and heading pass after the argument has settled. Read the
+title and headings alone: together they should create curiosity, reveal the
+article's movement, and expose any section boundary the prose is missing.
+
 A heading is a hook, not a label. It separates sections, but its real job is to
 catch attention and open a question the section then answers.
 
@@ -329,34 +334,46 @@ Voice rules, including no em-dashes and no disclaimers, live in
 [AGENTS.md](../AGENTS.md) because they govern everything written here, not just
 drafts.
 
-## Publishing
+## Rendered review and publishing
 
-Only after the prose is settled.
+Move the complete draft into `src/content` only after continuous prose exists.
+From that point onward the source post owns the active prose and Portal review
+edits that file in place.
 
 1. Strip the `<!-- node N -->` comments. They are outline scaffolding and never
    ship.
-2. Create `src/content/post/<slug>.md` with frontmatter matching the existing
-   posts: `title`, `publishDate`, `description`, and `coverImage` with `src`
-   and `alt`.
-3. Co-locate the cover image as `src/content/post/<slug>.png`.
+2. Create `src/content/post/<slug>.md` with `draft: true` and frontmatter
+   matching the existing posts: `title`, provisional `publishDate`,
+   `description`, and `coverImage` with `src` and `alt`.
+3. Extract several visual concepts from the settled article before generating
+   cover candidates. Select the concept first, then refine composition and
+   style. Co-locate the accepted image as `src/content/post/<slug>.png`.
 4. Run `pnpm check`, then `pnpm build`.
 5. Open the rendered page and read it, rather than trusting a passing build.
    Check the title, description, cover and alt text against the accepted text,
    at desktop and mobile widths, with no overflow and no console errors, and
    confirm every link resolves.
+6. When an unpublished article needs to travel as a file, use the
+   [project exporter](../.agents/skills/exporting-blog-posts/SKILL.md). Its
+   self-contained HTML belongs in `.amp/in/artifacts`, never in Git.
+7. Publication is a separate, explicitly approved action. Replace the
+   provisional date with the actual publication date, set `draft: false`, run
+   the checks again, publish, and verify the public page.
 
 Never invent a publication date, a cover image, a link, or a claim about
-something being available. A passing build is not an accepted article, and a
-finished draft is not a published one.
+something being available. A passing build is not an accepted article, a
+finished draft is not a published one, and preparing a publication does not
+authorize it.
 
 ## Promotion
 
-Promotion starts from the published article, but it is not a summary of it. A
-feed post should give away enough to establish the problem and the surprise,
-then preserve the explanation for the article. The first post worked when it
-named the knowledge graph made with pen and paper and the discovery that coding
-agents are vibe coded. Explaining the coordinate system there would have spent
-the article's reveal in the advertisement.
+Promotion planning can start after the prose is settled. Publishing the
+promotion waits until the article is public and the exact promotion bundle is
+approved. A feed post is not a summary: it should give away enough to establish
+the problem and the surprise, then preserve the explanation for the article.
+The first post worked when it named the knowledge graph made with pen and paper
+and the discovery that coding agents are vibe coded. Explaining the coordinate
+system there would have spent the article's reveal in the advertisement.
 
 `05-promotion.md` is the record for this stage. Keep the article URL, cover and
 exact alt text at the top. For each channel, keep the format, exact post and
@@ -408,3 +425,20 @@ successfully! Media ID: <id>`. Its whole output is not one JSON document.
 
 Do not use verbose xurl output in automation. It mixes diagnostics into stdout
 and can expose the OAuth Authorization header.
+
+## Closing a writing thread
+
+A writing thread can close before publication or promotion. The state is safe
+to resume elsewhere when:
+
+1. One tracked file owns every active stage and superseded review artifacts are
+   gone.
+2. The source post explicitly says whether it is a draft.
+3. The retrospective records the reusable lessons, and `PROCESS.md` contains
+   any resulting workflow change.
+4. `05-promotion.md` states the article and approval status when promotion work
+   exists.
+5. Pending actions such as the actual publication date, publication, promotion
+   approval, and later analytics are named rather than left in the thread.
+6. Generated review artifacts remain outside Git, and the tracked worktree is
+   clean and synchronized when Henrique asks for the work to be pushed.
