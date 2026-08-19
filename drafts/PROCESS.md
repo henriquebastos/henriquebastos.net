@@ -88,7 +88,7 @@ the first finished one invalidates.
 
 A claim graph is optional. Use it when several arguments genuinely share
 premises or depend on one another in ways a compact outline would hide. Keep one
-canonical `02-graph.md`; render layers and diagrams only as temporary views.
+canonical `02-graph.md`. Do not create derived graph files.
 
 The agent owns the graph's complexity. Henrique should not have to navigate
 claim IDs, choose between a graph and a workbench, or reread a large planning

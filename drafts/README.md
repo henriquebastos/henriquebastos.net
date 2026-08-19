@@ -31,8 +31,6 @@ carry its versions. Create two files at one stage only when Henrique explicitly
 wants to compare alternatives side by side. Once he chooses, keep the winner as
 the active file and leave the rejected route in Git history.
 
-Generated graphs, rendered diagrams, audits, diffs, and review reports are
-temporary views. Put reviewable generated media in `.amp/in/artifacts`, not in
-the draft directory. A decision that changes the reusable process belongs in
-`PROCESS.md`; a prose edit belongs in the draft's Git diff, not in another
-Markdown record.
+Audits, diffs, and review reports are temporary views. A decision that changes
+the reusable process belongs in `PROCESS.md`; a prose edit belongs in the
+draft's Git diff, not in another Markdown record.
