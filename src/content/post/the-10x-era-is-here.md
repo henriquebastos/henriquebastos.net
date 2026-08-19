@@ -4,7 +4,7 @@ publishDate: 2026-08-18
 description: "Coding agents make code cheaper. The real opportunity is to improve how software creates value, not accumulate code inventory faster."
 draft: true
 coverImage:
-  src: ./ten-times-more-what.png
+  src: ./the-10x-era-is-here.png
   alt: "Aerial view of sports cars gridlocked on one interchange while traffic streaks past around them."
 ---
 

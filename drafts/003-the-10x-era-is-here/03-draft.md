@@ -3,7 +3,7 @@
 <!--
 Status: Complete pre-review draft that entered author review on August 18, 2026.
 It is preserved as the baseline for comparison with the reviewed article in
-`src/content/post/ten-times-more-what.md`.
+`src/content/post/the-10x-era-is-here.md`.
 -->
 
 An engineering leader watches an agent build in one afternoon what used to
