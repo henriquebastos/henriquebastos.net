@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Amp's generated, orb-specific portal manifests
 .amp/portals/
+
+# Amp's generated review and transfer artifacts
+.amp/in/
