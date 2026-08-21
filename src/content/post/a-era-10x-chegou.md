@@ -6,7 +6,7 @@ draft: true
 lang: pt-BR
 translationOf: the-10x-era-is-here
 coverImage:
-  src: ./the-10x-era-is-here.png
+  src: ./the-10x-era-is-here-pull-requests.png
   alt: "Ilustração de um desenvolvedor cercado por telas de pull requests, com imagens sobrepostas da cabeça, braços e mãos indicando movimento acelerado."
 ---
 

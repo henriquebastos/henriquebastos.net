@@ -3,7 +3,7 @@ title: "The 10x Era Is Here. Ten Times More What?"
 publishDate: 2026-08-19
 description: "Ten times more code is the shallowest ambition for coding agents. The real leverage lies deeper."
 coverImage:
-  src: ./the-10x-era-is-here.png
+  src: ./the-10x-era-is-here-pull-requests.png
   alt: "Illustration of a developer surrounded by pull request screens, with overlapping images of his head, arms, and hands conveying rapid movement."
 ---
 
