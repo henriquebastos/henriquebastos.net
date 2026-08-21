@@ -6,8 +6,8 @@ draft: true
 lang: pt-BR
 translationOf: the-10x-era-is-here
 coverImage:
-  src: ./the-10x-era-is-here.png
-  alt: "Vista aérea de carros esportivos parados em um viaduto enquanto o trânsito flui ao redor."
+  src: ./a-era-10x-chegou.png
+  alt: "Desenvolvedor cercado por telas e teclados usa braços e tentáculos enquanto olha rapidamente para vários monitores."
 ---
 
 Você lidera uma equipe de engenharia de software e sai de uma reunião em que

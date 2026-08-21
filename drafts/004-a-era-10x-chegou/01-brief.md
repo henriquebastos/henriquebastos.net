@@ -23,7 +23,9 @@ feature flag, low-code, no-code, and product-market fit.
 - "Deep Engineering™" becomes "Engenharia Profunda™".
 - "Free your mind" becomes "Liberte sua mente", preserving the Matrix
   reference.
-- The original cover is reused with translated alternative text.
+- The Portuguese version has its own cover: an overwhelmed developer surrounded
+  by screens, keyboards, arms, and tentacles. Its dark palette keeps it related
+  to the English cover without reusing the traffic image.
 
 ## Status
 
