@@ -5,6 +5,7 @@ description: "AI does not fix bad management. When leaders confuse activity with
 tags:
   - ai
   - management
+ogImage: /og-image/bad-management-amplified-by-ai.jpg
 coverImage:
   src: ./bad-management-amplified-by-ai.png
   alt: "Shadowy boardroom with managers under red puppet strings, suggesting AI-amplified management control."

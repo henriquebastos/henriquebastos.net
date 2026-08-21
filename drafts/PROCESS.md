@@ -347,12 +347,15 @@ edits that file in place.
    `description`, and `coverImage` with `src` and `alt`.
 3. Extract several visual concepts from the settled article before generating
    cover candidates. Select the concept first, then refine composition and
-   style. Co-locate the accepted image as `src/content/post/<slug>.png`.
+   style. Co-locate the accepted image as `src/content/post/<slug>.png`. Create
+   a deliberate 1200 × 630 social crop from the accepted cover, save it as
+   `public/og-image/<slug>.jpg`, and set `ogImage` in the post frontmatter.
+   Translations that share a cover can reference the same social image.
 4. Run `pnpm check`, then `pnpm build`.
 5. Open the rendered page and read it, rather than trusting a passing build.
-   Check the title, description, cover and alt text against the accepted text,
-   at desktop and mobile widths, with no overflow and no console errors, and
-   confirm every link resolves.
+   Check the title, description, cover, social image and alt text against the
+   accepted text, at desktop and mobile widths, with no overflow and no console
+   errors, and confirm every link resolves.
 6. When an unpublished article needs to travel as a file, use the
    [project exporter](../.agents/skills/exporting-blog-posts/SKILL.md). Its
    self-contained HTML belongs in `.amp/in/artifacts`, never in Git.

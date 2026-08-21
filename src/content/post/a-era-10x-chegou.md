@@ -5,6 +5,7 @@ description: "Dez vezes mais código é a ambição mais rasa para agentes de pr
 draft: false
 lang: pt-BR
 translationOf: the-10x-era-is-here
+ogImage: /og-image/the-10x-era-is-here-pull-requests.jpg
 coverImage:
   src: ./the-10x-era-is-here-pull-requests.png
   alt: "Ilustração de um desenvolvedor cercado por telas de pull requests, com imagens sobrepostas da cabeça, braços e mãos indicando movimento acelerado."

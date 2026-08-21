@@ -5,6 +5,7 @@ description: "How a coordinate system borrowed from the Zettelkasten turned doze
 tags:
   - ai
   - coding agents
+ogImage: /og-image/how-i-stopped-drowning-in-agent-sessions.jpg
 coverImage:
   src: ./how-i-stopped-drowning-in-agent-sessions.png
   alt: "A developer surrounded by countless agent-session windows, with related sessions forming a glowing branching tree."
