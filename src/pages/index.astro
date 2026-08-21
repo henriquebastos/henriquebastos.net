@@ -1,19 +1,19 @@
 ---
-import { getPostPath, getPostSortDate, getPostsByLanguage, sortMDByDate } from "@/data/post";
+import ArticleTimeline from "@/components/blog/ArticleTimeline.astro";
+import { getPageAlternates } from "@/data/locale";
+import { getPostsByLanguage, sortMDByDate } from "@/data/post";
 import { showcase } from "@/data/showcase";
 import PageLayout from "@/layouts/Base.astro";
 import { siteConfig } from "@/site-config";
-import { formatRailDate } from "@/utils/date";
-import { absoluteUrl, withBase } from "@/utils/path";
+import { absoluteUrl } from "@/utils/path";
 import { Schema } from "astro-seo-schema";
 
 const allPosts = await getPostsByLanguage(siteConfig.lang);
 const allPostsByDate = sortMDByDate(allPosts);
 const TIMELINE_LIMIT = 5;
 const timelinePosts = allPostsByDate.slice(0, TIMELINE_LIMIT);
-const featured = timelinePosts[0];
-const rest = timelinePosts.slice(1);
 const archiveCount = allPosts.length;
+const alternates = getPageAlternates("home", Astro.site);
 
 const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 ---
@@ -45,60 +45,8 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 	}}
 />
 
-<PageLayout meta={{ title: "Home", description: siteConfig.description }}>
-	<section class="writing" aria-labelledby="writing-label">
-		<div class="section-label" id="writing-label">Writing</div>
-		<div class="timeline">
-			{
-				featured && (
-					<a class="post featured" data-astro-prefetch href={withBase(getPostPath(featured))}>
-						<div class="post-rail">
-							<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
-								{formatRailDate(getPostSortDate(featured))}
-							</time>
-							<span class="post-dot" aria-hidden="true" />
-						</div>
-						<div class="post-body">
-							<div class="post-stamp">Latest</div>
-							<h2 class="post-title">{featured.data.title}</h2>
-							<p class="post-excerpt">{featured.data.description}</p>
-							{!!featured.data.tags?.length && (
-								<div class="post-meta">
-									{featured.data.tags.map((t, i) => (
-										<Fragment>
-											{i > 0 && <span class="dot">·</span>}
-											<span>{t}</span>
-										</Fragment>
-									))}
-								</div>
-							)}
-						</div>
-					</a>
-				)
-			}
-
-			{
-				rest.map((p) => (
-					<a class="post" data-astro-prefetch href={withBase(getPostPath(p))}>
-						<div class="post-rail">
-							<time class="post-date" datetime={getPostSortDate(p).toISOString()}>
-								{formatRailDate(getPostSortDate(p))}
-							</time>
-							<span class="post-dot" aria-hidden="true" />
-						</div>
-						<div class="post-body">
-							<h3 class="post-title">{p.data.title}</h3>
-							<p class="post-preview">{p.data.description}</p>
-						</div>
-					</a>
-				))
-			}
-
-			<div class="archive-link">
-				<a data-astro-prefetch href={withBase("/writing/")}>View all {archiveCount} posts →</a>
-			</div>
-		</div>
-	</section>
+<PageLayout alternates={alternates} meta={{ title: "Home", description: siteConfig.description }}>
+	<ArticleTimeline posts={timelinePosts} totalCount={archiveCount} variant="home" />
 
 	{
 		showcase.length > 0 && (
@@ -126,133 +74,11 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 </PageLayout>
 
 <style>
-	/* ---------- Writing timeline ---------- */
-	.writing {
-		margin-bottom: 96px;
-	}
-	/* ---------- Featured post ---------- */
-	.post.featured .post-body {
-		padding-bottom: 56px;
-	}
-	/* Center the rail date/dot on the title line (stamp line + its margin + half the title line). */
-	.post.featured .post-rail {
-		--rail-pad-top: 40.5px;
-	}
-	.post.featured .post-stamp {
-		font-family: var(--font-mono);
-		font-size: 11px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		color: hsl(var(--theme-accent));
-		margin-bottom: 12px;
-	}
-	.post.featured .post-title {
-		font-size: 33px;
-		line-height: 1.14;
-		margin-bottom: 14px;
-		letter-spacing: -0.02em;
-	}
-	.post.featured .post-excerpt {
-		font-size: 19.5px;
-		line-height: 1.62;
-		color: hsl(var(--theme-text-muted));
-		margin: 0 0 16px;
-		max-width: 58ch;
-		word-wrap: break-word;
-		overflow-wrap: anywhere;
-	}
-	.post.featured .post-meta {
-		font-family: var(--font-mono);
-		font-size: 11.5px;
-		color: hsl(var(--theme-text) / 0.72);
-		font-variant-numeric: tabular-nums;
-		font-feature-settings: "tnum";
-	}
-	.post.featured .post-meta .dot {
-		color: var(--faint);
-		margin: 0 8px;
-	}
-	.post.featured .post-dot {
-		--rail-dot-size: 11px;
-		border-color: hsl(var(--theme-text-muted));
-	}
-	.post.featured:hover .post-dot {
-		background: hsl(var(--theme-accent));
-		border-color: hsl(var(--theme-accent));
-	}
-
-	.archive-link {
-		grid-column: 2;
-		margin-top: 8px;
-		font-family: var(--font-sans);
-		font-size: 14.5px;
-		color: hsl(var(--theme-text) / 0.72);
-	}
-	.archive-link a {
-		display: inline-block;
-		padding: 6px 0;
-		color: hsl(var(--theme-text-muted));
-		text-decoration: underline;
-		text-decoration-color: hsl(var(--theme-text) / 0.35);
-		text-decoration-thickness: 1px;
-		text-underline-offset: 3px;
-		transition:
-			color 0.2s ease,
-			text-decoration-color 0.2s ease;
-	}
-	.archive-link a:hover {
-		color: hsl(var(--theme-accent));
-		text-decoration-color: hsl(var(--theme-accent));
-	}
-
 	.work {
 		margin-bottom: 88px;
 	}
 
-	.archive-link a:focus-visible {
-		outline: 2px solid hsl(var(--theme-accent));
-		outline-offset: 3px;
-		border-radius: 3px;
-	}
-
-	@media (max-width: 720px) {
-		.post.featured .post-rail {
-			display: none;
-		}
-		.post.featured .post-body {
-			padding-bottom: 24px;
-			border-bottom: 1px solid var(--hairline);
-			margin-bottom: 4px;
-		}
-		.post.featured .post-title {
-			font-size: 24px;
-			line-height: 1.2;
-			letter-spacing: -0.015em;
-			margin-bottom: 10px;
-		}
-		.post.featured .post-excerpt {
-			font-size: 17px;
-			line-height: 1.55;
-			margin: 0 0 10px;
-		}
-		.post.featured .post-meta {
-			font-size: 11px;
-		}
-		.archive-link {
-			margin-top: 0;
-		}
-	}
-
 	@media (max-width: 420px) {
-		.writing {
-			margin-bottom: 64px;
-		}
-		.post.featured .post-title {
-			font-size: 19px;
-		}
-		.post.featured .post-excerpt {
-			font-size: 16px;
-		}
 		.work {
 			margin-bottom: 56px;
 		}

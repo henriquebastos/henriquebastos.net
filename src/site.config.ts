@@ -1,5 +1,6 @@
-import type { SiteConfig } from "@/types";
 import type { AstroExpressiveCodeOptions } from "astro-expressive-code";
+import { localeConfig } from "./data/locale";
+import type { SiteConfig } from "./types";
 
 export const siteConfig: SiteConfig = {
 	author: "Henrique Bastos",
@@ -11,7 +12,7 @@ export const siteConfig: SiteConfig = {
 			year: "numeric",
 		},
 	},
-	description: "25 years of Python. Then AI bit me. Now I'm drinking from the firehose.",
+	description: localeConfig["en-US"].description,
 	lang: "en-US",
 	ogLocale: "en_US",
 	sortPostsByUpdatedDate: false,
@@ -38,25 +39,6 @@ export const siteConfig: SiteConfig = {
 		goatcounterUrl: "https://henriquebastos.goatcounter.com/count",
 	},
 };
-
-export const menuLinks: { path: string; title: string }[] = [
-	{
-		path: "/",
-		title: "Home",
-	},
-	{
-		path: "/writing/",
-		title: "Writing",
-	},
-	{
-		path: "/about/",
-		title: "About",
-	},
-	{
-		path: "/pt/",
-		title: "PT",
-	},
-];
 
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	styleOverrides: {

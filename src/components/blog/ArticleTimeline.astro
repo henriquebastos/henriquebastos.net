@@ -1,0 +1,279 @@
+---
+import { getLocaleConfig } from "@/data/locale";
+import { getPostPath, getPostSortDate } from "@/data/post";
+import { siteConfig } from "@/site-config";
+import type { SiteLanguage } from "@/types";
+import { formatRailDate } from "@/utils/date";
+import { withBase } from "@/utils/path";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+	lang?: SiteLanguage;
+	nextPage?: string;
+	posts: CollectionEntry<"post">[];
+	previousPage?: string;
+	totalCount?: number;
+	variant?: "archive" | "home";
+}
+
+const {
+	lang = siteConfig.lang,
+	nextPage,
+	posts,
+	previousPage,
+	totalCount = posts.length,
+	variant = "archive",
+} = Astro.props;
+const locale = getLocaleConfig(lang);
+const [featured, ...rest] = posts;
+const showSection = variant === "archive" || posts.length > 0;
+---
+
+{
+	showSection && (
+		<section class="writing" aria-labelledby="writing-label">
+			<div class="section-label" id="writing-label">
+				{locale.articlesLabel}
+				{variant === "archive" && ` · ${locale.articleCountLabel(totalCount)}`}
+			</div>
+
+			<div class="timeline">
+				{variant === "home" ? (
+					<>
+						{featured && (
+							<a class="post featured" data-astro-prefetch href={withBase(getPostPath(featured))}>
+								<div class="post-rail">
+									<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
+										{formatRailDate(getPostSortDate(featured), lang)}
+									</time>
+									<span class="post-dot" aria-hidden="true" />
+								</div>
+								<div class="post-body">
+									<div class="post-stamp">{locale.latestLabel}</div>
+									<h2 class="post-title">{featured.data.title}</h2>
+									<p class="post-excerpt">{featured.data.description}</p>
+									{!!featured.data.tags?.length && (
+										<div class="post-meta">
+											{featured.data.tags.map((tag, index) => (
+												<Fragment>
+													{index > 0 && <span class="dot">·</span>}
+													<span>{tag}</span>
+												</Fragment>
+											))}
+										</div>
+									)}
+								</div>
+							</a>
+						)}
+
+						{rest.map((post) => (
+							<a class="post" data-astro-prefetch href={withBase(getPostPath(post))}>
+								<div class="post-rail">
+									<time class="post-date" datetime={getPostSortDate(post).toISOString()}>
+										{formatRailDate(getPostSortDate(post), lang)}
+									</time>
+									<span class="post-dot" aria-hidden="true" />
+								</div>
+								<div class="post-body">
+									<h3 class="post-title">{post.data.title}</h3>
+									<p class="post-preview">{post.data.description}</p>
+								</div>
+							</a>
+						))}
+
+						<div class="archive-link">
+							<a data-astro-prefetch href={withBase(locale.articlesPath)}>
+								{locale.articleArchiveLabel(totalCount)}
+							</a>
+						</div>
+					</>
+				) : (
+					posts.map((post) => (
+						<a class="post" data-astro-prefetch href={withBase(getPostPath(post))}>
+							<div class="post-rail">
+								<time class="post-date" datetime={getPostSortDate(post).toISOString()}>
+									{formatRailDate(getPostSortDate(post), lang)}
+								</time>
+								<span class="post-dot" aria-hidden="true" />
+							</div>
+							<div class="post-body">
+								<h2 class="post-title">{post.data.title}</h2>
+								<p class="post-preview">{post.data.description}</p>
+							</div>
+						</a>
+					))
+				)}
+			</div>
+
+			{variant === "archive" && (previousPage || nextPage) && (
+				<nav class="pagination" aria-label={locale.paginationLabel}>
+					{previousPage && (
+						<a class="pag-link prev" data-astro-prefetch href={previousPage}>
+							{locale.previousPageLabel}
+						</a>
+					)}
+					{nextPage && (
+						<a class="pag-link next" data-astro-prefetch href={nextPage}>
+							{locale.nextPageLabel}
+						</a>
+					)}
+				</nav>
+			)}
+		</section>
+	)
+}
+
+<style>
+	.writing {
+		margin-bottom: 96px;
+	}
+
+	.post.featured .post-body {
+		padding-bottom: 56px;
+	}
+	.post.featured .post-rail {
+		--rail-pad-top: 40.5px;
+	}
+	.post.featured .post-stamp {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: hsl(var(--theme-accent));
+		margin-bottom: 12px;
+	}
+	.post.featured .post-title {
+		font-size: 33px;
+		line-height: 1.14;
+		margin-bottom: 14px;
+		letter-spacing: -0.02em;
+	}
+	.post.featured .post-excerpt {
+		font-size: 19.5px;
+		line-height: 1.62;
+		color: hsl(var(--theme-text-muted));
+		margin: 0 0 16px;
+		max-width: 58ch;
+		word-wrap: break-word;
+		overflow-wrap: anywhere;
+	}
+	.post.featured .post-meta {
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		color: hsl(var(--theme-text) / 0.72);
+		font-variant-numeric: tabular-nums;
+		font-feature-settings: "tnum";
+	}
+	.post.featured .post-meta .dot {
+		color: var(--faint);
+		margin: 0 8px;
+	}
+	.post.featured .post-dot {
+		--rail-dot-size: 11px;
+		border-color: hsl(var(--theme-text-muted));
+	}
+	.post.featured:hover .post-dot {
+		background: hsl(var(--theme-accent));
+		border-color: hsl(var(--theme-accent));
+	}
+
+	.archive-link,
+	.pagination {
+		grid-column: 2;
+		margin-top: 8px;
+	}
+	.archive-link {
+		font-family: var(--font-sans);
+		font-size: 14.5px;
+		color: hsl(var(--theme-text) / 0.72);
+	}
+	.archive-link a,
+	.pag-link {
+		display: inline-block;
+		color: hsl(var(--theme-text-muted));
+		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-text) / 0.35);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
+	}
+	.archive-link a {
+		padding: 6px 0;
+	}
+	.archive-link a:hover,
+	.pag-link:hover {
+		color: hsl(var(--theme-accent));
+		text-decoration-color: hsl(var(--theme-accent));
+	}
+	.archive-link a:focus-visible,
+	.pag-link:focus-visible {
+		outline: 2px solid hsl(var(--theme-accent));
+		outline-offset: 3px;
+		border-radius: 3px;
+	}
+
+	.pagination {
+		display: flex;
+		gap: 24px;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.pag-link {
+		padding: 8px 4px;
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+	.pag-link.prev {
+		margin-right: auto;
+	}
+	.pag-link.next {
+		margin-left: auto;
+	}
+
+	@media (max-width: 720px) {
+		.post.featured .post-rail {
+			display: none;
+		}
+		.post.featured .post-body {
+			padding-bottom: 24px;
+			border-bottom: 1px solid var(--hairline);
+			margin-bottom: 4px;
+		}
+		.post.featured .post-title {
+			font-size: 24px;
+			line-height: 1.2;
+			letter-spacing: -0.015em;
+			margin-bottom: 10px;
+		}
+		.post.featured .post-excerpt {
+			font-size: 17px;
+			line-height: 1.55;
+			margin: 0 0 10px;
+		}
+		.post.featured .post-meta {
+			font-size: 11px;
+		}
+		.archive-link {
+			margin-top: 0;
+		}
+		.pagination {
+			margin-top: 16px;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.writing {
+			margin-bottom: 64px;
+		}
+		.post.featured .post-title {
+			font-size: 19px;
+		}
+		.post.featured .post-excerpt {
+			font-size: 16px;
+		}
+	}
+</style>

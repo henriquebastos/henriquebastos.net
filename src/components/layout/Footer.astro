@@ -1,7 +1,15 @@
 ---
+import { getLocaleConfig } from "@/data/locale";
 import { siteConfig } from "@/site-config";
+import type { SiteLanguage } from "@/types";
 import { withBase } from "@/utils/path";
 
+interface Props {
+	lang?: SiteLanguage;
+}
+
+const { lang = siteConfig.lang } = Astro.props;
+const locale = getLocaleConfig(lang);
 const year = new Date().getFullYear();
 ---
 
@@ -10,12 +18,12 @@ const year = new Date().getFullYear();
 		<span>&copy; {year} {siteConfig.author}</span>
 		{!siteConfig.hideThemeCredit && (
 			<span class="theme-credit">
-				🚀 Powered by <a href="https://github.com/AnjayGoel/astro-sienna" rel="noopener">Astro Sienna</a>
+				🚀 {locale.themeCreditLabel} <a href="https://github.com/AnjayGoel/astro-sienna" rel="noopener">Astro Sienna</a>
 			</span>
 		)}
 	</div>
 	<div class="right">
-		<a href={withBase("/rss.xml")}>RSS</a>
+		<a href={withBase(locale.feedPath)}>RSS</a>
 	</div>
 </footer>
 

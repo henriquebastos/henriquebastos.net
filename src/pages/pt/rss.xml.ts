@@ -1,0 +1,3 @@
+import { createArticleFeed } from "@/data/feed";
+
+export const GET = () => createArticleFeed("pt-BR");

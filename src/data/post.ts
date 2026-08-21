@@ -1,15 +1,54 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { siteConfig } from "@/site-config";
+import type { SiteLanguage } from "@/types";
+
+function validateTranslations(posts: CollectionEntry<"post">[]): void {
+	const postsById = new Map(posts.map((post) => [post.id, post]));
+	const translationsBySource = new Map<string, string>();
+
+	for (const post of posts) {
+		const sourceId = post.data.translationOf;
+		if (!sourceId) continue;
+
+		if (sourceId === post.id) {
+			throw new Error(`Post "${post.id}" cannot translate itself.`);
+		}
+
+		const source = postsById.get(sourceId);
+		if (!source) {
+			throw new Error(`Post "${post.id}" references missing translation source "${sourceId}".`);
+		}
+
+		if (source.data.lang === post.data.lang) {
+			throw new Error(
+				`Post "${post.id}" and translation source "${sourceId}" both use ${post.data.lang}.`,
+			);
+		}
+
+		const existingTranslation = translationsBySource.get(sourceId);
+		if (existingTranslation) {
+			throw new Error(
+				`Posts "${existingTranslation}" and "${post.id}" both translate "${sourceId}".`,
+			);
+		}
+
+		translationsBySource.set(sourceId, post.id);
+	}
+}
 
 /** Fetch all posts. Drafts are excluded in production builds. */
 export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
-	return await getCollection("post", ({ data }) => {
+	const posts = await getCollection("post", ({ data }) => {
 		return import.meta.env.PROD ? !data.draft : true;
 	});
+	validateTranslations(posts);
+	return posts;
 }
 
 /** Fetch posts written in one language. */
-export async function getPostsByLanguage(language: string): Promise<CollectionEntry<"post">[]> {
+export async function getPostsByLanguage(
+	language: SiteLanguage,
+): Promise<CollectionEntry<"post">[]> {
 	return (await getAllPosts()).filter(({ data }) => data.lang === language);
 }
 

@@ -23,6 +23,8 @@ export interface ProfileConfig {
 	avatar?: string;
 }
 
+export type SiteLanguage = "en-US" | "pt-BR";
+
 /** Optional Giscus comment-widget config (https://giscus.app). */
 export interface CommentsConfig {
 	/** GitHub repository hosting the discussions, e.g. "user/repo". */
@@ -51,7 +53,7 @@ export interface SiteConfig {
 		options: Intl.DateTimeFormatOptions;
 	};
 	description: string;
-	lang: string;
+	lang: SiteLanguage;
 	ogLocale: string;
 	sortPostsByUpdatedDate: boolean;
 	title: string;
@@ -77,7 +79,7 @@ export interface SiteMeta {
 
 export interface LanguageAlternate {
 	href: string;
-	lang: string;
+	lang: SiteLanguage;
 }
 
 /** Webmentions */

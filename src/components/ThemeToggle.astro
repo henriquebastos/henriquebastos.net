@@ -1,4 +1,17 @@
-<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+---
+import { getLocaleConfig } from "@/data/locale";
+import { siteConfig } from "@/site-config";
+import type { SiteLanguage } from "@/types";
+
+interface Props {
+	lang?: SiteLanguage;
+}
+
+const { lang = siteConfig.lang } = Astro.props;
+const locale = getLocaleConfig(lang);
+---
+
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label={locale.toggleThemeLabel}>
 	<svg class="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
 		<circle cx="8" cy="8" r="3.25"></circle>
 		<path d="M8 1.5v1.5M8 13v1.5M14.5 8H13M3 8H1.5M12.6 3.4l-1.06 1.06M4.46 11.54 3.4 12.6M12.6 12.6l-1.06-1.06M4.46 4.46 3.4 3.4"></path>
