@@ -7,7 +7,7 @@ lang: pt-BR
 translationOf: the-10x-era-is-here
 coverImage:
   src: ./a-era-10x-chegou.png
-  alt: "Desenvolvedor cercado por telas e teclados usa braços e tentáculos enquanto olha rapidamente para vários monitores."
+  alt: "Ilustração de um desenvolvedor cercado por telas de pull requests, com imagens sobrepostas da cabeça, braços e mãos indicando movimento acelerado."
 ---
 
 Você lidera uma equipe de engenharia de software e sai de uma reunião em que
