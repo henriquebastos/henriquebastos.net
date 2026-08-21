@@ -30,6 +30,6 @@ feature flag, low-code, no-code, and product-market fit.
 ## Status
 
 The complete baseline is in [`03-draft.md`](03-draft.md). Author review edits
-the active source post at
+produced the active source post at
 [`src/content/post/a-era-10x-chegou.md`](../../src/content/post/a-era-10x-chegou.md),
-which remains excluded from production while `draft: true`.
+published on August 21, 2026.
