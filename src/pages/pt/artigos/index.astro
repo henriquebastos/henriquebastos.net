@@ -1,0 +1,48 @@
+---
+import { getPostPath, getPostSortDate, getPostsByLanguage, sortMDByDate } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+import { formatRailDate } from "@/utils/date";
+import { withBase } from "@/utils/path";
+
+const posts = sortMDByDate(await getPostsByLanguage("pt-BR"));
+const meta = {
+	description:
+		"Textos de Henrique Bastos sobre engenharia de software, inteligência artificial e carreira.",
+	title: "Textos em Português",
+};
+---
+
+<PageLayout lang="pt-BR" meta={meta}>
+	<section class="writing" aria-labelledby="writing-label">
+		<div class="section-label" id="writing-label">Textos · {posts.length}</div>
+		<div class="timeline">
+			{
+				posts.map((post) => (
+					<a class="post" data-astro-prefetch href={withBase(getPostPath(post))}>
+						<div class="post-rail">
+							<time class="post-date" datetime={getPostSortDate(post).toISOString()}>
+								{formatRailDate(getPostSortDate(post), "pt-BR")}
+							</time>
+							<span class="post-dot" aria-hidden="true" />
+						</div>
+						<div class="post-body">
+							<h2 class="post-title">{post.data.title}</h2>
+							<p class="post-preview">{post.data.description}</p>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</PageLayout>
+
+<style>
+	.writing {
+		margin-bottom: 96px;
+	}
+	@media (max-width: 420px) {
+		.writing {
+			margin-bottom: 64px;
+		}
+	}
+</style>

@@ -8,6 +8,16 @@ export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
 	});
 }
 
+/** Fetch posts written in one language. */
+export async function getPostsByLanguage(language: string): Promise<CollectionEntry<"post">[]> {
+	return (await getAllPosts()).filter(({ data }) => data.lang === language);
+}
+
+/** Public URL path for a post in its language section. */
+export function getPostPath(post: CollectionEntry<"post">): string {
+	return post.data.lang === "pt-BR" ? `/pt/artigos/${post.id}/` : `/writing/${post.id}/`;
+}
+
 /** Date used for sorting — `updatedDate` if `siteConfig.sortPostsByUpdatedDate`, else `publishDate`. */
 export function getPostSortDate(post: CollectionEntry<"post">): Date {
 	return siteConfig.sortPostsByUpdatedDate && post.data.updatedDate !== undefined

@@ -1,26 +1,87 @@
 ---
 import { portugueseArchive } from "@/data/portugueseArchive";
+import { getPostPath, getPostSortDate, getPostsByLanguage, sortMDByDate } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
+import { formatRailDate } from "@/utils/date";
 import { withBase } from "@/utils/path";
 
+const posts = sortMDByDate(await getPostsByLanguage("pt-BR"));
+const TIMELINE_LIMIT = 5;
+const timelinePosts = posts.slice(0, TIMELINE_LIMIT);
+const featured = timelinePosts[0];
+const rest = timelinePosts.slice(1);
 const meta = {
 	description:
-		"Acervo em português de Henrique Bastos: cursos, palestras e aulas abertas sobre Python, Django, design de software, carreira e autonomia.",
-	title: "Acervo em Português",
+		"Textos e acervo em português de Henrique Bastos sobre software, IA, Python, Django, carreira e autonomia.",
+	title: "Em Português",
 };
 ---
 
 <PageLayout lang="pt-BR" meta={meta}>
+	{
+		posts.length > 0 && (
+			<section class="writing" aria-labelledby="writing-title">
+				<div class="section-label" id="writing-title">
+					Artigos
+				</div>
+				<div class="timeline">
+					{featured && (
+						<a class="post featured" data-astro-prefetch href={withBase(getPostPath(featured))}>
+							<div class="post-rail">
+								<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
+									{formatRailDate(getPostSortDate(featured), "pt-BR")}
+								</time>
+								<span class="post-dot" aria-hidden="true" />
+							</div>
+							<div class="post-body">
+								<div class="post-stamp">Mais recente</div>
+								<h2 class="post-title">{featured.data.title}</h2>
+								<p class="post-excerpt">{featured.data.description}</p>
+								{!!featured.data.tags?.length && (
+									<div class="post-meta">
+										{featured.data.tags.map((tag, index) => (
+											<Fragment>
+												{index > 0 && <span class="dot">·</span>}
+												<span>{tag}</span>
+											</Fragment>
+										))}
+									</div>
+								)}
+							</div>
+						</a>
+					)}
+					{rest.map((post) => (
+						<a class="post" data-astro-prefetch href={withBase(getPostPath(post))}>
+							<div class="post-rail">
+								<time class="post-date" datetime={getPostSortDate(post).toISOString()}>
+									{formatRailDate(getPostSortDate(post), "pt-BR")}
+								</time>
+								<span class="post-dot" aria-hidden="true" />
+							</div>
+							<div class="post-body">
+								<h3 class="post-title">{post.data.title}</h3>
+								<p class="post-preview">{post.data.description}</p>
+							</div>
+						</a>
+					))}
+					<div class="archive-link">
+						<a data-astro-prefetch href={withBase("/pt/artigos/")}>Ver todos os artigos →</a>
+					</div>
+				</div>
+			</section>
+		)
+	}
+
 	<section class="archive-hero" aria-labelledby="pt-title">
 		<div class="section-label">Acervo em Português</div>
-		<h1 id="pt-title">Cursos, palestras e outros materiais.</h1>
+		<h2 id="pt-title">Cursos, palestras e outros materiais.</h2>
 		<p>
-			Durante muitos anos eu ensinei Python, Django, design de software, carreira e
-			autonomia para desenvolvedores.
+			Durante muitos anos eu ensinei Python, Django, design de software, carreira e autonomia para
+			desenvolvedores.
 		</p>
 		<p>
-			Este material está disponível gratuitamente na internet para ajudar quem está
-			trilhando esse caminho.
+			Este material está disponível gratuitamente na internet para ajudar quem está trilhando esse
+			caminho.
 		</p>
 	</section>
 
@@ -48,8 +109,8 @@ const meta = {
 						<span class="badge">Acervo público</span>
 					</div>
 					<p>
-						Conversas, talks e aulas abertas sobre autonomia, carreira, Python, Django
-						e desenvolvimento de software.
+						Conversas, talks e aulas abertas sobre autonomia, carreira, Python, Django e
+						desenvolvimento de software.
 					</p>
 				</a>
 			</li>
@@ -59,24 +120,101 @@ const meta = {
 	<section class="archive-section" aria-labelledby="courses-title">
 		<div class="section-label" id="courses-title">Cursos em destaque</div>
 		<ul class="compact-list">
-			{portugueseArchive.featuredCourses.map((course) => (
-				<li>
-					<a href={course.url} rel="noreferrer" target="_blank">
-						<strong>{course.title}</strong>
-						<span>{course.videoCount} vídeos · {course.topic}</span>
-					</a>
-				</li>
-			))}
+			{
+				portugueseArchive.featuredCourses.map((course) => (
+					<li>
+						<a href={course.url} rel="noreferrer" target="_blank">
+							<strong>{course.title}</strong>
+							<span>
+								{course.videoCount} vídeos · {course.topic}
+							</span>
+						</a>
+					</li>
+				))
+			}
 		</ul>
-		<p class="more-link"><a data-astro-prefetch href={withBase("/pt/cursos/")}>Ver cursos e séries →</a></p>
+		<p class="more-link">
+			<a data-astro-prefetch href={withBase("/pt/cursos/")}>Ver cursos e séries →</a>
+		</p>
 	</section>
 </PageLayout>
 
 <style>
+	.writing {
+		margin-bottom: 96px;
+	}
+	.post.featured .post-body {
+		padding-bottom: 56px;
+	}
+	.post.featured .post-rail {
+		--rail-pad-top: 40.5px;
+	}
+	.post.featured .post-stamp {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: hsl(var(--theme-accent));
+		margin-bottom: 12px;
+	}
+	.post.featured .post-title {
+		font-size: 33px;
+		line-height: 1.14;
+		margin-bottom: 14px;
+		letter-spacing: -0.02em;
+	}
+	.post.featured .post-excerpt {
+		font-size: 19.5px;
+		line-height: 1.62;
+		color: hsl(var(--theme-text-muted));
+		margin: 0 0 16px;
+		max-width: 58ch;
+		word-wrap: break-word;
+		overflow-wrap: anywhere;
+	}
+	.post.featured .post-meta {
+		font-family: var(--font-mono);
+		font-size: 11.5px;
+		color: hsl(var(--theme-text) / 0.72);
+		font-variant-numeric: tabular-nums;
+		font-feature-settings: "tnum";
+	}
+	.post.featured .post-meta .dot {
+		color: var(--faint);
+		margin: 0 8px;
+	}
+	.post.featured .post-dot {
+		--rail-dot-size: 11px;
+		border-color: hsl(var(--theme-text-muted));
+	}
+	.post.featured:hover .post-dot {
+		background: hsl(var(--theme-accent));
+		border-color: hsl(var(--theme-accent));
+	}
+	.archive-link {
+		grid-column: 2;
+		margin-top: 8px;
+		font-family: var(--font-sans);
+		font-size: 14.5px;
+		color: hsl(var(--theme-text) / 0.72);
+	}
+	.archive-link a {
+		display: inline-block;
+		padding: 6px 0;
+		color: hsl(var(--theme-text-muted));
+		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-text) / 0.35);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 3px;
+	}
+	.archive-link a:hover {
+		color: hsl(var(--theme-accent));
+		text-decoration-color: hsl(var(--theme-accent));
+	}
 	.archive-hero {
 		margin-bottom: 72px;
 	}
-	.archive-hero h1 {
+	.archive-hero h2 {
 		font-family: var(--font-serif);
 		font-size: 34px;
 		font-weight: 550;
@@ -140,12 +278,48 @@ const meta = {
 		text-decoration-color: hsl(var(--theme-accent));
 	}
 	@media (max-width: 720px) {
-		.archive-hero h1 {
+		.post.featured .post-rail {
+			display: none;
+		}
+		.post.featured .post-body {
+			padding-bottom: 24px;
+			border-bottom: 1px solid var(--hairline);
+			margin-bottom: 4px;
+		}
+		.post.featured .post-title {
+			font-size: 24px;
+			line-height: 1.2;
+			letter-spacing: -0.015em;
+			margin-bottom: 10px;
+		}
+		.post.featured .post-excerpt {
+			font-size: 17px;
+			line-height: 1.55;
+			margin: 0 0 10px;
+		}
+		.post.featured .post-meta {
+			font-size: 11px;
+		}
+		.archive-link {
+			margin-top: 0;
+		}
+		.archive-hero h2 {
 			font-size: 28px;
 			max-width: none;
 		}
 		.archive-hero p {
 			font-size: 18px;
+		}
+	}
+	@media (max-width: 420px) {
+		.writing {
+			margin-bottom: 64px;
+		}
+		.post.featured .post-title {
+			font-size: 19px;
+		}
+		.post.featured .post-excerpt {
+			font-size: 16px;
 		}
 	}
 </style>

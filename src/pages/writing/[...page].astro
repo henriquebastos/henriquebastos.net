@@ -1,14 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getAllPosts, getPostSortDate, sortMDByDate } from "@/data/post";
+import { getPostPath, getPostSortDate, getPostsByLanguage, sortMDByDate } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
+import { siteConfig } from "@/site-config";
 import { formatRailDate } from "@/utils/date";
 import { withBase } from "@/utils/path";
 import type { GetStaticPaths, Page } from "astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const MAX_POSTS_PER_PAGE = 1000;
-	const allPosts = await getAllPosts();
+	const allPosts = await getPostsByLanguage(siteConfig.lang);
 	const allPostsByDate = sortMDByDate(allPosts);
 	return paginate(allPostsByDate, { pageSize: MAX_POSTS_PER_PAGE });
 }) satisfies GetStaticPaths;
@@ -48,11 +49,7 @@ const totalCount = page.total;
 		<div class="timeline">
 			{
 				page.data.map((p) => (
-					<a
-						class="post"
-						data-astro-prefetch
-						href={withBase(`/writing/${p.id}/`)}
-					>
+					<a class="post" data-astro-prefetch href={withBase(getPostPath(p))}>
 						<div class="post-rail">
 							<time class="post-date" datetime={getPostSortDate(p).toISOString()}>
 								{formatRailDate(getPostSortDate(p))}
@@ -111,7 +108,9 @@ const totalCount = page.total;
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.pag-link.prev {
 		margin-right: auto;

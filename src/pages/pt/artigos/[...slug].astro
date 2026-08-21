@@ -1,14 +1,12 @@
 ---
 import { getPostsByLanguage } from "@/data/post";
 import PostLayout from "@/layouts/BlogPost.astro";
-import { siteConfig } from "@/site-config";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
 
-// getStaticPaths won't run under an SSR adapter: https://docs.astro.build/en/guides/routing/#modifying-the-slug-example-for-ssr
 export const getStaticPaths = (async () => {
-	const blogEntries = await getPostsByLanguage(siteConfig.lang);
-	return blogEntries.map((entry) => ({
+	const entries = await getPostsByLanguage("pt-BR");
+	return entries.map((entry) => ({
 		params: { slug: entry.id },
 		props: { entry },
 	}));

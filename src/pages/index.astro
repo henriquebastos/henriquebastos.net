@@ -1,5 +1,5 @@
 ---
-import { getAllPosts, getPostSortDate, sortMDByDate } from "@/data/post";
+import { getPostPath, getPostSortDate, getPostsByLanguage, sortMDByDate } from "@/data/post";
 import { showcase } from "@/data/showcase";
 import PageLayout from "@/layouts/Base.astro";
 import { siteConfig } from "@/site-config";
@@ -7,7 +7,7 @@ import { formatRailDate } from "@/utils/date";
 import { absoluteUrl, withBase } from "@/utils/path";
 import { Schema } from "astro-seo-schema";
 
-const allPosts = await getAllPosts();
+const allPosts = await getPostsByLanguage(siteConfig.lang);
 const allPostsByDate = sortMDByDate(allPosts);
 const TIMELINE_LIMIT = 5;
 const timelinePosts = allPostsByDate.slice(0, TIMELINE_LIMIT);
@@ -51,11 +51,7 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		<div class="timeline">
 			{
 				featured && (
-					<a
-						class="post featured"
-						data-astro-prefetch
-						href={withBase(`/writing/${featured.id}/`)}
-					>
+					<a class="post featured" data-astro-prefetch href={withBase(getPostPath(featured))}>
 						<div class="post-rail">
 							<time class="post-date" datetime={getPostSortDate(featured).toISOString()}>
 								{formatRailDate(getPostSortDate(featured))}
@@ -83,11 +79,7 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 
 			{
 				rest.map((p) => (
-					<a
-						class="post"
-						data-astro-prefetch
-						href={withBase(`/writing/${p.id}/`)}
-					>
+					<a class="post" data-astro-prefetch href={withBase(getPostPath(p))}>
 						<div class="post-rail">
 							<time class="post-date" datetime={getPostSortDate(p).toISOString()}>
 								{formatRailDate(getPostSortDate(p))}
@@ -103,32 +95,34 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 			}
 
 			<div class="archive-link">
-				<a data-astro-prefetch href={withBase("/writing/")}
-					>View all {archiveCount} posts →</a
-				>
+				<a data-astro-prefetch href={withBase("/writing/")}>View all {archiveCount} posts →</a>
 			</div>
 		</div>
 	</section>
 
-	{showcase.length > 0 && (
-		<section class="work" aria-labelledby="work-label">
-			<div class="section-label" id="work-label">Showcase</div>
-			<ul class="work-list">
-				{showcase.map((item) => (
-					<li>
-						<a href={item.href} rel="noreferrer" target="_blank">
-							<div class="head">
-								<span class="name">{item.name}</span>
-								<span class="stack">{item.stack}</span>
-								{item.badge && <span class="badge">{item.badge}</span>}
-							</div>
-							<p>{item.desc}</p>
-						</a>
-					</li>
-				))}
-			</ul>
-		</section>
-	)}
+	{
+		showcase.length > 0 && (
+			<section class="work" aria-labelledby="work-label">
+				<div class="section-label" id="work-label">
+					Showcase
+				</div>
+				<ul class="work-list">
+					{showcase.map((item) => (
+						<li>
+							<a href={item.href} rel="noreferrer" target="_blank">
+								<div class="head">
+									<span class="name">{item.name}</span>
+									<span class="stack">{item.stack}</span>
+									{item.badge && <span class="badge">{item.badge}</span>}
+								</div>
+								<p>{item.desc}</p>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
 </PageLayout>
 
 <style>
@@ -202,7 +196,9 @@ const siteUrl = (path: string) => absoluteUrl(path, Astro.site);
 		text-decoration-color: hsl(var(--theme-text) / 0.35);
 		text-decoration-thickness: 1px;
 		text-underline-offset: 3px;
-		transition: color 0.2s ease, text-decoration-color 0.2s ease;
+		transition:
+			color 0.2s ease,
+			text-decoration-color 0.2s ease;
 	}
 	.archive-link a:hover {
 		color: hsl(var(--theme-accent));

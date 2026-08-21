@@ -75,6 +75,11 @@ export interface SiteMeta {
 	title: string;
 }
 
+export interface LanguageAlternate {
+	href: string;
+	lang: string;
+}
+
 /** Webmentions */
 export interface WebmentionsFeed {
 	children: WebmentionsChildren[];

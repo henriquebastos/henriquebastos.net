@@ -5,7 +5,7 @@ import NewsreaderRegular from "@/assets/fonts/newsreader-regular.ttf";
 import NewsreaderSemiBold from "@/assets/fonts/newsreader-semibold.ttf";
 import { getAllPosts } from "@/data/post";
 import { siteConfig } from "@/site-config";
-import { formatBylineDate } from "@/utils/date";
+import { formatBylineDate, formatReadingTime } from "@/utils/date";
 import { Resvg } from "@resvg/resvg-js";
 import type { APIContext, InferGetStaticPropsType } from "astro";
 import { render } from "astro:content";
@@ -73,12 +73,7 @@ const monogram = (size: number, fill: string) =>
 		</g>
 	</svg>`;
 
-const markup = (props: {
-	name: string;
-	title: string;
-	byline: string;
-	tagsLine: string;
-}) =>
+const markup = (props: { name: string; title: string; byline: string; tagsLine: string }) =>
 	/* Build the string first; the html\`\` tag form escapes interpolated markup (the svg). */
 	html(`<div tw="flex flex-col w-full h-full px-20 py-14" style="background-color: #1e1b18; font-family: Newsreader;">
 		<div tw="flex w-16 h-1.5 mt-8 mb-10" style="background-color: #ff9400;"></div>
@@ -107,11 +102,14 @@ const markup = (props: {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export async function GET(context: APIContext) {
-	const { pubDate, title, tags, readingTime } = context.props as Props;
+	const { lang, pubDate, title, tags, readingTime } = context.props as Props;
 
 	const date = new Date(pubDate);
 	const name = siteConfig.profile?.name ?? siteConfig.author;
-	const bylineParts = [formatBylineDate(date), readingTime].filter(Boolean) as string[];
+	const bylineParts = [
+		formatBylineDate(date, lang === "pt-BR" ? "pt-BR" : "en-GB"),
+		formatReadingTime(readingTime, lang),
+	].filter(Boolean) as string[];
 
 	const svg = await satori(
 		markup({
@@ -137,11 +135,11 @@ export async function getStaticPaths() {
 	const items = await Promise.all(
 		filtered.map(async (post) => {
 			const { remarkPluginFrontmatter } = await render(post);
-			const readingTime =
-				(remarkPluginFrontmatter as { minutesRead?: string })?.minutesRead ?? "";
+			const readingTime = (remarkPluginFrontmatter as { minutesRead?: string })?.minutesRead ?? "";
 			return {
 				params: { slug: post.id },
 				props: {
+					lang: post.data.lang,
 					pubDate: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
 					title: post.data.title,
 					tags: post.data.tags ?? [],

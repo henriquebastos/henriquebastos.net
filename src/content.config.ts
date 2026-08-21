@@ -20,6 +20,7 @@ const post = defineCollection({
 				.optional(),
 			description: z.string().min(10).max(160),
 			draft: z.boolean().default(false),
+			lang: z.enum(["en-US", "pt-BR"]).default("en-US"),
 			ogImage: z.string().optional(),
 			publishDate: z
 				.string()
@@ -27,6 +28,7 @@ const post = defineCollection({
 				.transform((val) => new Date(val)),
 			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
 			title: z.string().max(120),
+			translationOf: z.string().optional(),
 			updatedDate: z
 				.string()
 				.optional()

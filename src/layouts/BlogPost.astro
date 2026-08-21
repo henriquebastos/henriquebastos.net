@@ -5,9 +5,9 @@ import { Image } from "astro:assets";
 import PortalSelectionReview from "@/components/blog/PortalSelectionReview.astro";
 import ShareButtons from "@/components/blog/ShareButtons.astro";
 import WebMentions from "@/components/blog/webmentions/index.astro";
-import { getAllPosts, getPostSortDate, sortMDByDate } from "@/data/post";
+import { getAllPosts, getPostPath, sortMDByDate } from "@/data/post";
 import { siteConfig } from "@/site-config";
-import { formatBylineDate } from "@/utils/date";
+import { formatBylineDate, formatReadingTime } from "@/utils/date";
 import { absoluteUrl, withBase } from "@/utils/path";
 
 import BaseLayout from "./Base.astro";
@@ -19,31 +19,77 @@ interface Props {
 
 const { post } = Astro.props;
 
-const sortedAll = sortMDByDate(await getAllPosts());
-const idx = sortedAll.findIndex((p) => p.id === post.id);
-const newerPost = idx > 0 ? sortedAll[idx - 1] : undefined;
-const olderPost = idx >= 0 && idx < sortedAll.length - 1 ? sortedAll[idx + 1] : undefined;
 const {
-	data: { coverImage, description, ogImage, publishDate, title, updatedDate, tags, draft },
+	data: {
+		coverImage,
+		description,
+		draft,
+		lang,
+		ogImage,
+		publishDate,
+		tags,
+		title,
+		translationOf,
+		updatedDate,
+	},
 	id: slug,
 } = post;
+const allPosts = await getAllPosts();
+const sortedAll = sortMDByDate(allPosts.filter(({ data }) => data.lang === lang));
+const idx = sortedAll.findIndex((candidate) => candidate.id === post.id);
+const newerPost = idx > 0 ? sortedAll[idx - 1] : undefined;
+const olderPost = idx >= 0 && idx < sortedAll.length - 1 ? sortedAll[idx + 1] : undefined;
+const alternatePost = translationOf
+	? allPosts.find((candidate) => candidate.id === translationOf)
+	: allPosts.find((candidate) => candidate.data.translationOf === post.id);
 const socialImage = ogImage ?? `/og-image/${slug}.png`;
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString();
 const { remarkPluginFrontmatter } = await render(post);
 
 const authorName = siteConfig.profile?.name ?? siteConfig.author;
 const comments = siteConfig.comments;
-const postUrl = absoluteUrl(`/writing/${slug}/`, Astro.site);
+const postUrl = absoluteUrl(getPostPath(post), Astro.site);
 const socialImageAbsolute = absoluteUrl(socialImage, Astro.site);
+const isPortuguese = lang === "pt-BR";
+const locale = isPortuguese ? "pt-BR" : "en-GB";
+const copy = isPortuguese
+	? {
+			backToTop: "Voltar ao topo",
+			by: "Por",
+			draft: "Rascunho",
+			morePosts: "Mais textos",
+			newer: "Mais recente",
+			older: "Mais antigo",
+			translation: "Read in English",
+			updated: "Atualizado em",
+		}
+	: {
+			backToTop: "Back to Top",
+			by: "By",
+			draft: "Draft",
+			morePosts: "More posts",
+			newer: "Newer",
+			older: "Older",
+			translation: "Ler em português",
+			updated: "Updated",
+		};
+const alternates = alternatePost
+	? [post, alternatePost].map((candidate) => ({
+			href: absoluteUrl(getPostPath(candidate), Astro.site),
+			lang: candidate.data.lang,
+		}))
+	: [];
 
 // "Posts · Month YYYY"
 
 // "2 May 2026"
-const bylineDate = formatBylineDate(publishDate);
+const bylineDate = formatBylineDate(publishDate, locale);
 
 // Prefer remark plugin's value; fall back to "".
-const readingTime: string =
-	(remarkPluginFrontmatter as { minutesRead?: string })?.minutesRead ?? "";
+const readingTime = formatReadingTime(
+	(remarkPluginFrontmatter as { minutesRead?: string })?.minutesRead ?? "",
+	lang,
+);
 
 // Custom giscus themes only in prod: the giscus.app iframe can't fetch CSS from localhost / private IPs.
 const giscusThemes = import.meta.env.PROD
@@ -68,19 +114,20 @@ const giscusThemes = import.meta.env.PROD
 			name: authorName,
 		},
 		description: description,
+		inLanguage: lang,
 	}}
 />
 
-<BaseLayout meta={{ articleDate, description, ogImage: socialImage, title }}>
+<BaseLayout alternates={alternates} lang={lang} meta={{ articleDate, description, ogImage: socialImage, title }}>
 	<PortalSelectionReview slot="head" />
 	<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 	<div class="post-shell">
 		<div class="post-main" data-pagefind-body>
 			<div id="blog-hero" class="post-header">
-				{draft && <span class="draft-flag">(Draft)</span>}
+				{draft && <span class="draft-flag">({copy.draft})</span>}
 				<h1 class="post-title">{title}</h1>
 				<p class="byline">
-					{authorName && <>By {authorName}<span class="sep">·</span></>}{bylineDate}{readingTime && (
+					{authorName && <>{copy.by}{" "}{authorName}<span class="sep">·</span></>}{bylineDate}{readingTime && (
 						<>
 							<span class="sep">·</span>{readingTime}
 						</>
@@ -97,10 +144,17 @@ const giscusThemes = import.meta.env.PROD
 				)}
 				{updatedDate && (
 					<div class="post-updated">
-						Updated <time datetime={updatedDate.toISOString()}>
-							{formatBylineDate(updatedDate)}
+						{copy.updated} <time datetime={updatedDate.toISOString()}>
+							{formatBylineDate(updatedDate, locale)}
 						</time>
 					</div>
+				)}
+				{alternatePost && (
+					<p class="post-translation">
+						<a href={withBase(getPostPath(alternatePost))} hreflang={alternatePost.data.lang}>
+							{copy.translation} →
+						</a>
+					</p>
 				)}
 			</div>
 
@@ -124,23 +178,23 @@ const giscusThemes = import.meta.env.PROD
 				<slot />
 			</article>
 
-			<ShareButtons title={title} url={postUrl} description={description} />
+			<ShareButtons title={title} url={postUrl} description={description} lang={lang} />
 
 			<WebMentions />
 
 			<hr class="rule rule--footer" />
 
 			{(olderPost || newerPost) && (
-				<nav class="post-pager" aria-label="More posts">
+				<nav class="post-pager" aria-label={copy.morePosts}>
 					{olderPost && (
-						<a class="pager-link prev" data-astro-prefetch href={withBase(`/writing/${olderPost.id}/`)}>
-							<span class="pager-eyebrow">Older</span>
+						<a class="pager-link prev" data-astro-prefetch href={withBase(getPostPath(olderPost))}>
+							<span class="pager-eyebrow">{copy.older}</span>
 							<span class="pager-title">{olderPost.data.title}</span>
 						</a>
 					)}
 					{newerPost && (
-						<a class="pager-link next" data-astro-prefetch href={withBase(`/writing/${newerPost.id}/`)}>
-							<span class="pager-eyebrow">Newer</span>
+						<a class="pager-link next" data-astro-prefetch href={withBase(getPostPath(newerPost))}>
+							<span class="pager-eyebrow">{copy.newer}</span>
 							<span class="pager-title">{newerPost.data.title}</span>
 						</a>
 					)}
@@ -152,7 +206,7 @@ const giscusThemes = import.meta.env.PROD
 	</div>
 
 	<button
-		aria-label="Back to Top"
+		aria-label={copy.backToTop}
 		class="to-top-btn"
 		data-show="false"
 		id="to-top-btn"
@@ -263,6 +317,20 @@ const giscusThemes = import.meta.env.PROD
 		text-transform: uppercase;
 		color: hsl(var(--theme-text) / 0.5);
 		margin: -16px 0 32px;
+	}
+	.post-translation {
+		font-family: var(--font-sans);
+		font-size: 13px;
+		margin: 0 0 28px;
+	}
+	.post-translation a {
+		color: hsl(var(--theme-accent));
+		text-decoration: underline;
+		text-decoration-color: hsl(var(--theme-accent) / 0.45);
+		text-underline-offset: 3px;
+	}
+	.post-translation a:hover {
+		text-decoration-color: hsl(var(--theme-accent));
 	}
 
 	.rule {
@@ -789,7 +857,7 @@ const giscusThemes = import.meta.env.PROD
 			script.setAttribute("data-emit-metadata", "0");
 			script.setAttribute("data-input-position", "top");
 			script.setAttribute("data-theme", theme === "dark" ? giscusThemes.dark : giscusThemes.light);
-			script.setAttribute("data-lang", "en");
+			script.setAttribute("data-lang", document.documentElement.lang === "pt-BR" ? "pt" : "en");
 			script.setAttribute("crossorigin", "anonymous");
 			script.async = true;
 			mount.appendChild(script);
@@ -852,7 +920,8 @@ const giscusThemes = import.meta.env.PROD
 	}
 
 	const slugify = (s: string) =>
-		s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+		s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+	const copyHeadingLink = document.documentElement.lang === "pt-BR" ? "Copiar link para" : "Copy link to";
 	const usedIds = new Set<string>();
 	document
 		.querySelectorAll<HTMLHeadingElement>(".post-article h2, .post-article h3")
@@ -867,7 +936,7 @@ const giscusThemes = import.meta.env.PROD
 			const btn = document.createElement("button");
 			btn.type = "button";
 			btn.className = "heading-anchor";
-			btn.setAttribute("aria-label", `Copy link to ${h.textContent ?? "section"}`);
+			btn.setAttribute("aria-label", `${copyHeadingLink} ${h.textContent ?? "section"}`);
 			btn.textContent = "#";
 			btn.addEventListener("click", async () => {
 				const url = `${location.origin}${location.pathname}#${id}`;
