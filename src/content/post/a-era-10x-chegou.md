@@ -111,7 +111,7 @@ mais pull requests, e mais funcionalidades correm em direção ao lançamento. O
 primeiro resultado é mais estoque esperando por integração e julgamento, não
 mais valor.
 
-A [lei de Brandolini](https://en.wikipedia.org/wiki/Brandolini%27s_law) diz que
+A [lei de Brandolini](https://pt.wikipedia.org/wiki/Lei_de_Brandolini) diz que
 a quantidade de energia necessária para refutar idiotice é uma ordem de
 grandeza maior do que a necessária para produzi-la. Mudanças geradas por agentes
 criam uma assimetria parecida. Gerar uma mudança plausível é barato. Provar que
@@ -154,7 +154,7 @@ quando ninguém pretendia causar o dano.
 
 A parte constrangedora é que esse problema de produção foi resolvido há 130
 anos. Para a Toyota, a lição começou com [um tear construído em
-1896](https://global.toyota/en/company/vision-and-philosophy/production-system/).
+1896](https://www.toyota.com.br/mundo-toyota/sistema-toyota-de-producao).
 Estamos cometendo o mesmo erro outra vez.
 
 Um tear automático podia produzir tecido muito mais rápido do que uma pessoa
@@ -167,7 +167,7 @@ Isso soa familiar?
 
 Sakichi Toyoda mudou essa relação. Ele incorporou ao tear a detecção de
 anormalidades, a parada automática e a sinalização. O princípio se tornou o
-[jidoka](https://global.toyota/en/company/vision-and-philosophy/production-system/).
+[jidoka](https://www.toyota.com.br/mundo-toyota/sistema-toyota-de-producao).
 A operação normal deixou de consumir atenção contínua. A máquina chamava uma
 pessoa quando o julgamento era necessário.
 
