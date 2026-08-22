@@ -28,13 +28,12 @@ export const siteConfig: SiteConfig = {
 		employerUrl: "https://routable.com",
 		avatar: "/avatar.png",
 	},
-	// Uncomment & fill in to enable Giscus comments on every post.
-	// comments: {
-	// 	repo: "your-handle/your-repo",
-	// 	repoId: "...",
-	// 	category: "General",
-	// 	categoryId: "...",
-	// },
+	comments: {
+		repo: "henriquebastos/henriquebastos.net",
+		repoId: "R_kgDORu_Z2Q",
+		category: "Announcements",
+		categoryId: "DIC_kwDORu_Z2c4DD55N",
+	},
 	analytics: {
 		goatcounterUrl: "https://henriquebastos.goatcounter.com/count",
 	},

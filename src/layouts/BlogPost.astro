@@ -182,6 +182,8 @@ const giscusThemes = import.meta.env.PROD
 
 			<WebMentions />
 
+			{comments && <div class="comments" id="comments"></div>}
+
 			<hr class="rule rule--footer" />
 
 			{(olderPost || newerPost) && (
@@ -200,8 +202,6 @@ const giscusThemes = import.meta.env.PROD
 					)}
 				</nav>
 			)}
-
-			{comments && <div class="comments" id="comments"></div>}
 		</div>
 	</div>
 
@@ -340,7 +340,7 @@ const giscusThemes = import.meta.env.PROD
 		margin: 0 0 44px;
 		transition: background-color 0.35s ease;
 	}
-	/* Extra spacing so stacked footer blocks (post-end link, comments) read as intentional. */
+	/* Separate post footer content from post navigation. */
 	.rule--footer {
 		margin: 56px 0 28px;
 	}
@@ -851,13 +851,14 @@ const giscusThemes = import.meta.env.PROD
 			script.setAttribute("data-repo-id", comments.repoId);
 			script.setAttribute("data-category", comments.category);
 			script.setAttribute("data-category-id", comments.categoryId);
-			script.setAttribute("data-mapping", "title");
-			script.setAttribute("data-strict", "0");
+			script.setAttribute("data-mapping", "pathname");
+			script.setAttribute("data-strict", "1");
 			script.setAttribute("data-reactions-enabled", "1");
 			script.setAttribute("data-emit-metadata", "0");
 			script.setAttribute("data-input-position", "top");
 			script.setAttribute("data-theme", theme === "dark" ? giscusThemes.dark : giscusThemes.light);
 			script.setAttribute("data-lang", document.documentElement.lang === "pt-BR" ? "pt" : "en");
+			script.setAttribute("data-loading", "lazy");
 			script.setAttribute("crossorigin", "anonymous");
 			script.async = true;
 			mount.appendChild(script);
