@@ -47,6 +47,10 @@ narrow, since that is the specific thing he cannot check.
 
 ## Memory
 
+Orbital supplies `ORBITAL_ORB_NAME` to repository hooks. `.agents/resume` leaves
+service startup to portal demand when that marker is present; without the marker,
+it retains the Amp service-ensure behavior.
+
 Anything an agent learns about working on this repo belongs in this file or in
 `drafts/PROCESS.md`, committed. Per-project agent memory is an index into the
 repo, never the only copy: a memory entry points at the file and section that

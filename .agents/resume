@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [[ -n "${ORBITAL_ORB_NAME:-}" ]]; then
+    echo "Orbital starts declared services when their portal is accessed."
+    exit 0
+fi
+
 echo "Ensuring declared orb services are running..."
 amp orb services ensure
