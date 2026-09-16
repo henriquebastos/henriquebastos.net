@@ -1,0 +1,54 @@
+---
+import PersonalVault from "@/layouts/PersonalVault.astro";
+import { withBase } from "@/utils/path";
+---
+
+<PersonalVault
+	title="Overview"
+	description="Personal Vault is Henrique Bastos's private application for collecting and reviewing meeting notes and transcripts."
+>
+	<h1>Personal Vault</h1>
+	<p>
+		I am Henrique Bastos. I am building Personal Vault to collect Google Meet notes and transcripts
+		from my Google Workspace accounts into my private Obsidian vault.
+	</p>
+	<p>
+		This application is for my own use. There is no public registration, and this website does not
+		collect Google account credentials.
+	</p>
+
+	<h2>1 What the application does</h2>
+	<p>
+		Personal Vault uses Calendar events and email notifications to find meeting documents. It saves
+		the available notes and transcripts as separate files, with their source references.
+	</p>
+	<p>
+		I can then review the files, create summaries, or turn a transcript into an illustrated
+		storyboard with AI assistance. Notes are not treated as verbatim transcripts.
+	</p>
+
+	<h2>2 Google account access</h2>
+	<p>
+		I authorize each account separately through Google's OAuth consent screen. The application
+		requests read-only access to Calendar events, the calendar list, Google Docs, and Gmail, plus
+		basic account identity.
+	</p>
+	<p>
+		These permissions cover more than meeting content. The import process selects the relevant
+		events, messages, and documents. It does not request permission to send email or change Calendar
+		events or Google Docs.
+	</p>
+
+	<h2>3 Storage and privacy</h2>
+	<p>
+		Imported content goes into my local vault and may also enter Git history and Obsidian Sync.
+		Selected content may be sent to AI services for the processing I request.
+	</p>
+	<p>
+		Meeting content is not published on this website. See the <a
+			href={withBase("/apps/personal-vault/privacy/")}>privacy policy</a
+		> for data handling, retention, and deletion, and the <a
+			href={withBase("/apps/personal-vault/terms/")}>terms of use</a
+		> for the application's limits.
+	</p>
+</PersonalVault>

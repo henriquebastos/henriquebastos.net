@@ -1,8 +1,8 @@
 # AGENTS.md
 
 Henrique's personal blog. Astro, posts in `src/content/post/<slug>.md` with a
-co-located cover image. Only `src/content` is built, so anything outside it is
-safe to keep in the repo without publishing it.
+co-located cover image. Routes in `src/pages` and assets in `public` are also
+published. Drafts in `drafts/` are not published unless a route imports them.
 
 ## Writing
 
@@ -10,6 +10,18 @@ Pre-writing lives in `drafts/`, one directory per post. Read
 [drafts/PROCESS.md](drafts/PROCESS.md) before touching a draft: it holds the
 passes, the failure modes, and the outline conventions. Read
 [drafts/README.md](drafts/README.md) for the directory layout.
+
+## Personal Vault app pages
+
+The standalone app pages live in `src/pages/apps/personal-vault/` and use
+`src/layouts/PersonalVault.astro`. Keep them out of blog navigation, article
+collections, feeds, the sitemap, and Pagefind. They remain directly accessible
+for Google OAuth review, without `noindex` or crawler blocking.
+
+Keep Google data practices accurate in the privacy page. Do not import the
+blog's analytics-enabled layout into these pages. After changes, run
+`pnpm build && node scripts/check-personal-vault.mjs`. The check verifies the
+built routes, logo, policy links, and exclusions from blog discovery.
 
 ## Voice
 

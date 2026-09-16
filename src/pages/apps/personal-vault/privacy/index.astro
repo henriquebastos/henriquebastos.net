@@ -1,0 +1,110 @@
+---
+import PersonalVault from "@/layouts/PersonalVault.astro";
+---
+
+<PersonalVault
+	title="Privacy policy"
+	description="How Personal Vault accesses, uses, stores, and shares Google account data, and how access and saved copies can be removed."
+>
+	<h1>Privacy policy</h1>
+	<p>
+		I am Henrique Bastos, the operator of Personal Vault. This policy describes how I handle
+		information through this private application.
+	</p>
+
+	<h2>1 Information accessed</h2>
+	<p>
+		With my authorization, Personal Vault can read my Google account identity, Calendar list and
+		events, Gmail messages, and Google Docs.
+	</p>
+	<p>
+		The import process selects meeting events, notification messages, document links, Gemini notes,
+		and full transcripts when available. Those records may contain names, email addresses, dates,
+		attendance details, and what participants said.
+	</p>
+	<p>
+		Google's read-only permissions are broader than the selected meetings. The application does not
+		request write access to email, Calendar events, or Google Docs.
+	</p>
+
+	<h2>2 Purpose and use</h2>
+	<p>
+		I use the imported information to maintain a searchable personal meeting archive, keep source
+		references, and review discussions, decisions, and action items.
+	</p>
+	<p>
+		I may request AI-assisted summaries and illustrated storyboards. I do not use imported Google
+		data for advertising, sell it, or use it to develop, improve, or train generalized AI models.
+	</p>
+	<p>
+		Personal Vault's use and transfer of information received from Google APIs will adhere to the <a
+			href="https://developers.google.com/terms/api-services-user-data-policy"
+			>Google API Services User Data Policy</a
+		>, including its Limited Use requirements.
+	</p>
+
+	<h2>3 Storage and protection</h2>
+	<p>
+		Meeting files, source snapshots, and derived documents are stored in my local Obsidian vault.
+		Git history can preserve earlier versions, and Obsidian Sync can copy vault content to other
+		devices and its service infrastructure.
+	</p>
+	<p>
+		If I synchronize a Git repository or create backups, those destinations may also hold copies.
+		Meeting content is not part of this public website.
+	</p>
+	<p>
+		Google authorization credentials remain outside the vault. The local CLI stores encrypted
+		account credentials separately and uses the macOS Keychain for its encryption key. Credentials
+		are not included in meeting files or Git history.
+	</p>
+
+	<h2>4 Processing by other services</h2>
+	<p>
+		When I request AI processing, selected meeting content may be sent to the configured AI
+		provider, such as OpenAI or Anthropic. This processing is not entirely local.
+	</p>
+	<p>
+		Before sending content, I must have permission to process it and use provider settings and terms
+		consistent with this policy. Providers may retain submitted content under their applicable
+		service terms.
+	</p>
+	<p>
+		Storage and synchronization providers process any copies I place with them under their
+		applicable terms. I may also disclose information when required by law.
+	</p>
+
+	<h2>5 Retention and deletion</h2>
+	<p>
+		Imported files remain in the archive until I remove them. There is no automatic retention
+		deadline.
+	</p>
+	<p>
+		Deleting a current vault file does not necessarily remove its earlier versions from Git,
+		synchronization history, backups, or AI service records. Those copies require separate deletion
+		where the relevant service supports it.
+	</p>
+	<p>
+		To ask about information concerning you or request its removal, contact <a
+			href="mailto:henrique@bastos.net">henrique@bastos.net</a
+		>. I will review the request and identify the relevant copies and any retention restrictions.
+	</p>
+
+	<h2>6 Revoking Google access</h2>
+	<p>
+		I can revoke the application's access through <a href="https://myaccount.google.com/connections"
+			>Google account connections</a
+		> and remove its local credentials. Revocation stops future authorized access but does not delete
+		files already imported.
+	</p>
+
+	<h2>7 This website and policy changes</h2>
+	<p>
+		These application pages have no login form and do not load analytics scripts. The website host
+		may process ordinary request information, such as IP addresses, to serve the pages.
+	</p>
+	<p>
+		I will update this policy when the application's data practices change. The date below
+		identifies the latest revision.
+	</p>
+</PersonalVault>

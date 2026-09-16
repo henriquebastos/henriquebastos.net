@@ -51,6 +51,7 @@ export default defineConfig({
 			applyBaseStyles: false,
 		}),
 		sitemap({
+			filter: (page) => !/\/apps\/personal-vault(?:\/|$)/.test(new URL(page).pathname),
 			changefreq: "weekly",
 			priority: 0.7,
 			lastmod: new Date(),

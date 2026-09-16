@@ -1,0 +1,66 @@
+---
+import PersonalVault from "@/layouts/PersonalVault.astro";
+import { withBase } from "@/utils/path";
+---
+
+<PersonalVault
+	title="Terms of use"
+	description="Purpose, authorized use, and limitations of Henrique Bastos's private Personal Vault application."
+>
+	<h1>Terms of use</h1>
+	<p>
+		Personal Vault is a private application operated by Henrique Bastos. It is not a public
+		subscription service and does not offer public account registration.
+	</p>
+
+	<h2>1 Authorized use</h2>
+	<p>
+		I use Personal Vault only with accounts and documents I am authorized to access. Access through
+		Google OAuth does not replace meeting consent, confidentiality duties, or an organization's data
+		policies.
+	</p>
+	<p>
+		I am responsible for having permission to save meeting content and send selected content to
+		storage or AI providers.
+	</p>
+
+	<h2>2 Access and availability</h2>
+	<p>
+		Google account permissions and organization policies control access to source information.
+		Personal Vault does not bypass those controls.
+	</p>
+	<p>
+		The application may change, stop working, or become unavailable. Google APIs and other providers
+		can change their features, limits, and requirements.
+	</p>
+
+	<h2>3 Accuracy</h2>
+	<p>
+		Meeting notes, transcripts, and AI-generated summaries can be incomplete or incorrect. I check
+		important details against their sources before relying on them.
+	</p>
+	<p>
+		A summary or storyboard does not replace a complete transcript, and a transcript does not
+		necessarily capture the entire meeting.
+	</p>
+
+	<h2>4 Data and ownership</h2>
+	<p>
+		Importing information does not transfer ownership of the source material. The <a
+			href={withBase("/apps/personal-vault/privacy/")}>privacy policy</a
+		> explains how data is accessed, stored, processed, and removed.
+	</p>
+
+	<h2>5 Independent application</h2>
+	<p>
+		Personal Vault is not a Google product and is not endorsed by Google. Google, Obsidian, and any
+		AI or storage providers remain subject to their own terms.
+	</p>
+
+	<h2>6 Contact and changes</h2>
+	<p>
+		Questions about the application or these terms can be sent to <a
+			href="mailto:henrique@bastos.net">henrique@bastos.net</a
+		>. I may revise these terms as the application changes.
+	</p>
+</PersonalVault>
