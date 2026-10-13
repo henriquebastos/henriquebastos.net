@@ -1,0 +1,12 @@
+{
+  "client_id": "https://henriquebastos.net/oauth/executor.json",
+  "client_name": "Executor",
+  "client_uri": "https://executor.web.lab.bastos.net",
+  "redirect_uris": [
+    "https://executor.web.lab.bastos.net/api/oauth/callback"
+  ],
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "none",
+  "application_type": "web"
+}
