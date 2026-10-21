@@ -29,7 +29,8 @@ think differently.
 ## Status
 
 The complete draft is in [`03-draft.md`](03-draft.md). It is not approved and
-not published. Title, description, slug and cover are still open.
+not published. Henrique chose the title on October 21, 2026: "Eu não quero morar
+dentro do seu produto". Description, slug and cover are still open.
 
 Proposed description: "Os produtos de IA querem que você more dentro deles. O
 que eu pus no lugar: agentes pequenos como comandos e uma timeline de fatos."
