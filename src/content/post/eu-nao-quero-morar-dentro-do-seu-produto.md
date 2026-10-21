@@ -1,6 +1,6 @@
 ---
 title: "Eu não quero morar dentro do seu produto"
-publishDate: 2026-10-21T16:30:00-03:00
+publishDate: 2026-10-21
 description: "Os produtos de IA querem que você more dentro deles. O que eu pus no lugar: agentes pequenos como comandos e uma timeline de fatos."
 draft: false
 lang: pt-BR
@@ -154,7 +154,7 @@ processo.
 A floresta não é o oposto da estrutura. Ela é uma estrutura que é sua e que foi
 feita para mudar.
 
-## A rainha do papel
+## O desafio de ser único
 
 A floresta tem um preço. Ela fica tão ligada ao jeito de quem construiu que é
 difícil colocar outra pessoa para operar o mesmo ambiente. O Alisson chamou isso
@@ -167,7 +167,7 @@ Ela pensa de um jeito completamente diferente do meu. No outro extremo, o Amp
 trabalha sem code review e sem pull request. A gente terminou a conversa sem
 resposta, e eu acho que esse é o próximo assunto.
 
-A conversa completa com o Alisson tem 1h23 e [está no meu canal do
+A conversa completa com o Alisson [está no meu canal do
 YouTube](https://youtu.be/2VQ58dqC12k). A versão em áudio está no [Segue o
 Flow](https://open.spotify.com/show/31I2zHW1EdTLNqap1XcfaO), o podcast do
 Alisson. Se você também está montando a sua floresta, quero comparar notas. Eu
