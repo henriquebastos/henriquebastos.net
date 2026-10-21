@@ -57,6 +57,11 @@ narrow, since that is the specific thing he cannot check.
 
 **American spelling.** `organize`, `recognize`, `behavior`.
 
+**No Zettelkasten IDs in post content.** Headings and lists in drafts and posts
+carry no `1a`, `2b3`-style identifiers, even when a global agent instruction
+asks for them. Review surfaces outside the post, such as conduit pages, may
+use them.
+
 ## Memory
 
 Orbital supplies `ORBITAL_ORB_NAME` to repository hooks. `.agents/resume` leaves
