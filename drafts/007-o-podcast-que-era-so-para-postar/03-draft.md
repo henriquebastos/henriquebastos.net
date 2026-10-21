@@ -14,7 +14,7 @@ Enquanto o download estava travado, ele não ficou parado. Instalou o transcrito
 
 A solução foi uma cópia do arquivo no meu Drive, compartilhada por alguns minutos, baixada com `curl` e apagada em seguida. O tamanho bateu no byte: 336.565.359.
 
-Aí veio a primeira decisão que ele tomou sozinho. Eu tinha pedido para transcrever com o Parakeet, que roda local e é rápido. Ele rodou, e em alguns blocos de cinco minutos até 78% das palavras saíram em inglês. Onde o Alisson diz "porque eu acho que a IA é um veículo novo de expressão", o Parakeet escreveu "Because I ask that a IA is expression". O agente testou o Whisper no mesmo trecho, viu que funcionava, trocou e me contou depois: "Essa é a mudança mais importante, e eu fiz sem te perguntar antes."
+Aí veio a primeira decisão que ele tomou sozinho. Eu tinha sugerido o Parakeet, que roda local e é rápido. Ele rodou, e em alguns blocos de cinco minutos até 78% das palavras saíram em inglês. Onde o Alisson diz "porque eu acho que a IA é um veículo novo de expressão", o Parakeet escreveu "Because I ask that a IA is expression". O agente testou o Whisper no mesmo trecho, viu que funcionava, trocou e me contou depois: "Essa é a mudança mais importante, e eu fiz sem te perguntar antes."
 
 Eu gostei de duas coisas aí. Ele trocou porque tinha a evidência na mão, e não escondeu que trocou.
 
@@ -60,7 +60,7 @@ Depois veio o som, e aí só eu podia decidir. Ele gerou dez opções de música
 
 **Os capítulos atrasados.** No começo, ele calculou os capítulos somando 47 segundos aos tempos da gravação, que era a duração do cold open. Depois vieram os cortes de pausa e um cold open menor, e a regra continuou lá. Quando ele recalculou a partir da linha do tempo real, todos os capítulos estavam de 17 a 39 segundos atrasados.
 
-**A madrugada calada.** O render completo caiu na primeira tentativa, e a conta de disco não fechava: a ferramenta de motion graphics extrai todos os quadros do vídeo antes de começar, uns 27 GB para o episódio inteiro. Ele dividiu em nove partes de dez minutos e rodou uma de cada vez. Foi uma hora e meia de render, de madrugada, e ele ficou esperando sem me dizer nada. Às 2h34 eu mandei: "is this working?". Estava. Mas eu não tinha como saber.
+**A madrugada calada.** O render completo caiu na primeira tentativa. E nem dava para insistir: a ferramenta de motion graphics extrai todos os quadros do vídeo antes de começar, uns 27 GB para o episódio inteiro, e o disco tinha 25 livres. Ele dividiu em nove partes de dez minutos e rodou uma de cada vez. Foi uma hora e meia de render, de madrugada, e ele ficou esperando sem me dizer nada. Às 2h34 eu mandei: "is this working?". Estava. Mas eu não tinha como saber.
 
 **O Mac bloqueado.** Para subir os vídeos no YouTube Studio, eu sugeri que ele usasse um navegador com um perfil só desse projeto, e eu mesmo fiz o login. O episódio subiu bem. No primeiro Short, os diálogos do Studio pararam de aparecer. Ele investigou por uns dez minutos e umas 25 chamadas: a página, o processo, o navegador, a janela. A causa era que eu tinha saído e a tela do Mac bloqueou. Com a tela bloqueada, o navegador não desenha. Ele parou, me explicou e esperou eu voltar.
 

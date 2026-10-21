@@ -14,7 +14,7 @@ While the download was stuck, it did not sit still. It installed the transcriber
 
 The fix was a copy of the file in my Drive, shared for a few minutes, downloaded with `curl` and deleted right after. The size matched to the byte: 336,565,359.
 
-Then came the first decision it made on its own. I had asked for the transcription to run on Parakeet, which is local and fast. It ran, and in some five-minute blocks up to 78% of the words came out in English. Where Alisson says "porque eu acho que a IA é um veículo novo de expressão" (because I think AI is a new vehicle of expression), Parakeet wrote "Because I ask that a IA is expression". The agent tried Whisper on the same passage, saw that it worked, switched, and told me afterwards: "This is the most important change, and I made it without asking you first."
+Then came the first decision it made on its own. I had suggested Parakeet, which is local and fast. It ran, and in some five-minute blocks up to 78% of the words came out in English. Where Alisson says "porque eu acho que a IA é um veículo novo de expressão" (because I think AI is a new vehicle of expression), Parakeet wrote "Because I ask that a IA is expression". The agent tried Whisper on the same passage, saw that it worked, switched, and told me afterwards: "This is the most important change, and I made it without asking you first."
 
 I liked two things there. It switched because it had the evidence in hand, and it did not hide that it switched.
 
@@ -60,7 +60,7 @@ Then came the sound, and there only I could decide. It generated ten music and e
 
 **The late chapters.** At first it computed the chapters by adding 47 seconds to the recording times, the length of the cold open. Then came the pause cuts and a shorter cold open, and the rule stayed. When it recomputed from the real timeline, every chapter was 17 to 39 seconds late.
 
-**The silent night.** The full render failed on the first attempt, and the disk math did not work out: the motion graphics tool extracts every frame of the video before it starts, about 27 GB for the whole episode. It split the render into nine ten-minute parts and ran them one at a time. That was an hour and a half of rendering, in the middle of the night, and it waited without telling me anything. At 2:34 a.m. I sent: "is this working?". It was. But I had no way to know.
+**The silent night.** The full render failed on the first attempt. Retrying was no option anyway: the motion graphics tool extracts every frame of the video before it starts, about 27 GB for the whole episode, and the disk had 25 free. It split the render into nine ten-minute parts and ran them one at a time. That was an hour and a half of rendering, in the middle of the night, and it waited without telling me anything. At 2:34 a.m. I sent: "is this working?". It was. But I had no way to know.
 
 **The locked Mac.** To upload the videos in YouTube Studio, I suggested it use a browser with a profile just for this project, and I signed in myself. The episode went up fine. On the first Short, Studio's dialogs stopped showing. It investigated for about ten minutes and some 25 tool calls: the page, the process, the browser, the window. The cause was that I had stepped away and the Mac's screen locked. With the screen locked, the browser does not draw. It stopped, explained, and waited for me to come back.
 
