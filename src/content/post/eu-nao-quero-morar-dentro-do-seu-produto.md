@@ -1,8 +1,8 @@
 ---
 title: "Eu não quero morar dentro do seu produto"
-publishDate: 2026-10-21T12:00:00-03:00
+publishDate: 2026-10-21T16:30:00-03:00
 description: "Os produtos de IA querem que você more dentro deles. O que eu pus no lugar: agentes pequenos como comandos e uma timeline de fatos."
-draft: true
+draft: false
 lang: pt-BR
 ogImage: /og-image/eu-nao-quero-morar-dentro-do-seu-produto.jpg
 coverImage:
