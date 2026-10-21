@@ -3,7 +3,9 @@
 <!--
 Status: blog version of the episode 1 base text
 (~/me/publishing/podcast/episodes/2026-10-18-conversa-alisson/textos/texto-base.md),
-prepared for author review on 2026-10-21. Not approved, not published.
+approved by the author on 2026-10-21. Moved to
+src/content/post/eu-nao-quero-morar-dentro-do-seu-produto.md, which now owns
+the prose. Not published.
 -->
 
 Eu usava muito o aplicativo desktop da OpenAI. Já tinha me adaptado ao jeito
