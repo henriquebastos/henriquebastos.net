@@ -62,15 +62,14 @@ claims, hashes and exact counts.
 
 ## Status
 
-The draft in [`03-draft.md`](03-draft.md) (pt-BR) and its English translation
-[`03-draft.en.md`](03-draft.en.md), written on October 21, 2026, cover act 1.
-Their last section about the recipe is out of date. The outline was rewritten
-in two acts on October 22, 2026, for Henrique's review before the draft
-changes. Not approved, not published.
+The pt-BR draft [`03-draft.md`](03-draft.md) has both acts (October 22, 2026).
+The English translation [`03-draft.en.md`](03-draft.en.md) still has only act 1
+and the old recipe section; it is translated again after Henrique reviews the
+pt-BR. Not approved, not published.
 
 Open for Henrique:
 
-- The two-act outline.
+- The two-act draft.
 - The title, "Eu só ia subir o vídeo", and the headings.
 - Whether to add images: the cold open frame, the thumbnail, a conduit page.
 - The English version links to the Portuguese post and episode; there is no
