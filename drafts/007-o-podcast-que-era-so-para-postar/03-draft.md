@@ -1,23 +1,26 @@
 # Eu só ia subir o vídeo
 
+<!-- node 1 -->
 Eu gravei uma conversa com o Alisson Vale pelo Zoom. A gente conversa há vinte anos, e dessa vez resolveu deixar gravando. O plano era nenhum: subir no YouTube, quem ouviu ouviu.
 
 Na segunda de manhã me veio uma dúvida boba. Será que a IA faz alguma diferença nisso aqui? Ditei uma mensagem longa para o agente, dessas que saem tortas pela transcrição de voz: baixa o vídeo do Drive, transcreve, analisa, olha como funcionam os podcasts que eu acompanho, o Latent Space, o Next Token e o do Armin Ronacher. E terminei com "eu não estou preocupado em editar o vídeo agora não".
 
-Dois dias e meio depois, o episódio estava no ar com cold open, trilha, tarjas animadas, capítulos, legenda revisada, miniatura, seis Shorts agendados e um texto no blog. Eu não teria feito isso sozinho. Não por preguiça: me falta talento para design e mixagem, me falta capacidade técnica de motion graphics, e me falta tempo. Quero contar como foi, com o que deu certo, o que deu errado e quanto custou.
+Dois dias e meio depois, o episódio estava no ar com cold open, trilha, tarjas animadas, capítulos, legenda revisada, miniatura, seis Shorts agendados e um texto no blog. Eu não teria feito isso sozinho. Não por preguiça: me falta talento para design e mixagem, me falta capacidade técnica de motion graphics, e me falta tempo. Depois eu quis que o próximo custasse menos, e essa segunda parte também teve suas voltas. Quero contar as duas, com o que deu certo, o que deu errado e quanto custou.
 
+<!-- node 2 -->
 ## Uma tela de login no caminho de 336 MB
 
 O primeiro obstáculo foi o mais banal possível. O Alisson tinha deixado a gravação num link "compartilhado" do Drive, e o link pedia login. O agente tentou quatro caminhos em um minuto, incluindo o [Executor](https://github.com/RhysSullivan/executor), que eu uso como ponte para as APIs do Google. O Executor achava o arquivo, mas não tinha como gravar 336 MB no disco.
 
 Enquanto o download estava travado, ele não ficou parado. Instalou o transcritor, testou o fluxo com um áudio sintético gerado pelo `say` do macOS, analisou os três podcasts de referência pela API do YouTube e abriu um conduit no meu Obsidian, que é onde eu planejo trabalho longo com agentes. Tudo isso em sete minutos, e depois me devolveu três opções para o download.
 
-A solução foi uma cópia do arquivo no meu Drive, compartilhada por alguns minutos, baixada com `curl` e apagada em seguida. O tamanho bateu no byte: 336.565.359.
+A solução foi uma cópia do arquivo no meu Drive, compartilhada por alguns minutos, baixada com `curl` e apagada em seguida.
 
-Aí veio a primeira decisão que ele tomou sozinho. Eu tinha sugerido o Parakeet, que roda local e é rápido. Ele rodou, e em alguns blocos de cinco minutos até 78% das palavras saíram em inglês. Onde o Alisson diz "porque eu acho que a IA é um veículo novo de expressão", o Parakeet escreveu "Because I ask that a IA is expression". O agente testou o Whisper no mesmo trecho, viu que funcionava, trocou e me contou depois: "Essa é a mudança mais importante, e eu fiz sem te perguntar antes."
+Aí veio a primeira decisão que ele tomou sozinho. Eu tinha sugerido o Parakeet, que roda local e é rápido. Ele rodou, e em alguns trechos quase oito de cada dez palavras saíram em inglês. Onde o Alisson diz "porque eu acho que a IA é um veículo novo de expressão", o Parakeet escreveu "Because I ask that a IA is expression". O agente testou o Whisper no mesmo trecho, viu que funcionava, trocou e me contou depois: "Essa é a mudança mais importante, e eu fiz sem te perguntar antes."
 
 Eu gostei de duas coisas aí. Ele trocou porque tinha a evidência na mão, e não escondeu que trocou.
 
+<!-- node 3 -->
 ## Metade da tela era preta, e o editor era cego
 
 A gravação era o Zoom lado a lado: 1280 por 720, mas só uma faixa de 1280 por 360 tinha imagem. A outra metade era preto, em cima e embaixo. Os dois canais de áudio eram idênticos, então nada separava a minha voz da do Alisson.
@@ -28,16 +31,18 @@ Isso mudou o jeito de trabalhar dos dois lados. Ele passou a conferir o próprio
 
 Do meu lado, eu virei o único par de olhos e ouvidos. Isso cobrou o preço quando ele me mostrou uma animação em quadros soltos. Eu respondi: "Você fez animação, mas não renderizou ela para eu assistir animação." Daí em diante, todo teste chegava como vídeo.
 
+<!-- node 4 -->
 ## A conversa aconteceu no Obsidian
 
 As decisões nasciam nas páginas do conduit, não no chat. Para cada entrega, o agente escrevia uma página: o vídeo embutido, uma tabela de tempos, o que ele tinha decidido sozinho e por quê, e perguntas numeradas, cada uma com uma recomendação. Eu lia no Obsidian e respondia ali mesmo, dentro da página, ou no chat pelo número: "1a ok 1b ok", "3b B", "65%".
 
 Quase tudo que eu mandei foi ditado. As mensagens chegavam com a cara da transcrição de voz, meio português, meio inglês, com "you gostei mucho" no meio de uma frase e "umg2" no lugar de "1g2". Ele precisava adivinhar, e quando adivinhava, dizia o que tinha suposto.
 
-Esse formato tem uma vantagem que eu não esperava. As minhas respostas ficavam no git. Ele lia o `git diff` da página para saber o que eu tinha mudado, e cada rodada virava um commit. Foram 49 commits no conduit durante a produção. Quando eu quis revisar o texto do episódio, pedi para ele marcar as mudanças com o destaque do próprio Obsidian. Assim eu lia só o que tinha mudado.
+Esse formato tem uma vantagem que eu não esperava. As minhas respostas ficavam no git. Ele lia o `git diff` da página para saber o que eu tinha mudado, e cada rodada virava um commit. Foram uns cinquenta commits no conduit durante a produção. Quando eu quis revisar o texto do episódio, pedi para ele marcar as mudanças com o destaque do próprio Obsidian. Assim eu lia só o que tinha mudado.
 
-Eu mandei 71 mensagens em dois dias e meio. Muitas têm uma palavra só: "sim", "aprovado", "pode.", "push". O trabalho ativo, nós dois juntos, somou umas sete horas. O resto foi ele trabalhando, eu dormindo, almoçando ou cuidando de outra coisa.
+Eu mandei umas setenta mensagens em dois dias e meio. Muitas têm uma palavra só: "sim", "aprovado", "pode.", "push". O trabalho ativo, nós dois juntos, somou umas sete horas. O resto foi ele trabalhando, eu dormindo, almoçando ou cuidando de outra coisa.
 
+<!-- node 5 -->
 ## Bonito, sem ser rebuscado
 
 Antes de qualquer edição, eu freei: "A minha preocupação é com a estética. Então, acho que antes de você fazer um monte de edição, que pode ser cara, talvez você devesse fazer alguns exercícios." E dei a única direção que eu sabia dar: "Nada muito sofisticado ou rebuscado, mas algo bonito."
@@ -48,48 +53,71 @@ O meu papel ali foi de filtro. Uma das cartelas tinha uma borda só do lado esqu
 
 Uma coisa que deu errado de um jeito bem humano: eu respondi "Dourado" a uma pergunta, querendo dizer que o destaque de tudo passava a ser dourado. Ele entendeu que só a miniatura ficava dourada. Custou um render e uma mensagem.
 
+<!-- node 6 -->
 ## Cortar antes da promessa
 
 O cold open foi a parte em que eu mais ensinei. A primeira versão tinha 47 segundos e cada trecho entregava a resposta. Eu expliquei o que vejo nos podcasts que acompanho: "geralmente o pessoal corta uma frase no meio quando vai entregar uma promessa". A versão nova caiu para 27 segundos e terminava cada trecho antes da conclusão.
 
-Depois veio o som, e aí só eu podia decidir. Ele gerou dez opções de música e efeito no ElevenLabs, por uns 65 centavos de dólar, e eu fui ouvindo. Tirei o som de transição, escolhi a música eletrônica, pedi o whoosh "bem baixinho" e depois "um pouquinho mais alto". Foram cinco mixagens numa noite. Quando ele me ofereceu escurecer as tarjas em 40% ou 55%, eu respondi "65%".
+Depois veio o som, e aí só eu podia decidir. Ele gerou dez opções de música e efeito no ElevenLabs, por menos de um dólar, e eu fui ouvindo. Tirei o som de transição, escolhi a música eletrônica, pedi o whoosh "bem baixinho" e depois "um pouquinho mais alto". Foram cinco mixagens numa noite. Quando ele me ofereceu escurecer as tarjas em 40% ou 55%, eu respondi "65%".
 
+<!-- node 7 -->
 ## Cinco erros, nenhum grave
 
 **A invenção que era verdade.** Na análise, o agente escreveu que o Jev era "da TypeSafe". Depois, revisando, não achou isso na transcrição, concluiu que tinha inventado, me disse isso com todas as letras e tirou. Quando eu mandei os links dos projetos citados, o link do Jev era da TypeSafe. O erro não foi a frase. Foi tirar a frase sem conferir fora da transcrição. Na mesma rodada, "Petros" virou Petrus, o projeto que o Whisper não conhecia.
 
-**Os capítulos atrasados.** No começo, ele calculou os capítulos somando 47 segundos aos tempos da gravação, que era a duração do cold open. Depois vieram os cortes de pausa e um cold open menor, e a regra continuou lá. Quando ele recalculou a partir da linha do tempo real, todos os capítulos estavam de 17 a 39 segundos atrasados.
+**Os capítulos atrasados.** No começo, ele calculou os capítulos somando 47 segundos aos tempos da gravação, que era a duração do cold open. Depois vieram os cortes de pausa e um cold open menor, e a regra continuou lá. Quando ele recalculou a partir da linha do tempo real, todos os capítulos estavam atrasados, alguns em mais de meio minuto.
 
 **A madrugada calada.** O render completo caiu na primeira tentativa. E nem dava para insistir: a ferramenta de motion graphics extrai todos os quadros do vídeo antes de começar, uns 27 GB para o episódio inteiro, e o disco tinha 25 livres. Ele dividiu em nove partes de dez minutos e rodou uma de cada vez. Foi uma hora e meia de render, de madrugada, e ele ficou esperando sem me dizer nada. Às 2h34 eu mandei: "is this working?". Estava. Mas eu não tinha como saber.
 
-**O Mac bloqueado.** Para subir os vídeos no YouTube Studio, eu sugeri que ele usasse um navegador com um perfil só desse projeto, e eu mesmo fiz o login. O episódio subiu bem. No primeiro Short, os diálogos do Studio pararam de aparecer. Ele investigou por uns dez minutos e umas 25 chamadas: a página, o processo, o navegador, a janela. A causa era que eu tinha saído e a tela do Mac bloqueou. Com a tela bloqueada, o navegador não desenha. Ele parou, me explicou e esperou eu voltar.
+**O Mac bloqueado.** Para subir os vídeos no YouTube Studio, eu sugeri que ele usasse um navegador com um perfil só desse projeto, e eu mesmo fiz o login. O episódio subiu bem. No primeiro Short, os diálogos do Studio pararam de aparecer. Ele investigou por uns dez minutos: a página, o processo, o navegador, a janela. A causa era que eu tinha saído e a tela do Mac bloqueou. Com a tela bloqueada, o navegador não desenha. Ele parou, me explicou e esperou eu voltar.
 
 **O post sem as minhas correções.** No fim, com o texto do blog pronto, eu revisei a versão final direto na página do conduit e corrigi algumas coisas. Ele publicou a partir de outro arquivo. Eu escrevi: "eu acho que vc publicou sem atualizar as minhas correções". Pior: um commit dele tinha levado as minhas edições junto com uma mudança que não tinha nada a ver, o que atrapalhou achar o problema. O texto errado ficou uns dez minutos no ar e custou um segundo deploy.
 
 Quase todos têm a mesma forma: uma informação que existia em algum lugar e não foi conferida antes de virar ação.
 
+<!-- node 8 -->
 ## Cinquenta dólares, sete horas minhas
 
-A sessão inteira está guardada, então dá para contar. Da primeira mensagem ao último Short agendado, foram cerca de 55 horas de relógio, umas sete delas comigo ativo. O agente deu 770 respostas e fez 806 chamadas de ferramenta, 539 delas no terminal. O custo do modelo na produção foi de US$ 49,46, e uns 65 centavos no ElevenLabs. As imagens geradas não entram nessa conta.
+A sessão inteira está guardada, então dá para contar. Da primeira mensagem ao último Short agendado, foram uns dois dias e meio de relógio, umas sete horas comigo ativo. O agente respondeu quase oitocentas vezes, quase sempre rodando alguma coisa no terminal. O modelo custou uns cinquenta dólares, e o ElevenLabs, centavos.
 
-Eu fiz 29 correções de rumo. Algumas eram de gosto, como o dourado, o "EP #1" e o 65%. Outras eram de conteúdo: os títulos dos Shorts, por exemplo. Eu reescrevi quatro dos seis porque "zoológico" sozinho não diz nada para quem está rolando a tela. Nas minhas palavras: "tem que ter uma coisa a ver com o IA, um cercadinho de IA para você morar".
+Eu fiz quase trinta correções de rumo. Algumas eram de gosto, como o dourado, o "EP #1" e o 65%. Outras eram de conteúdo: os títulos dos Shorts, por exemplo. Eu reescrevi quatro dos seis porque "zoológico" sozinho não diz nada para quem está rolando a tela. Nas minhas palavras: "tem que ter uma coisa a ver com o IA, um cercadinho de IA para você morar".
 
+<!-- node 9 -->
+## Uma skill que sabia demais
+
+Com o episódio no ar, eu pedi a segunda coisa. Não queria pagar tudo de novo no próximo. Queria passos que se combinam: se eu quiser mudar o estilo visual, mudo só o estilo; se a próxima gravação vier com cada pessoa num arquivo, muda só a edição. A transcrição serve para tudo. Sugeri que as skills fossem como as do Matt Pocock, pequenas e combináveis.
+
+<!-- node 10 -->
+O agente fez rápido. Separou o que era do episódio, do formato da gravação e do estilo, e escreveu as skills. Ainda passou o código por um ciclo que eu uso: um subagente sem contexto lê só o código e tenta reconstruir a especificação, e onde ele erra, os nomes estão ruins. Três rodadas. Parecia pronto.
+
+Quando eu fui olhar, não estava. Uma skill de podcast sabia de tudo: onde ficava cada arquivo e em que etapa o episódio estava. Eu não conseguia mudar a ordem dos passos, nem ter um caminho padrão e, num episódio um pouco diferente, trocar só um pedaço. Pedi que cada skill dissesse o que lê e onde grava, e mostrasse um exemplo pequeno da entrada e da saída.
+
+<!-- node 11 -->
+## Uma sensação estranha
+
+A segunda versão também não me convenceu, e eu não sabia dizer por quê. Mandei o que eu tinha: "Eu estou com a sensação que esses arquivos intermediários que você foi criando, eles foram criados de forma muito empírica." Faziam muita coisa e estavam presos ao episódio 1, ao jeito como aquele vídeo foi montado e às decisões estéticas dele. Poucas operações eram genéricas de verdade. Remover silêncio, por exemplo, nem precisa de arquivo: passa pelo vídeo, acha as pausas de dois segundos ou mais e corta.
+
+Logo depois me veio uma pergunta. A ferramenta de motion graphics, o HyperFrames, era a mesma que tinha me custado a madrugada calada, porque renderizava o vídeo inteiro junto com as tarjas. E se ela desenhasse só as tarjas, com fundo transparente, e a gente colocasse isso por cima do vídeo depois? O agente testou e funcionou. A divisão ficou simples: o ffmpeg corta e junta o vídeo, o HyperFrames só desenha.
+
+O erro dos capítulos atrasados virou regra na mesma reforma. Primeiro cortam-se os silêncios, e só depois se decide alguma coisa. Todo tempo que eu anoto, de capítulo, de tarja ou de Short, é tempo da conversa já cortada. Aquele atraso deixou de ser algo para vigiar e passou a ser impossível.
+
+<!-- node 12 -->
 ## O episódio 1 virou teste
 
-A parte que mais me interessa agora é a próxima. Um episódio é pouco para tirar conclusão, mas é o bastante para não pagar tudo de novo.
+A receita refaz o episódio 1 a partir dos arquivos dele e compara com o que foi ao ar. Não sai idêntico, e nem precisa: os capítulos caem no mesmo lugar, a imagem é a mesma para o olho, e os Shorts têm a mesma duração. O teste mede a diferença e avisa quando ela passa do aceitável. Se eu mexer no estilo e o episódio 1 mudar sem eu querer, eu fico sabendo.
 
-Depois da publicação, eu pedi duas coisas: esta história e uma receita. A receita tinha uma exigência. Se eu quiser mudar o estilo visual, mudo só o estilo. Se a próxima gravação vier com cada pessoa num arquivo separado, muda só a montagem. A transcrição serve para tudo.
+<!-- node 13 -->
+## Cada coisa no seu lugar
 
-Para escrever esta história, o agente fatiou a sessão de 108 MB nos pontos de compactação. Cada fatia foi para um subagente que extraiu os fatos, e no fim uma linha do tempo única foi conferida contra os commits e as datas dos arquivos. Os números deste texto saíram dali.
+Nessa parte, quem errou fui eu. No meio da reforma, pedi que as skills fossem para as minhas skills globais, numa pasta de podcast. Quando vi o resultado, percebi que elas não são genéricas. São a parte viva do podcast: vão mudar a cada episódio, a cada formato novo de gravação. Voltaram para o projeto, e o podcast virou um repositório próprio, como o blog. O estado atual do projeto, o canal e as decisões foram para um arquivo de instruções do agente, e as skills ficaram menores.
 
-A receita virou um conjunto de skills no projeto do podcast. Cada episódio tem um arquivo com o conteúdo: os cortes, os capítulos, os títulos e as correções de nomes. O formato da gravação tem o dele, e o estilo visual tem uma pasta. Os scripts recebem a pasta do episódio e leem o resto dali. Uma skill olha a pasta, diz em que etapa o episódio está, e aponta o que fazer e o que espera a minha aprovação.
+Depois pedi uma pasta para o episódio 1 com os arquivos numerados pela ordem em que foram criados, um hábito que eu tenho no Obsidian. O agente fez. Quando eu olhei, a ordem estava certa e a pasta estava errada, porque as coisas ali tinham propósitos diferentes. Tem o que entra, a gravação. Tem o processo, os arquivos que uma etapa faz para a próxima usar. Tem os experimentos, até virarem decisão, e esses sim fazem sentido numerados, porque mostram a primeira, a segunda e a terceira tentativa. E tem o pacote de saída, tudo o que sobe para o YouTube e para o blog. A música do cold open nem era do episódio: é do estilo, e vai servir para os próximos.
 
-E o teste da receita é o próprio episódio 1. Um script refaz o episódio a partir desses arquivos e compara com o que foi publicado. As páginas de animação saem idênticas byte a byte. Um Short renderizado de novo saiu idêntico pixel a pixel, e o arquivo final tem os mesmos hashes de vídeo e áudio. Se eu mexer no estilo e o episódio 1 mudar, o teste avisa. Se a receita serve para um episódio novo, só o episódio 2 vai dizer.
-
+<!-- node 14 -->
 ## O que eu não sabia fazer
 
 O episódio que eu gravei com o Alisson é sobre IA como veículo de expressão, mais do que como ferramenta. Ele compara com a fotografia, que obrigou a pintura a se reinventar.
 
-Eu não tinha pensado nisso enquanto produzia, mas foi o que aconteceu comigo. Eu não sei mixar som, não sei fazer motion graphics, não sei escolher uma serifa. Eu sei reconhecer quando um corte entrega a promessa cedo demais, quando uma cartela tem cara de IA, quando o whoosh está alto. O agente fez o que eu não sei fazer, e eu decidi o que ele não tinha como saber.
+Eu não tinha pensado nisso enquanto produzia, mas foi o que aconteceu comigo, duas vezes. Na primeira, eu julguei o que não sei fazer. Não sei mixar som, não sei fazer motion graphics, não sei escolher uma serifa. Sei reconhecer quando um corte entrega a promessa cedo demais, quando uma cartela tem cara de IA, quando o whoosh está alto. Na segunda, eu julguei o que eu sei: como um sistema deve se organizar. E ali também só acertei depois de ver o resultado. Nas duas vezes, quem fez foi o agente, e eu decidi o que ele não tinha como saber.
 
-Foi uma experiência muito incrível. O episódio está [no YouTube](https://youtu.be/2VQ58dqC12k), e o que a gente conversou virou [este texto](/pt/artigos/eu-nao-quero-morar-dentro-do-seu-produto/).
+Se a receita funciona, só o episódio 2 vai dizer. Foi uma experiência muito incrível. O episódio está [no YouTube](https://youtu.be/2VQ58dqC12k), e o que a gente conversou virou [este texto](/pt/artigos/eu-nao-quero-morar-dentro-do-seu-produto/).

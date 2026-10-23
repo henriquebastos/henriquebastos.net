@@ -28,23 +28,28 @@ its own sake.
 
 9. With the episode out, I asked for the next one to cost less: change the look, and only
    the style changes; a recording in another format, and only the montage changes.
-10. The first recipe looked done and was not: the skills assumed where every file lived,
-    could not be combined in another order, and showed no example of what goes in and what comes out. I
-    said so, and the agent started over with small skills and a recipe that names the files.
-11. One idea from act 1's mistakes shaped the new recipe: cut the silences first, and
-    decide every time on the cut conversation. The bug of the late chapters stops being
-    possible instead of being watched for.
+10. The first recipe looked done and was not: one skill knew where every file lived and
+    which stage the episode was in, so I could not reorder the steps or swap one piece for
+    a different episode. I asked for skills that say what they read and where they write,
+    with small examples of input and output.
+11. The second round still felt wrong, and I could only say it as a feeling: the
+    intermediate files were empirical, tied to episode 1. My question about rendering only
+    the drawings, with transparency, over the video split the work in two (ffmpeg cuts and
+    joins, HyperFrames only draws), and the late-chapters mistake became a rule: cut the
+    silences first, then decide every time on the cut conversation.
 12. Episode 1 became the test. The recipe rebuilds it and compares it with what went on
     air: close enough to the eye and the ear, and the test says when that stops being true.
-13. Where things live turned out to matter as much as what they do. The skills went from
-    the project to my global skills and back, because they change with the episodes. The
-    episode folder was first numbered in the order things were made; I asked for it to be
-    organized by purpose instead: what comes in, the process, the experiments, and the
-    package that goes out. What serves every episode, like the music, left the episode.
+13. Where things live turned out to matter as much as what they do, and here I made the
+    wrong turns myself. I asked for the skills in my global skills, then saw they are the
+    living part of the podcast and brought them back into a repository of its own. I asked
+    for the episode folder numbered in the order things were made, then saw the files had
+    different purposes: what comes in, the process, the experiments, and the package that
+    goes out. What serves every episode, like the music, left the episode.
 
 ## Close
 
 14. The episode's thesis, AI as a vehicle of expression more than a tool, is what happened
     to me: in act 1 I judged what I cannot make (sound, motion, type); in act 2 I judged
-    what I do know (how a system should be organized). The agent did the making both times.
+    what I do know (how a system should be organized), and also got it wrong before seeing
+    the result. The agent did the making both times.
     Whether the recipe works, only episode 2 will say.
