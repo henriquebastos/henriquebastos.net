@@ -13,6 +13,15 @@
   done better in conducting the project. Not a faithful timeline.
 - **Language.** English first. A Portuguese adaptation follows, as with 003/004.
 - **Media.** His X posts (videos and images), plus new diagrams and screenshots.
+- **Tokens, not dollars (29 Oct).** The recorded costs are estimates, so the
+  post mentions token counts instead. Figures in "Tokens" below.
+- **Build in public is in (29 Oct).** It was parked in the first brief. Henrique
+  moved it into the post: the project was a satellite problem that became his
+  first build-in-public experience, and this post exists to share what he
+  learned from it.
+- **The core is the steering strategies (29 Oct).** They hold for any
+  language. Each strategy enters through a concrete scene from the session,
+  never as an abstract rule. See "Steering strategies" below.
 
 ## Sources
 
@@ -51,6 +60,63 @@ joke on himself: he bragged, and the brag was too small. Henrique: "eu falei
 isso mas na verdade eu tava errado, era melhor do que o que eu falei".
 Precision for the draft: "entries" count folders as well as files, and that
 scan was partial (270 access errors in protected locations, no elevation).
+
+## The human frame (Henrique, 29 Oct)
+
+In his words, condensed: he had a problem, a satellite one. He wanted back a
+piece of software he loved, which had become slow and stuck in time. He used
+it to do build in public for the first time, and it was a great experience. He
+had never written anything in Rust or in Swift. The process was a process of
+guiding the agent. "Eu não estou querendo dar aula de nada, eu quero falar do
+que eu sei, falar do que eu aprendi, mas compartilhar o processo."
+
+## Steering strategies (the core)
+
+His list, in his order, with the scene that shows each one.
+
+1. **Focus on a small problem and solve it.** The project began as "find what
+   is eating my disk". The first product was a map you build once and query
+   many times, then a CLI with export and no filter language. Each step
+   solved the problem in front of him before the next "what if".
+2. **Make estimates, measure.** "I want it to be really as fast as
+   possible." Before choosing, he asked what Rust or Zig would bring over C,
+   and asked for the experiment. Benchmarks: bulk collection 2.09× faster than
+   per-file stat; the full disk in 35.6 s. The agent's finding: the API
+   mattered more than the language.
+3. **Guide the agent to discover the best way.** He did not know the answer
+   and did not pretend to. He framed questions and asked for experiments, for
+   reverse-engineering the installed DIX binary, for a design specialist, for
+   the HIG review, for the Oracle's opinion.
+4. **Let the agent walk, even in the wrong place, for a long time.** The
+   inspector with async file metadata was built, tested and polished, then
+   removed: "low level file information is not needed". Also the Back history,
+   Open Snapshot, the SVG prototype, the DIX strip layout. His framing is a
+   strategy, not a regret: building was cheap, so seeing it was the cheapest
+   way to know. (Tension with "What he could have done better": the draft must
+   choose one reading or show both honestly.)
+5. **Ask for analyses that separate components; focus on single
+   responsibility.** "we spend a lot of time clicking on things to validate
+   state" started the architecture rethink: each view got its own state, one
+   shared background worker, the cheapest test layer. The app model went from
+   1,195 lines to 284. He steered toward a good architecture in technologies
+   he had never used, by asking for the analysis and judging the result.
+6. **Read the numbers as the signal that the architecture is right.** Tests
+   got faster (about 800 s to 520 s, later 449 s). The app felt fast in use.
+   Delete went from 6.1 s to 3.0 s. When the structure got better, the numbers
+   moved without anyone optimizing them directly.
+7. **When a symptom is strange, investigate; it is usually repetition.**
+   - Delete felt frozen: Trash took about 4 s while the move took under 1 ms.
+     The time went into up to four full safety walks of the same folder.
+   - The UI suite was slow: about 290 Apple waits each paused about 1 s.
+   - The map flickered: a progress strip changed the map's height and started
+     another render, again and again.
+   - Hardlinks: quadratic work in the accounting.
+8. **Then change the strategy: react to failure instead of checking
+   everything first.** "ask the oracle to analyze what would be the downside
+   of not having … the check… we just not delete what we can't delete." The
+   Oracle: "your idea is the recommended design, with one condition… these
+   late checks are safer than today's early checks." Checks before the dialog
+   went from about 1 s to under 1 ms.
 
 ## The arc (for orientation, not for the post's order)
 
@@ -245,7 +311,7 @@ scan was partial (270 access errors in protected locations, no elevation).
   | librarian (docs and API research) | gpt-6-luna | 10 |
   | locator | gpt-6-astra low | 5 |
 
-  About $412 in subagents and $227 in the parent, estimated.
+  Token totals are in "Tokens" below.
 - **Design specialist:** Claude Design, outside Pi. It received the package and
   returned an interactive HTML prototype with 12 flows.
 - **Orchestration rules:** one writer at a time, each in a git worktree;
@@ -337,6 +403,26 @@ median of 3; raw data in `/private/tmp/di-blog-bench`):
 - No head-to-head with Disk Inventory X exists. Only his impression: "DIX was
   not fast, I want a fast software."
 
+## Tokens
+
+Computed on 29 Oct from `usage` in the build session JSONL (parent, 1,614
+assistant messages) and in the 123 `*_meta.json` files whose
+`parentSessionId` starts with `01a169f5` (subagents, 4,827 turns).
+
+| | Parent | Subagents | Total |
+|---|---:|---:|---:|
+| Input (uncached) | 1.96M | 3.39M | 5.35M |
+| Output | 0.79M | 4.15M | 4.95M |
+| Cache read | 160.4M | 726.8M | 887.2M |
+| Cache write | 15.8M | 10.7M | 26.4M |
+| **All** | **178.9M** | **745.0M** | **923.9M** |
+
+- Almost a billion tokens processed in six days; 96% were cache reads, the
+  same context read again on every turn.
+- About 5M output tokens (this includes reasoning) for about 25.7k lines of
+  Rust and Swift.
+- Subagents processed about 80% of all tokens. The parent mostly steered.
+
 ## Media inventory
 
 - His X videos and images (table above). Download the MP4s for the post.
@@ -356,4 +442,4 @@ median of 3; raw data in `/private/tmp/di-blog-bench`):
 
 ## Open questions
 
-- How candid should the costs be ($412 + $227 estimated)?
+- None open. Costs settled as tokens, 29 Oct.
