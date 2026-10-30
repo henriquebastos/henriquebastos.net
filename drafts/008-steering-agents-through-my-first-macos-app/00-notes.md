@@ -87,13 +87,22 @@ His list, in his order, with the scene that shows each one.
    and did not pretend to. He framed questions and asked for experiments, for
    reverse-engineering the installed DIX binary, for a design specialist, for
    the HIG review, for the Oracle's opinion.
-4. **Let the agent walk, even in the wrong place, for a long time.** The
-   inspector with async file metadata was built, tested and polished, then
-   removed: "low level file information is not needed". Also the Back history,
-   Open Snapshot, the SVG prototype, the DIX strip layout. His framing is a
-   strategy, not a regret: building was cheap, so seeing it was the cheapest
-   way to know. (Tension with "What he could have done better": the draft must
-   choose one reading or show both honestly.)
+4. **Let the agent walk, even in the wrong place, and watch.** The agent
+   grew the scope with an inspector of async file metadata (planned
+   2026-10-25T19:53Z). He saw it and did not intervene: he let it walk to see
+   whether it would arrive where he wanted. When he saw the extra scope
+   diverging from the direction, he stopped it: "watch out for not
+   complicating the UI, we should keep it as simple as possible. the goal is
+   to find dirs and files using too much space to free them up. low level
+   file information is not needed." (2026-10-26T01:06:43Z), then "we can
+   remove the inspector" (01:09:00Z). Also later: the Back history, Open
+   Snapshot, the SVG prototype, the DIX strip layout.
+   Decided 29 Oct, in his words: the problem is not scope growing, it is
+   scope diverging. "Quando eu vi que o escopo aumentado estava divergindo da
+   direção, foi quando eu intervi." Letting it walk is cheap: "a gente mudou,
+   voltou para trás, não tem problema." Even a little more walking would have
+   been fine. This is why the whole thing took days, not weeks, with the agent
+   doing most of the work. It is a move, not a regret.
 5. **Ask for analyses that separate components; focus on single
    responsibility.** "we spend a lot of time clicking on things to validate
    state" started the architecture rethink: each view got its own state, one
@@ -271,11 +280,6 @@ His list, in his order, with the scene that shows each one.
 - **Late reference research.** The DIX study came after a GUI was already
   built on a different layout policy. The layout then changed again to the
   specialist's design. Partly hindsight: the study fed the design package.
-- **Built, then removed.** An inspector with async metadata, a 64-entry Back
-  history (replaced by breadcrumbs), Open Snapshot (replaced by folder only),
-  accounting texts, the SVG prototype, the DIX strip layout with cushion
-  shading. His own principle came late: "watch out for not complicating the
-  UI… low level file information is not needed."
 - **Environment friction removed late.** Screen lock blocked UI tests for
   about 9 hours. Touch ID prompts until one `automationmodetool` command
   fixed it. A 401 started a provider failover chain and he re-sent the same

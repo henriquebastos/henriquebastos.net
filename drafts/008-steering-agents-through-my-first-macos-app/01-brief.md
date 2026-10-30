@@ -28,7 +28,8 @@ was steer, and the steering moves hold for any language.
    - Focus on a small problem and solve it before the next "what if".
    - Measure before choosing.
    - Guide the agent to discover the best way instead of pretending to know.
-   - Let the agent walk, even in the wrong place, for a long time.
+   - Let the agent walk, even in the wrong place, and watch. Intervene when
+     the scope diverges from the direction, not when it grows.
    - Ask for analyses that separate components and responsibilities.
    - Read the numbers as the signal that the structure is right.
    - When a symptom is strange, investigate: it is usually repetition.
@@ -76,11 +77,11 @@ Humor candidates, all universally safe:
 - Build in public appears as frame and motivation. The longer reflection on
   detachment and on product vs open source stays out.
 
-## Open tension for the draft
+## Settled: walking is a move, not a regret
 
-"Let the agent walk in the wrong place" (a move) and "features built and then
-removed" (a regret) describe the same events. The draft must pick one reading
-or show both honestly.
+The inspector and the other removed features are told as the "let it walk"
+move, not in the list of regrets. Growth is cheap to watch and cheap to undo;
+divergence is the signal to step in. This is part of why it took days.
 
 ## Media
 
