@@ -57,7 +57,9 @@ The Rust experiment was fast, so I decided to stick with Rust. On my whole disk,
 
 When I did not know something, I asked the agents to find out.
 
-The first treemap came from screenshots on the Disk Inventory X website. It looked right and felt wrong. I asked the agent to study the installed app instead, and it found the layout framework bundled inside. Screenshots show the result. The binary shows the rule.
+The first treemap came from screenshots on the Disk Inventory X website. It looked right and felt wrong. In Disk Inventory X I could point anywhere and see the exact file; ours showed blocks of folders. Disk Inventory X is [released under the GPL](https://www.derlien.com/), so the agent found its old source on GitHub. The tree, the colors and the shading were there, but the map itself lived in a separate framework that the copy did not include. The agent said it did not know the algorithm instead of guessing.
+
+I had the app installed, so I asked the agent to look inside it. Without running it, the agent listed the method names in the bundled framework (Objective-C keeps them in the binary) and read the machine code of the function that builds the rows: add files to a row while its shape stays acceptable, then start a new row. I thought small files were hidden. They were not: an 8 KB file covered about 2 pixels. Our map was coarse because of our own limit of 160 rectangles. I loved that the agent learned what to build by studying the binary of a GPL app. Screenshots show the result. The binary shows the rule.
 
 For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: "Disk Inventory X is a reference for the discovery experience, not a design that our app must copy." Claude Design returned an interactive mockup with twelve flows. Then another agent checked it against Apple's Human Interface Guidelines, and where they disagreed, the guidelines won.
 
