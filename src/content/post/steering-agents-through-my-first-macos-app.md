@@ -29,9 +29,11 @@ These are the moves I used.
 
 I got tired of waiting for `du` to answer each new question, so I asked for a map: "can we have a temporary sqlite db with all existing files with size so we can du once and investigate big files or big dirs iteratively?"
 
-That became a small CLI: build the map once, query it many times. When the agent proposed filters and sort options, I said no. The tool exports CSV, TSV or JSONL, and jq, sort and SQLite do the rest.
+That became a small CLI that recursively scans a directory, store a map in a quick to navigate structure, persist the map in binary form and allow me to query it many times. (agent: it would be nice to technically explain the map datastructure and properties and how it is persisted)
 
-Committing to a narrowly scoped core, in the best Unix style, was the single most important design decision.
+The tool can export the map in CSV, TSV or JSONL, and jq, sort and SQLite do the rest.
+
+When the agent proposed filters and sort options, I said no. Committing to a narrowly scoped core, in the best Unix style, was the single most important design decision.
 
 ## Measure before choosing
 
