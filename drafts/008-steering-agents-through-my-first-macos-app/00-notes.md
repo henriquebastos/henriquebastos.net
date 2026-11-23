@@ -111,6 +111,10 @@ His list, in his order, with the scene that shows each one.
    voltou para trás, não tem problema." Even a little more walking would have
    been fine. This is why the whole thing took days, not weeks, with the agent
    doing most of the work. It is a move, not a regret.
+   Updated 2 Nov, in his edit of the post: letting it walk stays cheap,
+   because the agents work unattended ("my time was not wasted, only a few
+   million tokens"). But he now wants to learn how to make scope detours more
+   salient, so less energy goes into them. The post follows this version.
 5. **Ask for analyses that separate components; focus on single
    responsibility.** "we spend a lot of time clicking on things to validate
    state" started the architecture rethink: each view got its own state, one
