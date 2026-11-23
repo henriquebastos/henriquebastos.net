@@ -27,7 +27,7 @@ These are the moves I used.
 
 ## Keep the problem small
 
-I got tired of waiting for `du` to answer each new question, so I asked for a map: "can we have a temporary sqlite db with all existing files with size so we can du once and investigate big files or big dirs iteratively?"
+I got tired of waiting for `du` to answer each new question, so I asked for a map: <q class="prompt">can we have a temporary sqlite db with all existing files with size so we can du once and investigate big files or big dirs iteratively?</q>
 
 That became a small CLI that recursively scans a directory, stores a map in a quick-to-navigate structure, persists the map in binary form and lets me query it many times.
 
@@ -39,9 +39,9 @@ When the agent proposed filters and sort options, I said no. Committing to a nar
 
 ## Measure before choosing
 
-To make sure the core was fast, I wanted it to run closer to the metal. I said: "I want it to be really as fast as possible." The agent proposed C. I remembered all the recent stories about agents "liking" Rust, so I asked what Rust or Zig would bring, and asked for the experiment in Rust.
+To make sure the core was fast, I wanted it to run closer to the metal. I said: <q class="prompt">I want it to be really as fast as possible.</q> The agent proposed C. I remembered all the recent stories about agents "liking" Rust, so I asked what Rust or Zig would bring, and asked for the experiment in Rust.
 
-The agent's finding: "The biggest expected gains are fewer metadata syscalls and less per-entry allocation, not simply choosing a faster language." The API it found was `getattrlistbulk()`, which returns a batch of directory entries with their metadata in one call, instead of one call for each file. The agent compared both ways in Rust, on three trees:
+The agent's finding: <q class="prompt prompt--agent">The biggest expected gains are fewer metadata syscalls and less per-entry allocation, not simply choosing a faster language.</q> The API it found was `getattrlistbulk()`, which returns a batch of directory entries with their metadata in one call, instead of one call for each file. The agent compared both ways in Rust, on three trees:
 
 | Tree | Entries | Workers | Bulk | One call per file |
 |---|---:|---:|---:|---:|
@@ -91,7 +91,7 @@ The rule is simple: add files to a row while its shape stays acceptable, then st
 
 ## The UX design
 
-For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: "Disk Inventory X is a reference for the discovery experience, not a design that our app must copy." Claude Design returned an interactive mockup with twelve flows. Then another agent checked it against Apple's Human Interface Guidelines, and where they disagreed, the guidelines won.
+For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: <q class="prompt">Disk Inventory X is a reference for the discovery experience, not a design that our app must copy.</q> Claude Design returned an interactive mockup with twelve flows. Then another agent checked it against Apple's Human Interface Guidelines, and where they disagreed, the guidelines won.
 
 ![Claude Design board with each user scenario as a sequence of screens](./steering-agents-through-my-first-macos-app/claude-design-board.jpg)
 
@@ -121,15 +121,15 @@ This design process was a lot of fun because the agent could present me with opt
 
 ## Be the last guardrail
 
-For some reason the agent assumed we needed all the available metadata about each file and directory. I did not notice that for a while. At some point I saw the agent churning on a file inspector, a side panel with file metadata. I let it go to see where it would arrive. The panel worked, but I noticed the existence of the metadata was adding small complications in different areas of the app. So I course-corrected: "watch out for not complicating the UI, we should keep it as simple as possible. the goal is to find dirs and files using too much space to free them up. low level file information is not needed." I asked it to remove the inspector and everything looked fast and simple again.
+For some reason the agent assumed we needed all the available metadata about each file and directory. I did not notice that for a while. At some point I saw the agent churning on a file inspector, a side panel with file metadata. I let it go to see where it would arrive. The panel worked, but I noticed the existence of the metadata was adding small complications in different areas of the app. So I course-corrected: <q class="prompt">watch out for not complicating the UI, we should keep it as simple as possible. the goal is to find dirs and files using too much space to free them up. low level file information is not needed.</q> I asked it to remove the inspector and everything looked fast and simple again.
 
 The same happened to a navigation history and a layout copied from the old app. Built, seen, removed. This is an area I would investigate more, to learn how to avoid it: how to make scope detours more salient to me so we don't waste energy on what does not matter. But since most of the time the agent was working without my oversight, my time was not wasted, only a few million tokens. Subscriptions FTW!
 
 ## Ask for one job per part
 
-Late in the week, the slowest part was clicking. I had set a rule that every visible claim needed a real UI test, one that drives the app with mouse and keyboard. The suite grew to about twenty minutes. "we spend a lot of time clicking on things to validate state." I did not know the fix in SwiftUI, so I asked for an analysis.
+Late in the week, the slowest part was clicking. I had set a rule that every visible claim needed a real UI test, one that drives the app with mouse and keyboard. The suite grew to about twenty minutes. <q class="prompt">we spend a lot of time clicking on things to validate state.</q> I did not know the fix in SwiftUI, so I asked for an analysis.
 
-The answer was structure. Each part of the screen got its own state, plain values a test can set directly. One shared background worker replaced the ones each view had built. The main model went from about 1,200 lines to under 300. I replaced my rule too: "Each change gets a test in the cheapest layer that can catch it: Rust, then state, then a picture of one part of the screen."
+The answer was structure. Each part of the screen got its own state, plain values a test can set directly. One shared background worker replaced the ones each view had built. The main model went from about 1,200 lines to under 300. I replaced my rule too: <q class="prompt">Each change gets a test in the cheapest layer that can catch it: Rust, then state, then a picture of one part of the screen.</q>
 
 The app ended up in seven layers, and nothing below knows anything above it.
 
@@ -165,9 +165,9 @@ The agent could spot the problems quickly once I pointed at them. Figuring out h
 
 ## React to failure instead of checking first
 
-The Trash case made me question the checks themselves: "Why aren't we deleting the folder and moving the folder to the trash? Because this how the system works." What if we just tried, and skipped what could not be deleted? I asked the Oracle, a read-only reviewer agent that starts with fresh context, for the downside.
+The Trash case made me question the checks themselves: <q class="prompt">Why aren't we deleting the folder and moving the folder to the trash? Because this how the system works.</q> What if we just tried, and skipped what could not be deleted? I asked the Oracle, a read-only reviewer agent that starts with fresh context, for the downside.
 
-Its answer: "your idea is the recommended design, with one condition." The condition was three fast checks before the confirmation, so a failure halfway would not leave half a folder gone. It also found the late checks safer than the early ones: an early check can go stale before the delete happens.
+Its answer: <q class="prompt prompt--agent">your idea is the recommended design, with one condition.</q> The condition was three fast checks before the confirmation, so a failure halfway would not leave half a folder gone. It also found the late checks safer than the early ones: an early check can go stale before the delete happens.
 
 The checks before the confirmation went from about a second to under a millisecond.
 
