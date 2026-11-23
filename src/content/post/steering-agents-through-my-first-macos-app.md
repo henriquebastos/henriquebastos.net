@@ -41,7 +41,7 @@ When the agent proposed filters and sort options, I said no. Committing to a nar
 
 To make sure the core was fast, I wanted it to run closer to the metal. I said: "I want it to be really as fast as possible." The agent proposed C. I remembered all the recent stories about agents "liking" Rust, so I asked what Rust or Zig would bring, and asked for the experiment in Rust.
 
-The agent's finding: "The biggest expected gains are fewer metadata syscalls and less per-entry allocation, not simply choosing a faster language." Reading metadata in bulk was about twice as fast as asking for each file. The API mattered more than the language.
+The agent's finding: "The biggest expected gains are fewer metadata syscalls and less per-entry allocation, not simply choosing a faster language." The API it found was `getattrlistbulk()`, which returns a batch of directory entries with their metadata in one call, instead of one call for each file. On my pnpm store, about 500,000 entries, the bulk scan took 1.15 seconds and the per-file walk took 2.41, both with 8 workers. Bulk won on every tree we tried. The API mattered more than the language.
 
 The Rust experiment was fast, so I decided to stick with Rust. On my whole disk, it mapped about 5 million entries in about 34 seconds.
 
