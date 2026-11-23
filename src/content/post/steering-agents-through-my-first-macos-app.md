@@ -11,11 +11,15 @@ This is an account of how I used AI for six days to rebuild a macOS app I loved,
 
 My disk was 99% full, so I opened a chat with an agent to find what was eating it. After a few rounds of `du`, I missed the visualization of Disk Inventory X, an old tool I loved. It draws every file as a rectangle, sized by the space it takes. It still runs, but it is slow. I wanted it back, and fast.
 
-<!-- media: original disk inventory X screenshot -->
+![Disk Inventory X showing a tree of folders next to a treemap of colored rectangles](./steering-agents-through-my-first-macos-app/disk-inventory-x.jpg)
 
-I had never written Rust or Swift, never built a Mac app, and I have no design skills. Six days later I had a native app with a very fast Rust core and a Swift interface. It was also my first time building in public for real: I posted every small, incomplete step, and it was an amazing experience.
+*Disk Inventory X, in a screenshot from its website.*
 
-<!-- media: dogfooding video from X, 28 Oct -->
+I had never written Rust or Swift, never built a Mac app, and I have no design skills. Six days later I had a native app with a very fast Rust core and a Swift interface. It was also my first time [building in public](https://x.com/henriquebastos/status/2115413602366591024) for real: I posted every small, incomplete step on X, and it was an amazing experience.
+
+![The first version of the app showing my home folder as a treemap](./steering-agents-through-my-first-macos-app/dogfooding.jpg)
+
+*Dogfooding the first version on 28 Oct. [Video on X](https://x.com/henriquebastos/status/2115257404783014392).*
 
 The agents wrote the code. I steered. Over six days I sent 151 messages. I will share all the numbers below.
 
@@ -45,13 +49,27 @@ The first treemap came from screenshots on the Disk Inventory X website. It look
 
 For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: "Disk Inventory X is a reference for the discovery experience, not a design that our app must copy." Claude Design returned an interactive mockup with twelve flows. Then another agent checked it against Apple's Human Interface Guidelines, and where they disagreed, the guidelines won.
 
-<!-- media: Claude Design scenario board and interactive mockup videos, X, 26 Oct -->
+![Claude Design board with each user scenario as a sequence of screens](./steering-agents-through-my-first-macos-app/claude-design-board.jpg)
 
-<!-- media: three HIG analysis images, X, 27 Oct -->
+*Every user scenario on one board, ready for comments. [Video on X](https://x.com/henriquebastos/status/2114866444601102841).*
+
+![The interactive mockup from Claude Design](./steering-agents-through-my-first-macos-app/claude-design-mockup.jpg)
+
+*The interactive mockup. [Video on X](https://x.com/henriquebastos/status/2114869040854315447).*
+
+![Before and after screenshots of the file tree, annotated with the fixes from the guidelines review](./steering-agents-through-my-first-macos-app/hig-analysis.jpg)
+
+*One page of the guidelines review. [More on X](https://x.com/henriquebastos/status/2115217453382783485).*
 
 Finding out also worked against me. Twice I complained that the rectangles looked misaligned. The second time, the agent showed that the layout matched the designer's code. The problem was my test data: 128 files of almost the same size, all painted the same gray. The fixture was lying.
 
-<!-- media: misaligned-fixture-screenshot.png next to the final map -->
+![A treemap of gray rectangles of almost the same size that look misaligned](./steering-agents-through-my-first-macos-app/misaligned-fixture.jpg)
+
+*The "misaligned" map: 128 files of almost the same size.*
+
+![The final app showing my home folder as a colorful treemap](./steering-agents-through-my-first-macos-app/final-map.jpg)
+
+*The same app on my home folder. [Release video on X](https://x.com/henriquebastos/status/2115987197283184731).*
 
 From then on, every change came with before and after screenshots. On a platform I do not know, looking is what I can judge.
 
@@ -71,7 +89,7 @@ The answer was structure. Each part of the screen got its own state, plain value
 
 The app ended up in seven layers, and nothing below knows anything above it.
 
-<!-- diagram: the layers, with what each one owns and what it must not do -->
+![The seven layers: Views and App model in Swift, the bridge, then Presentation core, Live operations and Inventory core in Rust, with the CLI also using the Inventory core](./steering-agents-through-my-first-macos-app/layers.png)
 
 The views take input and draw. A Swift model runs the slow work in the background. A bridge connects Swift to Rust. In Rust, one layer turns the saved map into a tree, a layout, pixels and colors. Another handles Trash, Delete and Refresh. At the bottom, the inventory core scans and saves the map, and the CLI uses that same core.
 
@@ -85,7 +103,7 @@ I could not judge the structure by reading the code. I could judge it by how the
 
 The reproducible fixtures let us measure behavior over and over again. They made the qualities that mattered to me concrete, and that helped the agent protect them.
 
-<!-- diagram: the cost ladder, from microseconds to the full scan -->
+![Bar chart on a log scale: delete in a folder of a million files 0.76 ms, refresh a 25,000-file folder 25 ms, lay out and draw a million-file map 105 ms, open a 5.7-million-entry map 2.5 s, scan the whole disk and save it 35.6 s](./steering-agents-through-my-first-macos-app/cost-ladder.png)
 
 ## Strange symptoms are usually repetition
 
@@ -122,7 +140,7 @@ The app does what I wanted. It shows me where my disk went, fast, and lets me cl
 
 ## All the numbers
 
-These are the numbers I posted on X the day the app was ready for a first release.
+These are the numbers I [posted on X](https://x.com/henriquebastos/status/2115987197283184731) the day the app was ready for a first release.
 
 **My input**
 

@@ -1,0 +1,24 @@
+digraph layers {
+  graph [rankdir=TB, bgcolor="white", nodesep=0.5, ranksep=0.28, fontname="Helvetica", pad=0.3];
+  node  [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=12, width=4.6, margin="0.18,0.1", color="#94a3b8", fillcolor="#f8fafc", fontcolor="#0f172a"];
+  edge  [color="#64748b", arrowsize=0.7];
+
+  subgraph cluster_swift {
+    label="Swift"; labeljust=l; fontname="Helvetica-Bold"; fontsize=13; fontcolor="#9a3412";
+    style="rounded,filled"; color="#fdba74"; fillcolor="#fff7ed";
+    views [label=<<b>Views</b><br/><font point-size="10">take input and draw</font>>];
+    model [label=<<b>App model</b><br/><font point-size="10">runs slow work in the background, holds selection and focus</font>>];
+  }
+  bridge [label=<<b>Bridge</b> (UniFFI)<br/><font point-size="10">small, bounded answers: never the whole inventory</font>>, fillcolor="#f1f5f9"];
+  subgraph cluster_rust {
+    label="Rust"; labeljust=l; fontname="Helvetica-Bold"; fontsize=13; fontcolor="#1e3a8a";
+    style="rounded,filled"; color="#93c5fd"; fillcolor="#eff6ff";
+    pres [label=<<b>Presentation core</b><br/><font point-size="10">tree, layout, pixels, colors</font>>];
+    ops  [label=<<b>Live operations</b><br/><font point-size="10">Trash, Delete, Refresh</font>>];
+    core [label=<<b>Inventory core</b><br/><font point-size="10">scans and saves the map</font>>];
+  }
+  cli  [label=<<b>CLI</b> (Rust)<br/><font point-size="10">create, sync, info, export</font>>, width=2.2];
+  views -> model -> bridge -> pres -> ops -> core;
+  cli -> core;
+  {rank=same; bridge; cli}
+}

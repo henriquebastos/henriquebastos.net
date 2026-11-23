@@ -1,0 +1,115 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "width": 480,
+ "height": 220,
+ "background": "white",
+ "padding": 16,
+ "config": {
+  "font": "Helvetica",
+  "axis": {
+   "labelFontSize": 15,
+   "titleFontSize": 14,
+   "labelColor": "#0f172a",
+   "titleColor": "#334155",
+   "gridColor": "#e2e8f0",
+   "labelLimit": 0
+  },
+  "view": {
+   "stroke": null
+  }
+ },
+ "data": {
+  "values": [
+   {
+    "action": "Delete in a folder of 1M files",
+    "seconds": 0.00076,
+    "label": "0.76 ms"
+   },
+   {
+    "action": "Refresh a 25,000-file folder",
+    "seconds": 0.025,
+    "label": "25 ms"
+   },
+   {
+    "action": "Lay out and draw a 1M-file map",
+    "seconds": 0.105,
+    "label": "105 ms"
+   },
+   {
+    "action": "Open a 5.7M-entry map",
+    "seconds": 2.5,
+    "label": "2.5 s"
+   },
+   {
+    "action": "Scan the whole disk and save it",
+    "seconds": 35.6,
+    "label": "35.6 s"
+   }
+  ]
+ },
+ "encoding": {
+  "y": {
+   "field": "action",
+   "type": "nominal",
+   "sort": null,
+   "title": null,
+   "axis": {
+    "labelLimit": 400
+   }
+  },
+  "x": {
+   "field": "seconds",
+   "type": "quantitative",
+   "scale": {
+    "type": "log",
+    "domain": [
+     0.0001,
+     100
+    ]
+   },
+   "title": "seconds (log scale)",
+   "axis": {
+    "values": [
+     0.0001,
+     0.001,
+     0.01,
+     0.1,
+     1,
+     10,
+     100
+    ],
+    "labelExpr": "datum.value >= 1 ? datum.value + ' s' : datum.value >= 0.001 ? (datum.value*1000) + ' ms' : (datum.value*1000000) + ' µs'",
+    "labelFontSize": 13,
+    "labelOverlap": false
+   }
+  },
+  "x2": {
+   "datum": 0.0001
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "bar",
+    "color": "#60a5fa",
+    "cornerRadiusEnd": 3,
+    "height": 22
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "align": "left",
+    "dx": 6,
+    "fontSize": 15,
+    "fontWeight": "bold",
+    "color": "#0f172a"
+   },
+   "encoding": {
+    "text": {
+     "field": "label"
+    }
+   }
+  }
+ ]
+}
