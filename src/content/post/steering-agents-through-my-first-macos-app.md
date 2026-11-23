@@ -5,7 +5,7 @@ description: "Six days, no Rust or Swift, and a native Mac app I use every day. 
 draft: true
 ---
 
-This is an account of how I used AI for six days to rebuild a macOS app I loved, and how simple the process was. I think that is the point.
+This is an account of how I used AI for six days to rebuild a macOS app I loved, and how simple the process was.
 
 ## Why
 
