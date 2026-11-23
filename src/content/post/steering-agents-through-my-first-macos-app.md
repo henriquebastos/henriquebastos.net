@@ -105,7 +105,7 @@ For the interface I needed a designer. I had an agent build a context package fo
 
 *One page of the guidelines review. [More on X](https://x.com/henriquebastos/status/2115217453382783485).*
 
-Finding out also worked against me. Twice I complained that the rectangles looked misaligned. The second time, the agent showed that the layout matched the designer's code. The problem was my test data: 128 files of almost the same size, all painted the same gray. The fixture was lying.
+The investigation also worked against me. Twice I complained that the rectangles looked misaligned. The second time, the agent showed that the layout matched the designer's code. The problem was my test data: 128 files of almost the same size, all painted the same gray. The fixture was lying.
 
 ![A treemap of gray rectangles of almost the same size that look misaligned](./steering-agents-through-my-first-macos-app/misaligned-fixture.jpg)
 
