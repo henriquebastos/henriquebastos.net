@@ -23,6 +23,14 @@
   language. Each strategy enters through a concrete scene from the session,
   never as an abstract rule. See "Steering strategies" below.
 
+- **Simplified, direct account (2 Nov).** After the first draft, Henrique asked
+  for a plain personal account: say what the article is first, then the
+  motivation, then the points. No suspense, no hooks, no flourishes. The
+  Oracle rewrote it to about 1,700 words; the source post now holds that text.
+- **Build in public needs more room (2 Nov).** In the simplified text it is
+  one sentence. Henrique: it is one of the biggest things he learned, so it
+  will be developed after he reads the article.
+
 ## Sources
 
 - Build session (the real one): `~/.pi/agent/sessions/--Users-henrique-me-dotfiles--/2026-10-23T18-11-20-159Z_01a169f5-d1de-7169-ba9c-2666edb855ca.jsonl`,
