@@ -87,7 +87,7 @@ ja      0x3552              ; shape too thin: close the row
 incq    %r14                ; otherwise, one more child in this row
 ```
 
-The rule is simple: add files to a row while its shape stays acceptable, then start a new row. I thought small files were hidden. They were not: an 8 KB file covered about 2 pixels. Our map was coarse because of our own limit of 160 rectangles. After understanding the rule, the agent fixed out code.
+The rule is simple: add files to a row while its shape stays acceptable, then start a new row. I thought small files were hidden. They were not: an 8 KB file covered about 2 pixels. Our map was coarse because of our own limit of 160 rectangles. After understanding the rule, the agent fixed our code.
 
 ## The UX design
 
