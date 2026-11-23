@@ -2,17 +2,19 @@
  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
  "width": 480,
  "height": 220,
- "background": "white",
+ "background": "transparent",
  "padding": 16,
  "config": {
   "font": "Helvetica",
   "axis": {
    "labelFontSize": 15,
    "titleFontSize": 14,
-   "labelColor": "#0f172a",
-   "titleColor": "#334155",
-   "gridColor": "#e2e8f0",
-   "labelLimit": 0
+   "labelColor": "#211c17",
+   "titleColor": "#51483d",
+   "gridColor": "#e2dacc",
+   "labelLimit": 0,
+   "domainColor": "#b5ab9c",
+   "tickColor": "#b5ab9c"
   },
   "view": {
    "stroke": null
@@ -91,7 +93,7 @@
   {
    "mark": {
     "type": "bar",
-    "color": "#60a5fa",
+    "color": "#0099bc",
     "cornerRadiusEnd": 3,
     "height": 22
    }
@@ -103,7 +105,7 @@
     "dx": 6,
     "fontSize": 15,
     "fontWeight": "bold",
-    "color": "#0f172a"
+    "color": "#211c17"
    },
    "encoding": {
     "text": {

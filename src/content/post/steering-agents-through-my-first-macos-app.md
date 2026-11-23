@@ -89,7 +89,8 @@ The answer was structure. Each part of the screen got its own state, plain value
 
 The app ended up in seven layers, and nothing below knows anything above it.
 
-![The seven layers: Views and App model in Swift, the bridge, then Presentation core, Live operations and Inventory core in Rust, with the CLI also using the Inventory core](./steering-agents-through-my-first-macos-app/layers.png)
+![The seven layers: Views and App model in Swift, the bridge, then Presentation core, Live operations and Inventory core in Rust, with the CLI also using the Inventory core](./steering-agents-through-my-first-macos-app/layers--light.png)
+![The seven layers: Views and App model in Swift, the bridge, then Presentation core, Live operations and Inventory core in Rust, with the CLI also using the Inventory core](./steering-agents-through-my-first-macos-app/layers--dark.png)
 
 The views take input and draw. A Swift model runs the slow work in the background. A bridge connects Swift to Rust. In Rust, one layer turns the saved map into a tree, a layout, pixels and colors. Another handles Trash, Delete and Refresh. At the bottom, the inventory core scans and saves the map, and the CLI uses that same core.
 
@@ -103,7 +104,8 @@ I could not judge the structure by reading the code. I could judge it by how the
 
 The reproducible fixtures let us measure behavior over and over again. They made the qualities that mattered to me concrete, and that helped the agent protect them.
 
-![Bar chart on a log scale: delete in a folder of a million files 0.76 ms, refresh a 25,000-file folder 25 ms, lay out and draw a million-file map 105 ms, open a 5.7-million-entry map 2.5 s, scan the whole disk and save it 35.6 s](./steering-agents-through-my-first-macos-app/cost-ladder.png)
+![Bar chart on a log scale: delete in a folder of a million files 0.76 ms, refresh a 25,000-file folder 25 ms, lay out and draw a million-file map 105 ms, open a 5.7-million-entry map 2.5 s, scan the whole disk and save it 35.6 s](./steering-agents-through-my-first-macos-app/ladder--light.png)
+![Bar chart on a log scale: delete in a folder of a million files 0.76 ms, refresh a 25,000-file folder 25 ms, lay out and draw a million-file map 105 ms, open a 5.7-million-entry map 2.5 s, scan the whole disk and save it 35.6 s](./steering-agents-through-my-first-macos-app/ladder--dark.png)
 
 ## Strange symptoms are usually repetition
 

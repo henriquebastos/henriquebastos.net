@@ -1,0 +1,14 @@
+s/#211c17/#f3eee3/g
+s/#51483d/#c8bfb2/g
+s/#b5ab9c/#6e6458/g
+s/#e2dacc/#3a342e/g
+s/#fffcf7/#2f2a26/g
+s/#8a7f70/#a89c8c/g
+s/#b35f00/#ffb35c/g
+s/#ffb866/#a8641a/g
+s/#fff3e0/#3a2e22/g
+s/#f5efe4/#36302b/g
+s/#007795/#38c2e0/g
+s/#7fcfe0/#2d7f91/g
+s/#e8f6fa/#1f3036/g
+s/#0099bc/#38c2e0/g
