@@ -29,7 +29,11 @@ These are the moves I used.
 
 I got tired of waiting for `du` to answer each new question, so I asked for a map: "can we have a temporary sqlite db with all existing files with size so we can du once and investigate big files or big dirs iteratively?"
 
-That became a small CLI that recursively scans a directory, store a map in a quick to navigate structure, persist the map in binary form and allow me to query it many times. (agent: it would be nice to technically explain the map datastructure and properties and how it is persisted)
+That became a small CLI that recursively scans a directory, stores a map in a quick-to-navigate structure, persists the map in binary form and lets me query it many times.
+
+The map is two flat arrays. The first has one fixed-size record for each file or folder: the index of its parent, where its name starts in the second array, its device and inode, the space it takes on disk and the total of everything below it. The second array holds all the names, packed one after another as raw bytes. Parents always come before their children, so one pass from the end to the start adds up the total of every folder. There are no pointers and no allocation for each file. The device and inode make sure a file with many hard links is counted only once.
+
+On disk, the map is a header, then the records at 72 bytes each, then the names, then a 64-bit checksum. Every number is written explicitly in little-endian, never as a dump of memory. The CLI writes to a temporary file and moves it into place, so a failed scan never replaces a good map. Loading checks the checksum and the structure before it trusts anything, and it never touches the scanned disk. My full disk, 5 million entries, became a 470 MiB file.
 
 The tool can export the map in CSV, TSV or JSONL, and jq, sort and SQLite do the rest.
 
