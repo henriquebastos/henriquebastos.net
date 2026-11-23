@@ -705,6 +705,14 @@ const giscusThemes = import.meta.env.PROD
 		border: 1px solid var(--hairline);
 		background: var(--paper);
 	}
+	/* Theme-aware figures: a post ships name--light.png and name--dark.png, and only the one for the current theme shows. */
+	.post-article img[src*="--dark."],
+	:root[data-theme="dark"] .post-article img[src*="--light."] {
+		display: none;
+	}
+	:root[data-theme="dark"] .post-article img[src*="--dark."] {
+		display: block;
+	}
 	@media (prefers-reduced-motion: no-preference) {
 		.post-article img[loading="lazy"]:not([data-in]) {
 			opacity: 0;
