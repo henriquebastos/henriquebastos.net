@@ -662,6 +662,28 @@ const giscusThemes = import.meta.env.PROD
 		display: inline;
 	}
 
+	/* Chat messages quoted inline: prompts typed to agents, and agent replies. */
+	.post-article q.prompt {
+		quotes: none;
+		font-family: var(--font-mono);
+		font-size: 0.8em;
+		line-height: 1.5;
+		color: hsl(var(--theme-accent));
+		background: var(--accent-soft);
+		padding: 2px 7px;
+		border-radius: 6px;
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+	}
+	.post-article q.prompt--agent {
+		color: #b35f00;
+		background: rgba(255, 148, 0, 0.12);
+	}
+	:root[data-theme="dark"] .post-article q.prompt--agent {
+		color: #ffb35c;
+		background: rgba(255, 148, 0, 0.14);
+	}
+
 	.post-article blockquote {
 		margin: 28px 0;
 		padding: 4px 0 4px 22px;
