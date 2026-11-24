@@ -15,7 +15,7 @@ My disk was 99% full, so I opened a chat with an agent to find what was eating i
 
 *Disk Inventory X, in a screenshot from its website.*
 
-I had never written Rust or Swift, never built a Mac app, and I have no design skills. Six days later I had a native app with a very fast Rust core and a Swift interface. It was also my first time [building in public](https://x.com/henriquebastos/status/2115413602366591024) for real: I posted every small, incomplete step on X, and it was an amazing experience.
+I had never written Rust or Swift, never built a Mac app, and I have no design skills. Six days later I had a native app with a very fast Rust core and a Swift interface. It is called Disk Inventory, and it is open source under the MIT license. The code and a DMG are [on GitHub](https://github.com/henriquebastos/disk-inventory). It was also my first time [building in public](https://x.com/henriquebastos/status/2115413602366591024) for real: I posted every small, incomplete step on X, and it was an amazing experience.
 
 ![The first version of the app showing my home folder as a treemap](./steering-agents-through-my-first-macos-app/dogfooding.jpg)
 
@@ -91,7 +91,9 @@ The rule is simple: add files to a row while its shape stays acceptable, then st
 
 ## The UX design
 
-For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: <q class="prompt">Disk Inventory X is a reference for the discovery experience, not a design that our app must copy.</q> Claude Design returned an interactive mockup with twelve flows. Then another agent checked it against Apple's Human Interface Guidelines, and where they disagreed, the guidelines won.
+For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: <q class="prompt">Disk Inventory X is a reference for the discovery experience, not a design that our app must copy.</q> 
+
+Claude Design returned an interactive mockup with twelve flows. Then another agent checked it against Apple's Human Interface Guidelines, and where they disagreed, the guidelines won.
 
 ![Claude Design board with each user scenario as a sequence of screens](./steering-agents-through-my-first-macos-app/claude-design-board.jpg)
 
@@ -121,7 +123,9 @@ This design process was a lot of fun because the agent could present me with opt
 
 ## Be the last guardrail
 
-For some reason the agent assumed we needed all the available metadata about each file and directory. I did not notice that for a while. At some point I saw the agent churning on a file inspector, a side panel with file metadata. I let it go to see where it would arrive. The panel worked, but I noticed the existence of the metadata was adding small complications in different areas of the app. So I course-corrected: <q class="prompt">watch out for not complicating the UI, we should keep it as simple as possible. the goal is to find dirs and files using too much space to free them up. low level file information is not needed.</q> I asked it to remove the inspector and everything looked fast and simple again.
+For some reason the agent assumed we needed all the available metadata about each file and directory. I did not notice that for a while. At some point I saw the agent churning on a file inspector, a side panel with file metadata. I let it go to see where it would arrive.
+
+The panel worked, but I noticed the existence of the metadata was adding small complications in different areas of the app. So I course-corrected: <q class="prompt">watch out for not complicating the UI, we should keep it as simple as possible. the goal is to find dirs and files using too much space to free them up. low level file information is not needed.</q> I asked it to remove the inspector and everything looked fast and simple again.
 
 The same happened to a navigation history and a layout copied from the old app. Built, seen, removed. This is an area I would investigate more, to learn how to avoid it: how to make scope detours more salient to me so we don't waste energy on what does not matter. But since most of the time the agent was working without my oversight, my time was not wasted, only a few million tokens. Subscriptions FTW!
 
