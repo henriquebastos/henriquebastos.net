@@ -15,7 +15,7 @@ My disk was 99% full, so I opened a chat with an agent to find what was eating i
 
 *Disk Inventory X, in a screenshot from its website.*
 
-I had never written Rust or Swift, never built a Mac app, and I have no design skills. Six days later I had a native app with a very fast Rust core and a Swift interface. It is called Disk Inventory, and it is open source under the MIT license. The code is [on GitHub](https://github.com/henriquebastos/disk-inventory), and the DMG is in the [latest release](https://github.com/henriquebastos/disk-inventory/releases/latest). It was also my first time [building in public](https://x.com/henriquebastos/status/2115413602366591024) for real: I posted every small, incomplete step on X, and it was an amazing experience.
+I had never written Rust or Swift, never built a Mac app, and I have no design skills. Six days later I had a native app with a very fast Rust core and a Swift interface. It is called Disk Inventory, and it is open source under the MIT license. The code is [on GitHub](https://github.com/henriquebastos/disk-inventory), and the DMG for macOS 26 on Apple silicon is in the [latest release](https://github.com/henriquebastos/disk-inventory/releases/latest). It was also my first time [building in public](https://x.com/henriquebastos/status/2115413602366591024) for real: I posted every small, incomplete step on X, and it was an amazing experience.
 
 ![The first version of the app showing my home folder as a treemap](./steering-agents-through-my-first-macos-app/dogfooding.jpg)
 
