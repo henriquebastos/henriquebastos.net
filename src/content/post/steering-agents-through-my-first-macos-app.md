@@ -91,9 +91,9 @@ The rule is simple: add files to a row while its shape stays acceptable, then st
 
 ![Disk Inventory X showing a test folder as rows of small colored rectangles next to one large file](./steering-agents-through-my-first-macos-app/fixture-in-disk-inventory-x.jpg)
 
-![Our app showing the same test folder with the same rows of small rectangles](./steering-agents-through-my-first-macos-app/fixture-in-our-app.jpg)
+![Our first prototype showing the same test folder with the same rows of small rectangles](./steering-agents-through-my-first-macos-app/fixture-in-our-app.jpg)
 
-*The same test folder in Disk Inventory X and in our app, later that day.*
+*The same test folder in Disk Inventory X and in our first prototype, later that day. This was before the final design.*
 
 ## The UX design
 
