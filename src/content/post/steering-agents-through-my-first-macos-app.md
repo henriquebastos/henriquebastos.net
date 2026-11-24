@@ -181,6 +181,16 @@ Its answer: <q class="prompt prompt--agent">your idea is the recommended design,
 
 The checks before the confirmation went from about a second to under a millisecond.
 
+## Building in public
+
+When I came back to X, the first thing I did was disable every notification except replies. No distractions, just sharing.
+
+This app was my first real build in public. I posted the Claude Design mockups, the guidelines review, the first video of me using the app, and the numbers when it was ready. None of it was finished when I posted it. On 28 Oct I wrote: "I think I am starting to get this #buildinpublic thing. Sharing incomplete work requires a healthy detachment."
+
+The replies became conversations. People asked which app I was rebuilding, how the core got fast, and what I would do with it. In one of them I admitted that building a product has always been my Achilles heel.
+
+<!-- to Henrique: what did building in public teach you? One or two sentences in your words, and I will place them here. -->
+
 ## What I would do differently
 
 - I ran everything in one session, started in my dotfiles folder as a cleanup chat. I would open a fresh session in the repository once the CLI existed.
