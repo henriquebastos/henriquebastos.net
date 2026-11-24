@@ -3,6 +3,10 @@ title: "Steering Agents Through My First macOS App"
 publishDate: 2026-11-02
 description: "Six days, no Rust or Swift, and my first native Mac app. The moves I used to steer the agents, and what I would change."
 draft: true
+ogImage: /og-image/steering-agents-through-my-first-macos-app.jpg
+coverImage:
+  src: ./steering-agents-through-my-first-macos-app.png
+  alt: "Illustration of the Disk Inventory app on a desk, with small brass robots measuring the treemap with tapes and calipers and checking a stopwatch, a speed gauge and an oscilloscope."
 ---
 
 This is an account of how I used AI for six days to rebuild a macOS app I loved, and how simple the process was. The new app is called Disk Inventory, it is [open source](https://github.com/henriquebastos/disk-inventory), and you can [install it](https://github.com/henriquebastos/disk-inventory/releases/latest).
