@@ -189,7 +189,7 @@ On 28 Oct I wrote: "I think I am starting to get this #buildinpublic thing. Shar
 
 The replies became conversations. People asked which app I was rebuilding, how the core got fast, and what I would do with it.
 
-I ended up discovering interesting people to follow and learning from other's experiences while I was figuring my out my project.
+I ended up discovering interesting people to follow and learning from others' experiences while I was figuring out my project.
 
 It was a refreshing experience. No plan. No spectacle. Just sharing the gift of the present moment.
 
