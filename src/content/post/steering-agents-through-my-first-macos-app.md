@@ -1,7 +1,7 @@
 ---
 title: "Steering Agents Through My First macOS App"
 publishDate: 2026-11-02
-description: "Six days to build my first native Mac app. A detailed account about the process, the results and the learnings."
+description: "Six days to build my first native Mac app. A detailed account of the process, the results and what I learned."
 draft: true
 ogImage: /og-image/steering-agents-through-my-first-macos-app.jpg
 coverImage:
