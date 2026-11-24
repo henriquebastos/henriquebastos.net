@@ -89,6 +89,12 @@ incq    %r14                ; otherwise, one more child in this row
 
 The rule is simple: add files to a row while its shape stays acceptable, then start a new row. I thought small files were hidden. They were not: an 8 KB file covered about 2 pixels. Our map was coarse because of our own limit of 160 rectangles. After understanding the rule, the agent fixed our code.
 
+![Disk Inventory X showing a test folder as rows of small colored rectangles next to one large file](./steering-agents-through-my-first-macos-app/fixture-in-disk-inventory-x.jpg)
+
+![Our app showing the same test folder with the same rows of small rectangles](./steering-agents-through-my-first-macos-app/fixture-in-our-app.jpg)
+
+*The same test folder in Disk Inventory X and in our app, later that day.*
+
 ## The UX design
 
 For the interface I needed a designer. I had an agent build a context package for another agent that had never seen our conversation: my very bad first prototype, the old app, my design invariants, and the preferences it could mine from the session. The prompt said: <q class="prompt">Disk Inventory X is a reference for the discovery experience, not a design that our app must copy.</q> 
