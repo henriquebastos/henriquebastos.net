@@ -5,7 +5,7 @@ description: "Six days, no Rust or Swift, and my first native Mac app. The moves
 draft: true
 ---
 
-This is an account of how I used AI for six days to rebuild a macOS app I loved, and how simple the process was. The new app is called Disk Inventory, and it is open source under the MIT license. The code is [on GitHub](https://github.com/henriquebastos/disk-inventory), and the DMG for macOS 26 on Apple silicon is in the [latest release](https://github.com/henriquebastos/disk-inventory/releases/latest).
+This is an account of how I used AI for six days to rebuild a macOS app I loved, and how simple the process was. The new app is called Disk Inventory, it is [open source](https://github.com/henriquebastos/disk-inventory), and you can [install it](https://github.com/henriquebastos/disk-inventory/releases/latest).
 
 ## Why
 

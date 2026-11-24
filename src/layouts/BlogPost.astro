@@ -827,6 +827,16 @@ const giscusThemes = import.meta.env.PROD
 		font-weight: 500;
 		color: hsl(var(--theme-text));
 	}
+	/* Honor Markdown column alignment (`---:`, `:---:`). */
+	.post-article th[align="right"],
+	.post-article td[align="right"] {
+		text-align: right;
+		font-variant-numeric: tabular-nums;
+	}
+	.post-article th[align="center"],
+	.post-article td[align="center"] {
+		text-align: center;
+	}
 
 	.post-article hr {
 		border: 0;
