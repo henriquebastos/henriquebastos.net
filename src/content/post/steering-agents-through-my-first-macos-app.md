@@ -183,13 +183,15 @@ The checks before the confirmation went from about a second to under a milliseco
 
 ## Building in public
 
-When I came back to X, the first thing I did was disable every notification except replies. No distractions, just sharing.
+This app was my first real build in public. I posted the Claude Design mockups, the guidelines review, the first video of me using the app, and the numbers when it was ready. None of it was finished when I posted it.
 
-This app was my first real build in public. I posted the Claude Design mockups, the guidelines review, the first video of me using the app, and the numbers when it was ready. None of it was finished when I posted it. On 28 Oct I wrote: "I think I am starting to get this #buildinpublic thing. Sharing incomplete work requires a healthy detachment."
+On 28 Oct I wrote: "I think I am starting to get this #buildinpublic thing. Sharing incomplete work requires a healthy detachment."
 
-The replies became conversations. People asked which app I was rebuilding, how the core got fast, and what I would do with it. In one of them I admitted that building a product has always been my Achilles heel.
+The replies became conversations. People asked which app I was rebuilding, how the core got fast, and what I would do with it.
 
-<!-- to Henrique: what did building in public teach you? One or two sentences in your words, and I will place them here. -->
+I ended up discovering interesting people to follow and learning from other's experiences while I was figuring my out my project.
+
+It was a refreshing experience. No plan. No spectacle. Just sharing the gift of the present moment.
 
 ## What I would do differently
 
